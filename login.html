@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>摸摸耳</title>
+        <link rel="icon" href="" sizes="16x16">
+        <link rel="stylesheet" href="style.css">
+        <meta charset="UTF-8">
+        <!-- <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0"> -->
+    </head>
+    
+    <body>
+        <div class="leaderboard">
+            <marquee>
+                <span class="leaderboard-cyan">歡迎來到東方哈哈樂園 &#10024; &nbsp;&nbsp;</span>
+                <span class="leaderboard-margenta">&#128081; 王小明 600 &#9733; 王宏宏 450 &#9733; 楊明王 400 &#9733; 阿翔 350 &#9733; 小羊 200 &nbsp;&nbsp;</span>
+                <span class="leaderboard-green">全台數位內容首府 來電詢問2939-3091</span>
+            </marquee>
+            <button id="btn-signup"><a href="signup.html">signup</button>
+            <button id="btn-signup"><a href="login.html">login</button>
+        </div>
+
+        <div class="header">
+            <a href="main.php"><img src="assets/東方哈哈樂園 字.png" class="img-logo"></a>
+        </div>
+
+        <div class="main-area">
+            <div class="ad-vertical">
+                <img id="ad-left" class="img-ad" src="assets/ads/simulate-ad-change/0-l.jpg">
+            </div>
+            <form class="form-signup leaderboard-green" name="registerForm" method="POST" action="login.php">
+                <label>Username</label>
+                <input type="text" id="username" name="username" placeholder="請輸入帳號"></input>
+                <label>Password</label>
+                <input type="password" id="password" name="password" placeholder="請輸入密碼"></input>
+                <button type="submit" id="login">Submit</button>
+            </form>
+            <div class="ad-vertical">
+                <img id="ad-right" class="img-ad" src="assets/ads/simulate-ad-change/0-r.jpg">
+            </div>
+        </div>
+        <div style="height: 112px"></div>
+        <div class="ad-horizontal">
+            <img id="ad-bottom" class="img-ad" src="assets/ads/simulate-ad-change/0.jpg">
+        </div>
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+       
+    </body>
+</html>
+

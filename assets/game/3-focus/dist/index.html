@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - Color Collision</title>
+  <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Montserrat&amp;display=swap'>
+<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.min.css'><link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<div class="start-screen">
+	<div class="game-data">
+		<span class="name"><span>專</span><span>注<span>遊</span><span>戲
+
+	</div>
+	<span class="info">
+		<span class="highlight _1">專注力</span> 是你的武器。
+		同色的球需互相相撞；點擊以更換兩球上下位置。
+		若異色球相撞則<span class="highlight _2">結束遊戲</span>。
+		請<span class="highlight _3">小心謹慎</span>每一步，並創造新的高分。
+	</span>
+	<button class="btn play">PLAY</button>
+</div>
+
+<span class="retry-text hide" data-splitting>錯了</span>
+<button class="retry-btn hide" data-splitting>再次遊戲</button>
+<canvas data-canvas></canvas>
+
+
+<!-- <div class="support">
+	<a href="https://github.com/devloop01/color-collision" target="_blank"><span>fork at</span><i class="fab fa-github"></i></a>
+</div> -->
+<!-- partial -->
+  <script src='https://unpkg.com/splitting/dist/splitting.min.js'></script><script  src="./script.js"></script>
+
+</body>
+</html>
