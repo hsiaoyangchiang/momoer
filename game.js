@@ -1,13 +1,11 @@
 var iframe = $("iframe")
-var game_session = 0
+var game_session = 1
 var game_id = window.location.search.split("=")[1]
 var game_sim_id = game_id
+const overlay = $("#overlay")
 
 
-
-
-
-//Display Game
+// Load Game
 var arr_game_src = [ //小遊戲連結
     "assets/game/1-Coil-master/index.html",
     "assets/game/2-flip-card-master/index.html",
@@ -19,6 +17,7 @@ var arr_game_src = [ //小遊戲連結
     "assets/game/8-digger-main/index.html",
     "assets/game/9-DuckHunt-JS-master/dist/index.html" //點擊重玩
 ];
+
 function displayGame(i) {
     let game_src = arr_game_src[i]
     $("iframe").attr("src", game_src)
@@ -31,8 +30,16 @@ window.onload = function() {
 }
 
 
-//Question Modal
+// Question Modal
 const modal_question = $(".modal-question")
+const question_radio = $(".question-radio")
+const question_saq = $(".question-saq")
+const question = $("label#question")
+const option_1 = $("label#option-1")
+const option_2 = $("label#option-2")
+const option_3 = $("label#option-3")
+
+
 var arr_question = [ //問題集放這裡
     [["q1-1","option 1","option 2","option 3"],
     ["q1-2","option 1","option 2","option 3"],
@@ -64,50 +71,81 @@ var arr_question = [ //問題集放這裡
 function showQuestion() {
     if(game_session != 0 & game_sim_id<=9) { //只有玩小遊戲時會跳出問題，因此game_id需要為1~9的範圍內
         modal_question.show()
-        var option = $(".option")
-        option.attr("name", "option")
         if (game_session == 7) {
-            $(".question-radio").hide()
-            $(".question-text").show()
-            $("#question").text(arr_question[game_session-1][0])
+            question_radio.hide()
+            question_saq.show()
+            question.text(arr_question[game_session-1][0])
         }
         else {
-            $(".question-radio").show()
-            $(".question-text").hide()
+            question_radio.show()
+            question_saq.hide()
 
             if(game_session <=2) {
-                $("#question").text(arr_question[game_session-1][game_sim_id-1][0]) //game_session=1時跳出問題，所以要-1
-                $("#option-1").text(arr_question[game_session-1][game_sim_id-1][1]) //game_id 從1開始，所以要-1
-                $("#option-2").text(arr_question[game_session-1][game_sim_id-1][2])
-                $("#option-3").text(arr_question[game_session-1][game_sim_id-1][3])
+                question.text(arr_question[game_session-1][game_sim_id-1][0]) //game_session=1時跳出問題，所以要-1
+                option_1.text(arr_question[game_session-1][game_sim_id-1][1]) //game_id 從1開始，所以要-1
+                option_2.text(arr_question[game_session-1][game_sim_id-1][2])
+                option_3.text(arr_question[game_session-1][game_sim_id-1][3])
             }
             else {
-                $("#question").text(arr_question[game_session-1][0])
-                $("#option-1").text(arr_question[game_session-1][1])
-                $("#option-2").text(arr_question[game_session-1][2])
-                $("#option-3").text(arr_question[game_session-1][3])
+                question.text(arr_question[game_session-1][0])
+                option_2.text(arr_question[game_session-1][1])
+                option_2.text(arr_question[game_session-1][2])
+                option_3.text(arr_question[game_session-1][3])
             }
         }
     }
-    else {
+    else { //game_session=0 不跳問題
         modal_question.hide()
     }
 }
+
+// Submit answer
 $("#send_my_data").click(function(){
-    loadDoc()
+    submitAns()
 })
 
-function loadDoc() {    
-    var selected_radio = $("input[name=option]:checked", '#form-question').val()
-    alert(selected_radio);
-    $.post("submit.php", {selected_radio: selected_radio}) 
-        .done(function(data) {
-        alert( "Data Loaded: " + data );
-      });  
+function submitAns() {
+    if(game_session == 7) {
+        //提交的不是select radio而是文字
+    }
+    else {
+        var selected_radio = $("input[name=option]:checked", '#form-question').val()
+        alert("Selected Radio: "+selected_radio)
+        $.post("submit.php", {selected_radio: selected_radio}).done(function(data) {
+            alert("Data Loaded: "+data)
+        })
+    }
+    
 }
 
 
-//Change Ads
+// After playing the Game
+const modal_endgame = $(".modal-endgame")
+
+function callParent(){
+    console.log("game has ended")
+    modal_endgame.show()
+    overlay.show()
+}
+
+function replay(){
+    console.log("replay")
+    modal_endgame.hide()
+    overlay.hide()
+    window.location.reload()
+    console.log("page reloaded")
+}
+
+function backtoMain(){
+    console.log("back to main")
+    modal_endgame.hide()
+    overlay.hide()
+    window.location = "main.html"
+}
+
+
+
+// Change Ads
 var ad_left = $("#ad-left")
 var ad_right = $("#ad-right")
 var ad_bottom = $("#ad-bottom")
@@ -167,7 +205,7 @@ const sim_btn_change = $("#sim-change")
 // })
 
 
-//Backend Panel
+// Backend Panel Simulator
 var backend_panel_display = 0
 const backend_panel = $("#backend-panel")
 document.addEventListener('keydown', logKey);
