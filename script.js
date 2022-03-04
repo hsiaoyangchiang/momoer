@@ -1,18 +1,17 @@
-var modal_signup = document.getElementsByClassName("modal-signup")[0]
-var btn_signup = document.getElementById("btn-signup")
-var btn_close_signup = document.getElementById("close-signup")
-var btn_submit_signup = document.getElementById("signup")
+var modal_signup = $(".modal-signup")
+var btn_signup = $("#btn-signup")
+var overlay = $("#overlay")
 
 /* ad */
-var ad_left = document.getElementById("ad-left")
-var ad_right = document.getElementById("ad-right")
-var ad_bottom = document.getElementById("ad-bottom")
+var ad_left = $("#ad-left")
+var ad_right = $("#ad-right")
+var ad_bottom = $("#ad-bottom")
 
-var ad_left_src = ad_left.getAttribute("src")
-var ad_right_src = ad_right.getAttribute("src")
-var ad_bottom_src = ad_bottom.getAttribute("src")
+var ad_left_src = ad_left.attr("src")
+var ad_right_src = ad_right.attr("src")
+var ad_bottom_src = ad_bottom.attr("src")
 
-var game_session = 1
+var game_session = 0 //要從後端送過來
 var game_id = 0
 var choice_id = ""
 
@@ -23,8 +22,24 @@ window.onload = function() {
     console.log("game session: "+game_session+", game_id: "+game_id+", choice_id: "+choice_id)
 }
 
+// Signup modal
 
-/* game */
+
+// TOC
+$(".toc-link").click(function(){
+    console.log("show toc")
+    $(".form-signup").hide()
+    $(".div-toc").show()
+})
+
+$("#toc-back").click(function(){
+    console.log("hide toc")
+    $(".form-signup").show()
+    $(".div-toc").hide()
+})
+
+
+// Hover game title
 var game = $(".game")
 var game_title = game.find(">:last-child")
 
@@ -36,19 +51,8 @@ game.mouseleave(() => {
     game_title.hide()
 })
 
-/*
-var game_title = $(".game-title")
-console.log(game_title)
 
-
-game1.mouseenter(function() {
-    console.log("mouse enter")
-    game_title.style.display = "block"
-})
-*/
-
-/* game */
-
+// Switch to specific game page
 for(let i=0; i<12; i++) {
     let game_clicked = document.getElementsByClassName("game")[i]
     
@@ -56,7 +60,9 @@ for(let i=0; i<12; i++) {
         game_id = $(this).attr("id").split("-")[1]
         if (game_session == 0) {
             console.log("first time play game")
-            modal_signup.style.display = "block"
+            overlay.show()
+            modal_signup.show()
+            lockScroll()
         }
         else {
             location.href="game.php?game_id="+game_id
@@ -64,26 +70,17 @@ for(let i=0; i<12; i++) {
     }
 }
 
-// btn_signup.addEventListener('click', function(){
-//     console.log('HI'); 
-//   }, false);
-
-
-// btn_signup.onclick = function(){
-//     console.log("open signup")
-//     modal_signup.style.display = "block"
-// }
-
-btn_close_signup.onclick = function(){
-    console.log("close signup")
-    modal_signup.style.display = "none"
-}
-
-btn_submit_signup.onclick = function(){
-    console.log("signup succesful!")
-}
-
 function playGame() {
     console.log("play")
     window.location.assign("game.html")
+}
+
+
+// Lock y-scroll when modal appears
+function lockScroll() {
+    $("body").attr("overflow-y", "hidden")
+}
+
+function unlockScroll() {
+    $("body").attr("overflow-y", "visible")
 }

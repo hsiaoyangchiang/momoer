@@ -11,6 +11,16 @@ body {
     font-weight: ;*/
 }
 
+.flex-horizontal {
+    display: flex;
+    flex-direction: row;
+}
+.flex-vertical {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 /* typeface */
 
 @font-face {
@@ -27,16 +37,27 @@ body {
 
 .header {
     position: relative;
-    top:0;
     width: 100%;
-    height: 200px;
-    padding: 10px 40px;
-    top: 48px;
-    margin-bottom: 60px;
+    height: auto;
+    margin-top: 14px;
+    margin-bottom: 20px;
+    padding: 0px 32px;
+}
+
+.header-game {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: auto;
+    margin-top: 14px;
+    margin-bottom: 12px;
 }
 
 .leaderboard {
-    position: fixed;
+    position: sticky;
+    top: 0;
     width: 100%;
     height: 48px;
     display: flex;
@@ -57,138 +78,197 @@ marquee {
     font-size: 24px;
     letter-spacing: 0.04em;
 }
-    /* signup */
-    .modal-signup {
-        display: none;
-        position: fixed;
-        z-index: 1;
-        top: 20px;
-        margin: 5% auto; /* Will not center vertically and won't work in IE6/7. */
-        left: 0;
-        right: 0;
-        width: 720px;
-        height: auto;
-        background-color: white;
-        border: 1px solid gray;
-        border-radius: 2px;
-        padding: 20px 40px;
-    }
-    .form-signup {
-        display: flex;
-        flex-direction: column;
-        align-items: start;
-    }
-    .textarea-toc {
-        width: 480px;
-        height: 80px;
-        overflow-y: scroll;
-        resize: none;
-    }
 
-    /* question modal */
-    .modal-question {
-        display: none;
-        position: fixed;
-        z-index: 1;
-        top: 20px;
-        margin: 5% auto; /* Will not center vertically and won't work in IE6/7. */
-        left: 0;
-        right: 0;
-        width: 720px;
-        height: auto;
-        background-color: white;
-        border: 1px solid gray;
-        border-radius: 2px;
-        padding: 20px 40px;
-    }
-    .modal-question label {
-        font-family: 'DotGothic16';
-        font-size: 16px;
-        color: #000;
-    }
-    .text-q7 {
-        display: none;
-    }
+#overlay {
+    position: fixed; /* Sit on top of the page content */
+    display: none; /* Hidden by default */
+    width: 100%; /* Full width (cover the whole page) */
+    height: 100%; /* Full height (cover the whole page) */
+    top: 0; 
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.4); /* Black background with opacity */
+    z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
+}
+/* signup */
+.modal-signup {
+    display: none;
+    position: fixed;
+    width: 676px;
+    height: 505px;
+    margin: 5% auto;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 3;
 
-    /* all games */
-    .main-area {
-        position: relative;
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-between;
-        padding: 20px 40px 0px;
-    }
+    background: #FFFFFF;
+    border: 12px solid #F6CD63;
+    border-radius: 16px;
+}
+.form-signup {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 28px 0px;
+}
 
-    .game-grid-container {
-        position: relative;
-        width: auto;
-        height: auto;
-        justify-content: center;
-        display: grid;
-        grid-template-columns: repeat(4, 185px);
-        grid-template-rows: repeat(3, 175px);
-    }
+.div-toc {
+    display: none;
+    padding-top: 32px;
+}
 
-    .game {
-        position: relative;
-        /*display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;*/
-        background-color: white;
-    }
+pre.textarea-toc {
+    width: 560px;
+    height: 300px;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 12px 24px;
+    border: 2px solid #F6CD63;
+    border-radius: 4px;
 
-    .ad-vertical {
-        position: relative;
-        width: 260px;
-        height: 500px;
-    }
+    overflow-y: scroll;
+    resize: none;
+    white-space: pre-wrap;
+}
 
-    .ad-horizontal {
-        position: fixed;
-        left: 0;
-        right: 0;
-        bottom: 0px;
-        width: 660px;
-        height: 120px;
-        margin-left: auto;
-        margin-right: auto;
-        z-index: 2;
-    }
+/* question modal */
+.modal-question {
+    display: block;
+    position: fixed;
+    width: 720px;
+    height: auto;
+    top: 20%;
+    left: 0;
+    right: 0;
+    margin: 5% auto; /* Will not center vertically and won't work in IE6/7. */
+    padding: 24px 32px 32px;
+    background-color: white;
+    border: 12px solid #F6CD63;
+    border-radius: 16px;
+    z-index: 3;
+}
+.modal-question label {
+    font-family: 'DotGothic16';
+    font-size: 32px;
+    color: #88E998;
+}
+.text-q7 {
+    display: none;
+}
 
-    /* single game page */
-    /*
-    .gamepage-grid-container {
-        display: grid;
-        grid-template-columns: 180px auto 180px; 
-        grid-template-rows: 480px 120px;
-        border: 2px solid gray;
-        grid-column-gap: 16px;
-        grid-row-gap: 24px;
-    }*/
+/* after game */
+.modal-endgame {
+    display: none;
+    position: fixed;
+    width: 540px;
+    height: 320px;
+    top: 16%;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 5% auto;
+    padding: 20px 48px 24px;
+    background-color: white;
+    border: 12px solid #88E998;
+    border-radius: 16px;
+    z-index: 3;
+}
 
-    .game-frame {
-        width: 740px;
-        height: 525px;
-        border: 0px;
-        background-color: #F6F6F6;
-        background-image: url(assets/images/flash_not_supported.jpg);
-        background-size: 52%;
-        background-position: center center;
-        background-repeat: no-repeat
-    }
+/* all games */
+.main-area {
+    position: relative;
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 150px;
+    padding: 0px 32px;
+}
 
-    iframe {
-        width: 100%;
-        height: 100%;
-        border: 0px;
-    }
+.game-grid-container {
+    position: relative;
+    width: auto;
+    height: auto;
+    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(4, 195px);
+    grid-template-rows: repeat(3, 185px);
+}
+
+.game {
+    position: relative;
+    /*display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;*/
+    background-color: white;
+}
+
+.ad-vertical {
+    position: relative;
+    min-width: 266px;
+    min-height: 535px;
+}
+
+.ad-horizontal {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin-bottom: 10px;
+    width: 695px;
+    height: 120px;
+    margin-left: auto;
+    margin-right: auto;
+    z-index: 1;
+}
+
+/* single game page */
+.game-area {
+    position: relative;
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 150px;
+}
+
+.game-frame {
+    width: 892px;
+    height: 535px;
+    border: 0px;
+    background-color: #F6F6F6;
+    background-image: url(assets/images/flash_not_supported.jpg);
+    background-size: 52%;
+    background-position: center center;
+    background-repeat: no-repeat
+}
+
+iframe {
+    width: 100%;
+    height: 100%;
+    border: 0px;
+}
+
 
 /* assets */
 .img-logo {
     width: auto;
     height: 200px;
+}
+
+.img-logo-small {
+    width: auto;
+    height: 133px;
 }
 
 .img-ad {
@@ -225,6 +305,94 @@ marquee {
                                     supported by Chrome, Edge, Opera and Firefox */
 }
 
+
+/* button */
+button {
+    border: 0;
+    cursor: pointer;
+}
+button:hover{
+    color:#05246A !important;
+}
+
+button.btn-large {
+    background: #F6CD63;
+    border-radius: 8px;
+    padding: 4px 28px;
+    outline: none;
+
+    font-family: 'DotGothic16';
+    font-style: normal;
+    font-weight: normal;
+    font-size: 64px;
+    line-height: 93px;
+    /* identical to box height */
+
+    text-align: center;
+    letter-spacing: 0.16em;
+
+    color: #FFFFFF;
+}
+
+button.btn-medium {
+    background: #88E998;
+    border-radius: 8px;
+    padding: 4px 28px;
+    outline: none;
+
+    font-family: 'DotGothic16';
+    font-style: normal;
+    font-weight: normal;
+    font-size: 32px;
+    line-height: 48px;
+    /* identical to box height */
+
+    text-align: center;
+    letter-spacing: 0.16em;
+
+    color: #FFFFFF;
+}
+
+button.btn-small {
+    background: #F6CD63;
+    border-radius: 8px;
+    padding: 8px 16px;
+    outline: none;
+
+    font-family: 'DotGothic16';
+    font-style: normal;
+    font-weight: normal;
+    font-size: 22px;
+    line-height: 100%;
+    text-align: center;
+    letter-spacing: 0.16em;
+
+    color: #FFFFFF;
+}
+
+input.btn-medium {
+    background: #F6CD63;
+    border-radius: 8px;
+    padding: 4px 28px;
+    border: 0 !important;
+
+    font-family: 'DotGothic16';
+    font-style: normal;
+    font-weight: normal;
+    font-size: 32px;
+    line-height: 48px;
+    /* identical to box height */
+
+    text-align: center;
+    letter-spacing: 0.16em;
+
+    color: #FFFFFF;
+}
+input.btn-medium:hover{
+    color:#05246A !important;
+}
+
+
 /* text */
 .leaderboard-margenta {
     color: magenta;
@@ -238,6 +406,95 @@ marquee {
     color: greenyellow;
 }
 
+h1 {
+    font-family: 'DotGothic16';
+    font-style: normal;
+    font-weight: normal;
+    font-size: 120px;
+    line-height: 100%;
+    text-align: center;
+    margin-top: 0px;
+    margin-bottom: 40px;
+    
+    color: #F6CD63;
+}
+
+h2 {
+    font-family: 'DotGothic16';
+    font-style: normal;
+    font-weight: normal;
+    font-size: 54px;
+    line-height: 78px;
+    text-align: left;
+    margin-top: 0px;
+    margin-bottom: 0px;
+
+    color: #F6CD63;
+}
+
+h3 {
+    font-family: 'DotGothic16';
+    font-style: normal;
+    font-weight: normal;
+    font-size: 32px;
+    line-height: 100%;
+    text-align: center;
+    margin-top: 0px;
+    margin-bottom: 8px;
+    
+    color: #F6CD63;
+}
+
+p {
+    font-family: 'DotGothic16';
+    font-style: normal;
+    font-weight: normal;
+    font-size: 24px;
+    line-height: 35px;
+    margin: 0px;
+
+    color: #F6CD63;
+}
+
+label.label-signup {
+    font-family: 'DotGothic16';
+    font-style: normal;
+    font-weight: normal;
+    font-size: 32px;
+    line-height: 100%;
+    color: #88E998;
+    margin-right: 36px;
+}
+
+label .toc-link {
+    text-decoration: underline;
+}
+label .toc-link:hover {
+    color: #61B6DB;
+    cursor: pointer;
+}
+
+input.input-signup {
+    width: 284px;
+    height: 32px;
+    background-color: #88E998;
+
+    font-family: 'DotGothic16';
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 100%;
+    letter-spacing: 0.08em;
+    padding-left: 4px;
+    border: 0;
+    border-radius: 4px;
+}
+input:focus {
+    color: #000;
+    border: 0;
+    outline: #FFF;
+}
+
 .game-title {
     display: none;
     position: absolute;
@@ -246,7 +503,7 @@ marquee {
     bottom: 0px;
     padding-top: 5px;
     background-color: rgb(0, 0, 0, 0.7);
-    z-index: 1;
+    z-index: 0;
 
     font-family: 'DotGothic16';
     font-size: 20px;
@@ -256,6 +513,9 @@ marquee {
 
     color: #fff;
 }
+
+
+
 
 
 #backend-panel {
