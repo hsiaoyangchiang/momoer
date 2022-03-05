@@ -1,5 +1,7 @@
 <?php
-session_start(); 
+session_start();
+require_once"pdoInc.php";
+error_reporting(E_ALL & ~E_NOTICE);
 ?>
 <!DOCTYPE html>
 <html>
@@ -27,19 +29,24 @@ session_start();
 
         <div class="header-game">
             <a href="main.php"><img src="assets/img-logo.png" class="img-logo-small cursor-pointer"></a>
-            <a class="leaderboard-green">
-            <?php
-            if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
-                echo "你好，".$_SESSION['nickname'];
-            }else{
-            echo "未登入";
-            }
-            ?>
-            </a>
+            <div id="game-session" class="php leaderboard-green">
+                <?php
+                if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
+                    // echo "你好，".$_SESSION['username'];
+                    $sql = "SELECT * from Game WHERE username = '".$_SESSION['username']."'";
+                    $sth = $dbh->query($sql);
+                    while($row = $sth->fetch(PDO::FETCH_ASSOC)){
+                        echo $row['amount'];
+                    }
+                }else{
+                echo "未登入";
+                }
+                ?>
+            </div>
             <!-- <button id="btn-signup">signup</button> -->
         </div>
 
-        <div id="backend-panel"> <!--模擬後端操作面板-->
+        <!-- <div id="backend-panel"> 模擬後端操作面板
             <h4 style="margin-bottom: 4px;">後端模擬面板</h4>
             <label for="game-session">Game Session:</label>
             <label><span id="current-game-session"></span></label>
@@ -72,7 +79,7 @@ session_start();
             <br>
             <button id="sim-run" style="margin-top: 8px;">Run</button>
             <h5 style="font-weight: 400;">Press b to call/hide this panel<h5>
-        </div>
+        </div> -->
 
         <div class="modal-question">
             <h3>&#9734;回答選項進入遊戲&#9734;</h3>

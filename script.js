@@ -11,33 +11,35 @@ var ad_left_src = ad_left.attr("src")
 var ad_right_src = ad_right.attr("src")
 var ad_bottom_src = ad_bottom.attr("src")
 
-var game_session = 0 //要從後端送過來
+var loggedin = parseInt($("#loggedin").text())
+var username = $("#session_username").text().replace("你好，",'')
+var game_session = 0
 var game_id = 0
 var choice_id = ""
 
-window.onload = function() {
+// Player Status
+function showLoginStatus() {
+    if(loggedin != 0) {
+        console.log("loggedin: "+loggedin)
+        // console.log("username: "+username)
+        game_session = parseInt($("#game-session").text())
+    }
+    else {
+        console.log("loggedin: "+loggedin)
+    }
+}
+
+function showAdStatus() {
     console.log("ad-left: "+ad_left_src)
     console.log("ad-right: "+ad_right_src)
     console.log("ad-bottom: "+ad_bottom_src)
     console.log("game session: "+game_session+", game_id: "+game_id+", choice_id: "+choice_id)
 }
 
-// Signup modal
-
-
-// TOC
-$(".toc-link").click(function(){
-    console.log("show toc")
-    $(".form-signup").hide()
-    $(".div-toc").show()
-})
-
-$("#toc-back").click(function(){
-    console.log("hide toc")
-    $(".form-signup").show()
-    $(".div-toc").hide()
-})
-
+window.onload = function() {
+    showLoginStatus()
+    showAdStatus()
+}
 
 // Hover game title
 var game = $(".game")
@@ -58,7 +60,8 @@ for(let i=0; i<12; i++) {
     
     game_clicked.onclick= function() {
         game_id = $(this).attr("id").split("-")[1]
-        if (game_session == 0) {
+        if (loggedin == 0) {
+            // Signup
             console.log("first time play game")
             overlay.show()
             modal_signup.show()
@@ -69,6 +72,19 @@ for(let i=0; i<12; i++) {
         }
     }
 }
+
+// TOC
+$(".toc-link").click(function(){
+    console.log("show toc")
+    $(".form-signup").hide()
+    $(".div-toc").show()
+})
+
+$("#toc-back").click(function(){
+    console.log("hide toc")
+    $(".form-signup").show()
+    $(".div-toc").hide()
+})
 
 function playGame() {
     console.log("play")

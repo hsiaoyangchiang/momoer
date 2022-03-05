@@ -29,21 +29,39 @@
 
         <div class="header">
             <a href="main.php"><img src="assets/img-logo.png" class="img-logo cursor-pointer"></a>
-            <a class="leaderboard-green">
-                <?php if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
-                     echo "你好，".$_SESSION['nickname'];
-                    //  echo $_SESSION['username'];/
-                     }
+            <div id="loggedin" class="php leaderboard-green">
+                <?php
+                if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
+                    echo 1;
+                }else{
+                    echo 0;
+                    }
                 ?>
-            </a>
+            </div>
+            <div id="session_username" class="leaderboard-green">
+                <?php
+                if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
+                    echo "你好，".$_SESSION['username'];
+                }
+                ?>
+            </div>
+            <div id="game-session" class="php leaderboard-green">
+                <?php
+                $sql = "SELECT * from Game WHERE username = '".$_SESSION['username']."'";
+                $sth = $dbh->query($sql);
+                while($row = $sth->fetch(PDO::FETCH_ASSOC)){
+                    echo $row['amount'];
+                }
+                ?>
+            </div>
         </div>
         
         <div class="modal-signup">
-            <form class="form-signup">
+            <form class="form-signup" name="registerForm" method="post" action="signup.php">
                 <h1>註 冊</h1>
                 <div class="flex-horizontal">
-                    <label class="label-signup" for="account">帳號</label>
-                    <input class="input-signup" type="text" id="account" name="account" placeholder="用英文和數字歐" ></input>
+                    <label class="label-signup" for="username">帳號</label>
+                    <input class="input-signup" type="text" id="username" name="username" placeholder="用英文和數字歐" ></input>
                 </div>
                 <br>
                 <div class="flex-horizontal">
@@ -52,7 +70,7 @@
                 </div>
                 <br>
                 <label class="label-signup" for="agree_toc">
-                    <input class="checkbox-signup" type="checkbox" id="agree_toc" name="agree_toc" value="1"></input>
+                    <input class="checkbox-signup" type="checkbox" id="agree_toc" name="agree_toc"></input>
                     <span class="checkmark"></span>我同意<span class="toc-link">使用條款</span>
                 </label>
                 <br>

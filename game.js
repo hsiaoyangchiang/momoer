@@ -1,11 +1,10 @@
 var iframe = $("iframe")
-var game_session = 1
-var game_id = window.location.search.split("=")[1]
+var game_session = parseInt($("#game-session").text())
+var game_id = parseInt(window.location.search.split("=")[1])
 var game_sim_id = game_id
 const overlay = $("#overlay")
 
-
-// Load Game
+// Source of Game
 var arr_game_src = [ //小遊戲連結
     "assets/game/1-Coil-master/index.html",
     "assets/game/2-flip-card-master/index.html",
@@ -18,15 +17,24 @@ var arr_game_src = [ //小遊戲連結
     "assets/game/9-DuckHunt-JS-master/dist/index.html" //點擊重玩
 ];
 
-function displayGame(i) {
-    let game_src = arr_game_src[i]
-    $("iframe").attr("src", game_src)
-}
 
+// Start
 window.onload = function() {
-    showQuestion()
+    // Show Question
+    if(game_session != 0 & game_id<=9) {
+        showQuestion()
+    }
+    else {
+        modal_question.hide()
+    }
+
+    // Load Game
     let game_src = arr_game_src[game_id-1]
     $("iframe").attr("src", game_src)
+
+    // Log Player Status
+    console.log("game session: "+game_session)
+    console.log("game id: "+game_id)
 }
 
 
@@ -39,7 +47,7 @@ const option_1 = $("label#option-1")
 const option_2 = $("label#option-2")
 const option_3 = $("label#option-3")
 
-
+// 問題編號: game_session - game_id
 var arr_question = [ //問題集放這裡
     [["q1-1","option 1","option 2","option 3"],
     ["q1-2","option 1","option 2","option 3"],
@@ -69,37 +77,32 @@ var arr_question = [ //問題集放這裡
 ];
 
 function showQuestion() {
-    if(game_session != 0 & game_sim_id<=9) { //只有玩小遊戲時會跳出問題，因此game_id需要為1~9的範圍內
-        modal_question.show()
-        if (game_session == 7) {
-            question_radio.hide()
-            question_saq.show()
-            question.text(arr_question[game_session-1][0])
+    modal_question.show()
+    if (game_session == 7) {
+        question_radio.hide()
+        question_saq.show()
+        question.text(arr_question[game_session-1][0])
+    }
+    else {
+        question_radio.show()
+        question_saq.hide()
+
+        if(game_session <=2) {
+            question.text(arr_question[game_session-1][game_id-1][0]) //game_session=1時跳出問題，所以要-1
+            option_1.text(arr_question[game_session-1][game_id-1][1]) //game_id 從1開始，所以要-1
+            option_2.text(arr_question[game_session-1][game_id-1][2])
+            option_3.text(arr_question[game_session-1][game_id-1][3])
         }
         else {
-            question_radio.show()
-            question_saq.hide()
-
-            if(game_session <=2) {
-                question.text(arr_question[game_session-1][game_sim_id-1][0]) //game_session=1時跳出問題，所以要-1
-                option_1.text(arr_question[game_session-1][game_sim_id-1][1]) //game_id 從1開始，所以要-1
-                option_2.text(arr_question[game_session-1][game_sim_id-1][2])
-                option_3.text(arr_question[game_session-1][game_sim_id-1][3])
-            }
-            else {
-                question.text(arr_question[game_session-1][0])
-                option_2.text(arr_question[game_session-1][1])
-                option_2.text(arr_question[game_session-1][2])
-                option_3.text(arr_question[game_session-1][3])
-            }
+            question.text(arr_question[game_session-1][0])
+            option_2.text(arr_question[game_session-1][1])
+            option_2.text(arr_question[game_session-1][2])
+            option_3.text(arr_question[game_session-1][3])
         }
-    }
-    else { //game_session=0 不跳問題
-        modal_question.hide()
     }
 }
 
-// Submit answer
+// Submit answer to database
 $("#send_my_data").click(function(){
     submitAns()
 })
@@ -152,47 +155,9 @@ var ad_bottom = $("#ad-bottom")
 
 
 
-// function changeAd() {
-//     // console.log("selected radio: "+selected_radio)
-//     //image src = ad-[game session]-[game id]-[option value]
 
-//     if(game_session <=2) {
-//         var ad_imgName = "assets/ads/simulate-ad-change/"+game_session+"-"+game_sim_id+"-"+selected_radio
-//         console.log("遊戲題"+ad_imgName)
-//         switch(parseInt(game_session)) {
-//             case 1:
-//                 console.log("case 1")
-//                 ad_src_bottom = ad_imgName+".jpg"
-//                 ad_bottom.attr("src", ad_src_bottom)
-//                 break
-//             case 2:
-//                 console.log("case 2")
-//                 ad_src_left = ad_imgName+"-l.jpg"
-//                 ad_src_right = ad_imgName+"-r.jpg"
 
-//                 ad_left.attr("src", ad_src_left)
-//                 ad_right.attr("src", ad_src_right)
-//                 break
-//             default: //數位內容廣告
-//                 console.log("case default")
-//                 ad_left.attr("src", "assets/ads/simulate-ad-change/0-l.jpg")
-//                 ad_right.attr("src", "assets/ads/simulate-ad-change/0-r.jpg")
-//                 ad_bottom.attr("src", "assets/ads/simulate-ad-change/0.jpg")
-//         }
-//     }
-//     else {
-//         var ad_imgName = "assets/ads/simulate-ad-change/"+game_session+"-"+selected_radio
-//         console.log("個人題"+ad_imgName)
-
-//         ad_src_left = ad_imgName+"-l.jpg"
-//         ad_src_right = ad_imgName+"-r.jpg"
-//         ad_src_bottom = ad_imgName+".jpg"
-//         ad_left.attr("src", ad_src_left)
-//         ad_right.attr("src", ad_src_right)
-//         ad_bottom.attr("src", ad_src_bottom)
-//     }
-// }
-
+// Simulate change ads
 const btn_submit = $("#send_my_data")
 const sim_btn_change = $("#sim-change")
 
@@ -206,6 +171,11 @@ const sim_btn_change = $("#sim-change")
 
 
 // Backend Panel Simulator
+function displayGame(i) {
+    let game_src = arr_game_src[i]
+    $("iframe").attr("src", game_src)
+}
+
 var backend_panel_display = 0
 const backend_panel = $("#backend-panel")
 document.addEventListener('keydown', logKey);
