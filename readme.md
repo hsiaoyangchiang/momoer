@@ -14,7 +14,10 @@
 
 ### iframe.html
 + 模擬遊戲結束後呼叫replay/back to main的視窗
-
+---
+*[0301] by hsiaoyang*
++ 成功傳參數到前端
++ ajax提交不換頁
 ---
 *[2/13] by hsiaoyang*
 ### signup.html
