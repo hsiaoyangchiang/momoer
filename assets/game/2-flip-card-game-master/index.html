@@ -1,55 +1,86 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+<html>
 
-    <script src="https://kit.fontawesome.com/cc761987a4.js"></script>
-    <link rel="stylesheet" href="./css/style.css" />
-    <link rel="stylesheet" href="./css/flipcard.css" />
-    <link rel="stylesheet" href="./css/flip.css" />
-    <link rel="stylesheet" href="./css/utility.css" />
+<head>
+    <meta charset="UTF-8">
+    <link href="style.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
 
-    <title>chingu flipping Game</title>
-  </head>
-  <body>
-    <article class="container middle">
-      <header class="header ">
-        <h1 class="title">Matching Game</h1>
-      </header>
-      <nav class="nav">
-        <ul class="progress middle">
-          <li class="">
-            Stars<br />
-            <span class="progress__star"> </span>
-          </li>
-          <li>
-            Time<br />
-            <span class="progress__timer">0</span> mins
-          </li>
-          <li>
-            Moves<br />
-            <span class="moves">0</span> turns
-          </li>
-          <li class="progress__restart btn">
-            Restart
-          </li>
-        </ul>
-      </nav>
-      <div class="bg">
-        <main class="grid-4X4" id="grid"></main>
-      </div>
-    </article>
-    <div class="end">
-      <h5>Congratulation YOU'VE WON</h5>
-      <p>
-        <a href="https://github.com/Busry?tab=repositories">Visit my github</a>
-      </p>
-      <button class="end-btn">play again</button>
+<body>
+    <div id="container">
+        <div class="score-panel">
+            <h2>Memory Game</h2>
+            <h2 id="timer">50</h2>  
+        </div>
+        <section class="memory-game">
+            <div class="memory-card" data-framework="banana">
+                <img class="front-face" src="../2-flip-card-game-master/img/banana.png" alt="banana"/>
+                <img class="back-face" src="../2-flip-card-game-master/img/card_bg.png" alt="Memory Card"/>
+            </div>
+            <div class="memory-card" data-framework="apple">
+                <img class="front-face" src="../2-flip-card-game-master/img/apple.png" alt="apple" />
+                <img class="back-face" src="../2-flip-card-game-master/img/card_bg.png" alt="Memory Card" />
+            </div>
+            <div class="memory-card" data-framework="cherry">
+                <img class="front-face" src="../2-flip-card-game-master/img/cherry.png" alt="cherry" />
+                <img class="back-face" src="../2-flip-card-game-master/img/card_bg.png" alt="Memory Card" />
+            </div>
+            <div class="memory-card" data-framework="grape">
+                <img class="front-face" src="../2-flip-card-game-master/img/grape.png" alt="grape" />
+                <img class="back-face" src="../2-flip-card-game-master/img/card_bg.png" alt="Memory Card" />
+            </div>
+            <div class="memory-card" data-framework="orange">
+                <img class="front-face" src="../2-flip-card-game-master/img/orange.png" alt="orange" />
+                <img class="back-face" src="../2-flip-card-game-master/img/card_bg.png" alt="Memory Card" />
+            </div>
+            <div class="memory-card" data-framework="watermelon">
+                <img class="front-face" src="../2-flip-card-game-master/img/watermelon.png" alt="watermelon" />
+                <img class="back-face" src="../2-flip-card-game-master/img/card_bg.png" alt="Memory Card" />
+            </div>
+            <div class="memory-card" data-framework="lemon">
+                <img class="front-face" src="../2-flip-card-game-master/img/lemon.png" alt="lemon" />
+                <img class="back-face" src="../2-flip-card-game-master/img/card_bg.png" alt="Memory Card" />
+            </div>
+            <div class="memory-card" data-framework="kiwi">
+                <img class="front-face" src="../2-flip-card-game-master/img/kiwi.png" alt="kiwi" />
+                <img class="back-face" src="../2-flip-card-game-master/img/card_bg.png" alt="Memory Card" />
+            </div>
+            <div class="memory-card" data-framework="banana">
+                <img class="front-face" src="../2-flip-card-game-master/img/banana.png" alt="banana" />
+                <img class="back-face" src="../2-flip-card-game-master/img/card_bg.png" alt="Memory Card" />
+            </div>
+            <div class="memory-card" data-framework="apple">
+                <img class="front-face" src="../2-flip-card-game-master/img/apple.png" alt="apple" />
+                <img class="back-face" src="../2-flip-card-game-master/img/card_bg.png" alt="Memory Card" />
+            </div>
+            <div class="memory-card" data-framework="cherry">
+                <img class="front-face" src="../2-flip-card-game-master/img/cherry.png" alt="cherry" />
+                <img class="back-face" src="../2-flip-card-game-master/img/card_bg.png" alt="Memory Card" />
+            </div>
+            <div class="memory-card" data-framework="grape">
+                <img class="front-face" src="../2-flip-card-game-master/img/grape.png" alt="grape" />
+                <img class="back-face" src="../2-flip-card-game-master/img/card_bg.png" alt="Memory Card" />
+            </div>
+            <div class="memory-card" data-framework="orange">
+                <img class="front-face" src="../2-flip-card-game-master/img/orange.png" alt="orange" />
+                <img class="back-face" src="../2-flip-card-game-master/img/card_bg.png" alt="Memory Card" />
+            </div>
+            <div class="memory-card" data-framework="watermelon">
+                <img class="front-face" src="../2-flip-card-game-master/img/watermelon.png" alt="watermelon" />
+                <img class="back-face" src="../2-flip-card-game-master/img/card_bg.png" alt="Memory Card" />
+            </div>
+            <div class="memory-card" data-framework="lemon">
+                <img class="front-face" src="../2-flip-card-game-master/img/lemon.png" alt="lemon" />
+                <img class="back-face" src="../2-flip-card-game-master/img/card_bg.png" alt="Memory Card" />
+            </div>
+            <div class="memory-card" data-framework="kiwi">
+                <img class="front-face" src="../2-flip-card-game-master/img/kiwi.png" alt="kiwi" />
+                <img class="back-face" src="../2-flip-card-game-master/img/card_bg.png" alt="Memory Card" />
+            </div>
+        </section>
     </div>
+    <script src="script.js"></script>
+</body>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="./js/main.js"></script>
-  </body>
 </html>
