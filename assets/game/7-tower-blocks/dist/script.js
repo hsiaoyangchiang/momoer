@@ -217,7 +217,9 @@ class Game {
                 this.placeBlock();
                 break;
             case this.STATES.ENDED:
-                this.restartGame();
+                //Lili edit endgame
+                parent.callParent()
+                //this.restartGame();
                 break;
         }
     }

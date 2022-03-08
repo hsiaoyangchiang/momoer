@@ -448,8 +448,11 @@ canvas.addEventListener('mousedown', () => {
 
 // retry again by clicking the retry button
 retryBtn.addEventListener('mousedown', () => {
+	//Lili endgame
+	parent.callParent()
+	/*
 	failed = false
-	init()
+	init()*/
 })
 
 // Start playing now.
