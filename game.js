@@ -7,7 +7,7 @@ const overlay = $("#overlay")
 // Source of Game
 var arr_game_src = [ //小遊戲連結
     "assets/game/1-Coil-master/index.html",
-    "assets/game/2-flip-card-master/index.html",
+    "assets/game/2-flip-card-game-master/index.html",
     "assets/game/3-focus/dist/index.html",
     "assets/game/4-HTML5-Asteroids-master/index.html",
     "assets/game/5-MazeGame/dist/index.html",
