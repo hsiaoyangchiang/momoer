@@ -42,11 +42,11 @@ if(isset($afterAmount)){
     $stmt = $dbh->prepare($sql);
     $stmt->execute(array());
     $row = $stmt->fetch(PDO::FETCH_ASSOC);
+    $_SESSION['askQuestion'] = 0;
     // print_r($row);
     // echo "加入成功";
 }
 
-$_SESSION['askQuestion'] = 0;
 // echo $_SESSION['askQuestion'];
 
 
