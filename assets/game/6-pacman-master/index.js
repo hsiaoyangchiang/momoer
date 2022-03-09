@@ -761,6 +761,7 @@
 				context.textAlign = 'center';
 				context.textBaseline = 'middle';
 				context.fillText(_LIFE?'YOU WIN!':'GAME OVER',this.x,this.y);
+				setTimeout('parent.callParent()', 1000)
 			}
 		});
 		//记分

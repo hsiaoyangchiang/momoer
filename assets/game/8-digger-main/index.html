@@ -70,7 +70,9 @@
                     this.loadLevel();
                 }
                 else {
-                    this.reset();
+                    //Lili edit endgame
+                    parent.callParent()
+                    //this.reset();
                 }
             }
         };
@@ -80,7 +82,7 @@
             }
         };
         Application.prototype.reset = function () {
-            this._lives = 20;
+            this._lives = 3; //Lili edit endgame
             this._score = 0;
             this._room = 0;
             this.loadLevel();
