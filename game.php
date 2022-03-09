@@ -2,6 +2,14 @@
 session_start();
 require_once"pdoInc.php";
 error_reporting(E_ALL & ~E_NOTICE);
+if($_SESSION['askQuestion'] == 0) {
+    echo "<script>alert('hello')</script>";
+    $_SESSION['askQuestion'] = 1;
+}else if($_SESSION['askQuestion'] == 1){
+    echo "要顯示問題";
+}
+
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -134,7 +142,6 @@ error_reporting(E_ALL & ~E_NOTICE);
             <img id="ad-bottom" class="img-ad" src="assets/ads/simulate-ad-change/ad-bottom.png">
         </div>
         <div id="overlay"></div>
-        
         <script src="game.js"></script>
     </body>
 </html>

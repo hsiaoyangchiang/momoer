@@ -1,6 +1,6 @@
 <?php 
 require_once"pdoInc.php";
-error_reporting(E_ALL & ~E_NOTICE);
+// error_reporting(E_ALL & ~E_NOTICE);
 
 
 
@@ -26,20 +26,20 @@ if (empty(trim($pwd))){
     exit;
 } 
 //密碼長度
-if(strlen($pwd) && strlen($confirm_pwd)<3){
+if(strlen($pwd)<3){
     echo "<script> {window.alert('密碼太短');location.href='signup.html'} </script>";
     exit;
 }
 //確認密碼與密碼相同
-if (empty(trim($confirm_pwd))) {
-    echo "<script> {window.alert('請確認密碼');location.href='signup.html'} </script>";
-    // exit;
-} else if ($confirm_pwd != $pwd) {
-    echo "<script> {window.alert('請確認密碼');location.href='signup.html'} </script>";
-}else{
-    $checkPassword = $pwd;
-    // echo $checkPassword;
-}
+// if (empty(trim($confirm_pwd))) {
+//     echo "<script> {window.alert('請確認密碼');location.href='signup.html'} </script>";
+//     // exit;
+// } else if ($confirm_pwd != $pwd) {
+//     echo "<script> {window.alert('請確認密碼');location.href='signup.html'} </script>";
+// }else{
+//     $checkPassword = $pwd;
+//     // echo $checkPassword;
+// }
 //確認帳號不為空＆確認帳號是否重複
 if(empty(trim($username))){
     echo "<script> {window.alert('帳號或暱稱不得留空');} </script>";
@@ -66,34 +66,15 @@ if(empty(trim($username))){
 }
 
 //確認暱稱不為空＆確認暱稱重複
-if(empty(trim($nickname))){
-    echo "<script> {window.alert('帳號不得留空');location.href='signup.html'} </script>";
-}else{
-    $sql = "SELECT id FROM Game WHERE nickname = :nickname";
-    if ($stmt = $dbh->prepare($sql)) {
-        $stmt->bindParam(":nickname", $nickname, PDO::PARAM_STR);
-        if ($stmt->execute()){
-            if ($stmt->rowCount() == 1) {
-                echo "<script> {window.alert('暱稱被用過');location.href='signup.html'} </script>";
-            } 
-            else {
-                $checkNickname = $nickname;
-            }
-        } else {
-            echo "<script> {window.alert('Opps, 現在有問題請稍等');location.href='signup.html'} </script>";
-        }
-        // Close statement
-        unset($stmt);
-    }
-}
-
 
 //加入資料表game
-$sql = "INSERT INTO Game(username, pwd, nickname) VALUES (:username, :pwd, :nickname)";
+$sql = "INSERT INTO Game(username, pwd) VALUES (:username, :pwd)";
+echo $checkUsername;
+echo $pwd;
 $stmt = $dbh->prepare($sql);
 $stmt -> bindParam(":username", $checkUsername);
-$stmt -> bindParam(":pwd", $checkPassword);
-$stmt -> bindParam(":nickname", $checkNickname);
+$stmt -> bindParam(":pwd", $pwd);
+
 if ($stmt->execute()) {
     echo "<script> {window.alert('成功加入');} </script>";
     session_start();
@@ -102,11 +83,11 @@ if ($stmt->execute()) {
     // $_SESSION["id"] = $id;
     // $_SESSION["nickname"] = $checkNickname;
     $_SESSION['username'] = $checkUsername;
-    $_SESSION['askQuestion'] = 0;
+    $_SESSION['askQuestion'] = false;
     sleep(3);
     echo '<meta http-equiv=REFRESH CONTENT=0;url=main.php>';
 } else {
-    echo "<script> {window.alert('Opps, 現在有問題請稍等');location.href='signup.html'} </script>";
+    // echo "<script> {window.alert('Opps, 現在有問題請稍等');location.href='signup.html'} </script>";
 }
 unset($stmt);
 
