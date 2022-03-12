@@ -1,44 +1,26 @@
-var modal_signup = $(".modal-signup")
-var btn_signup = $("#btn-signup")
-var overlay = $("#overlay")
-
-/* ad */
-var ad_left = $("#ad-left")
-var ad_right = $("#ad-right")
-var ad_bottom = $("#ad-bottom")
-
-var ad_left_src = ad_left.attr("src")
-var ad_right_src = ad_right.attr("src")
-var ad_bottom_src = ad_bottom.attr("src")
-
-var loggedin = parseInt($("#loggedin").text())
-var username = $("#session_username").text().replace("你好，",'')
+// var loggedin = parseInt($("#loggedin").text())
+// var username = $("#session_username").text().replace("你好，",'')
+var loggedin = 0
 var game_session = 0
 var game_id = 0
 var choice_id = ""
 
-// Player Status
-function showLoginStatus() {
-    if(loggedin != 0) {
+// Fetch Backend data
+function getSession() {
+    $.get("php/session.php", function(data, status){
+        // alert(JSON.stringify(data) + "\nStatus: " + status)
+        loggedin = data.loggedin
+        var username = data.username
+        var askQuestion = data.askQuestion
         console.log("loggedin: "+loggedin)
-        // console.log("username: "+username)
-        game_session = parseInt($("#game-session").text())
-    }
-    else {
-        console.log("loggedin: "+loggedin)
-    }
+        console.log("username: "+username)
+        console.log("askQuestion: "+askQuestion)
+    }, "json")
 }
 
-function showAdStatus() {
-    console.log("ad-left: "+ad_left_src)
-    console.log("ad-right: "+ad_right_src)
-    console.log("ad-bottom: "+ad_bottom_src)
-    console.log("game session: "+game_session+", game_id: "+game_id+", choice_id: "+choice_id)
-}
-
+// Run basics
 window.onload = function() {
-    showLoginStatus()
-    showAdStatus()
+    getSession()
 }
 
 // Hover game title
@@ -55,6 +37,9 @@ game.mouseleave(() => {
 
 
 // Switch to specific game page
+const modal_signup = $(".modal-signup")
+const overlay = $("#overlay")
+
 for(let i=0; i<12; i++) {
     let game_clicked = document.getElementsByClassName("game")[i]
     
@@ -62,7 +47,7 @@ for(let i=0; i<12; i++) {
         game_id = $(this).attr("id").split("-")[1]
         if (loggedin == 0) {
             // Signup
-            console.log("first time play game")
+            console.log("first time to play game")
             overlay.show()
             modal_signup.show()
             lockScroll()
@@ -85,12 +70,6 @@ $("#toc-back").click(function(){
     $(".form-signup").show()
     $(".div-toc").hide()
 })
-
-function playGame() {
-    console.log("play")
-    window.location.assign("game.html")
-}
-
 
 // Lock y-scroll when modal appears
 function lockScroll() {

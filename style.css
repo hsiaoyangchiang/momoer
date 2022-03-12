@@ -142,7 +142,7 @@ pre.textarea-toc {
 
 /* question modal */
 .modal-question {
-    display: block;
+    display: none;
     position: fixed;
     width: 720px;
     height: auto;
@@ -244,6 +244,7 @@ pre.textarea-toc {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    margin-top: 40px;
     margin-bottom: 150px;
 }
 

@@ -2,11 +2,14 @@
 session_start();
 require_once"pdoInc.php";
 error_reporting(E_ALL & ~E_NOTICE);
+
 if($_SESSION['askQuestion'] == 0) {
-    echo "<script>alert('hello')</script>";
+    // echo "<script>alert('ask Question = 0')</script>";
+    echo "<script>var askQuestion = 0</script>";
     $_SESSION['askQuestion'] = 1;
-}else if($_SESSION['askQuestion'] == 1){
-    echo "要顯示問題";
+}else {
+    // echo "要顯示問題";
+    echo "<script>var askQuestion = 1</script>";
 }
 
 
@@ -37,21 +40,6 @@ if($_SESSION['askQuestion'] == 0) {
 
         <div class="header-game">
             <a href="main.php"><img src="assets/img-logo.png" class="img-logo-small cursor-pointer"></a>
-            <div id="game-session" class="php leaderboard-green">
-                <?php
-                if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
-                    // echo "你好，".$_SESSION['username'];
-                    $sql = "SELECT * from Game WHERE username = '".$_SESSION['username']."'";
-                    $sth = $dbh->query($sql);
-                    while($row = $sth->fetch(PDO::FETCH_ASSOC)){
-                        echo $row['amount'];
-                    }
-                }else{
-                echo "未登入";
-                }
-                ?>
-            </div>
-            <!-- <button id="btn-signup">signup</button> -->
         </div>
 
         <!-- <div id="backend-panel"> 模擬後端操作面板
@@ -130,7 +118,7 @@ if($_SESSION['askQuestion'] == 0) {
             </div>
             
             <div class="game-frame">
-                <iframe src="iframe.html">
+                <iframe src="">
                 </iframe>
             </div>
             <div class="ad-vertical cursor-pointer">
@@ -142,6 +130,9 @@ if($_SESSION['askQuestion'] == 0) {
             <img id="ad-bottom" class="img-ad" src="assets/ads/simulate-ad-change/ad-bottom.png">
         </div>
         <div id="overlay"></div>
+
+        <!-- <script src="ad.js"></script> -->
         <script src="game.js"></script>
+
     </body>
 </html>

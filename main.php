@@ -29,39 +29,6 @@
 
         <div class="header">
             <a href="main.php"><img src="assets/img-logo.png" class="img-logo cursor-pointer"></a>
-            <div id="loggedin" class="php leaderboard-green">
-                <?php
-                if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
-                    echo 1;
-                    echo $_SESSION["askQuestion"];
-                }else{
-                    echo 0;
-                    }
-                ?>
-            </div>
-            <div id="session_username" class="leaderboard-green">
-                <?php
-                if(isset($_SESSION["username"])){
-                    $username = $_SESSION["username"];
-                }
-                if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
-                    echo "你好，".$_SESSION['username'];
-                }
-                ?>
-            </div>
-            <div id="game-session" class="php leaderboard-green">
-                <?php
-                if(isset($_SESSION["username"])){
-                    $username = $_SESSION["username"];
-                    $sql = "SELECT * from Game WHERE username = '$($username)'";
-                    $sth = $dbh->query($sql);
-                    while($row = $sth->fetch(PDO::FETCH_ASSOC)){
-                    echo $row['amount'];
-                }
-                }
-                
-                ?>
-            </div>
         </div>
         
         <div class="modal-signup">
@@ -408,6 +375,8 @@
         <div id="overlay"></div>
     </body>
 
+    <!-- <script src="ad.js"></script> -->
     <script src="script.js"></script>
+    
 
 </html>

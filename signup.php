@@ -69,8 +69,8 @@ if(empty(trim($username))){
 
 //加入資料表game
 $sql = "INSERT INTO Game(username, pwd) VALUES (:username, :pwd)";
-echo $checkUsername;
-echo $pwd;
+// echo $checkUsername;
+// echo $pwd;
 $stmt = $dbh->prepare($sql);
 $stmt -> bindParam(":username", $checkUsername);
 $stmt -> bindParam(":pwd", $pwd);
@@ -83,7 +83,7 @@ if ($stmt->execute()) {
     // $_SESSION["id"] = $id;
     // $_SESSION["nickname"] = $checkNickname;
     $_SESSION['username'] = $checkUsername;
-    $_SESSION['askQuestion'] = false;
+    $_SESSION['askQuestion'] = 0;
     sleep(3);
     echo '<meta http-equiv=REFRESH CONTENT=0;url=main.php>';
 } else {
