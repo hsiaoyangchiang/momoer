@@ -1005,10 +1005,17 @@ Game = {
       }
       // wait 5 seconds then go back to waiting state
       /*
+      Lili edit endgame
       if (Date.now() - this.timer > 5000) {
         this.timer = null;
         this.state = 'waiting';
       }*/
+      
+      // wait 5 seconds then go back to replay
+      if (Date.now() - this.timer > 2000) {
+        this.timer = null;
+        setTimeout('parent.callParent()', 1000);
+      }
 
       window.gameStart = false;
     },

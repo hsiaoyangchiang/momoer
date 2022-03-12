@@ -37543,6 +37543,7 @@ var Game = function () {
     value: function loss() {
       _Sound2.default.play('loserSound');
       this.gameStatus = 'You Lose!';
+      setTimeout('parent.callParent()', 1000);
       this.showReplay(this.getScoreMessage());
     }
   }, {

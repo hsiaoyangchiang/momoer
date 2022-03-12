@@ -81,7 +81,7 @@ if ($stmt->execute()) {
     // $_SESSION["id"] = $id;
     // $_SESSION["nickname"] = $checkNickname;
     $_SESSION['username'] = $checkUsername;
-    $_SESSION['askQuestion'] = false;
+    $_SESSION['askQuestion'] = 0;
     sleep(3);
     echo '<meta http-equiv=REFRESH CONTENT=0;url=main.php>';
 } else {

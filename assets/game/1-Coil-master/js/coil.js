@@ -388,7 +388,9 @@ var Coil = (function(){
 		scorePanel.querySelector( 'p' ).innerHTML = Math.floor( score );
 		
 		playing = false;
-		menu.fadeIn( MENU_FADE_IN_DURATION );
+		// menu.fadeIn( MENU_FADE_IN_DURATION );
+		// Lili edit endgame
+		setTimeout('parent.callParent()', 1000);
 	}
 	
 	function reset() {

@@ -4,7 +4,7 @@ session_start();
 $username = $_SESSION['username'];
 
 //未註冊不得玩遊戲
-if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
+if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] == true) {
         // echo "你好，".$_SESSION['nickname'];
         // echo $_SESSION['username'];
 }else{
@@ -13,7 +13,7 @@ if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
 
 //未答題前的amount：$beforeAmount
 if(!isset($beforeAmount)){
-    $sql = "SELECT id, amount FROM game WHERE username = '{$username}'";
+    $sql = "SELECT id, amount FROM Game WHERE username = '{$username}'";
     $stmt = $dbh->prepare($sql);
     $stmt ->execute(array());
     $row = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -38,7 +38,7 @@ if(isset($ans)){
     }
 }
 if(isset($afterAmount)){
-    $sql = "UPDATE game SET Q{$afterAmount} = '{$ans}', amount = '{$afterAmount}' WHERE username = '{$username}' ";
+    $sql = "UPDATE Game SET Q{$afterAmount} = '{$ans}', amount = '{$afterAmount}' WHERE username = '{$username}' ";
     $stmt = $dbh->prepare($sql);
     $stmt->execute(array());
     $row = $stmt->fetch(PDO::FETCH_ASSOC);

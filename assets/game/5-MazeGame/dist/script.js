@@ -666,12 +666,9 @@ function main(timestamp) {
     ) {
       noteElement.innerHTML = `鼠巴拉係⊂◉‿◉つ
         ${!hardMode ? "<p>Hard mode: Press H</p>" : ""}
-        <p>
-          Follow me
-          <a href="https://twitter.com/HunorBorbely" , target="_blank"
-            >@HunorBorbely</a
-          >
-        </p>`;
+        `;
+        //Lili edit endgame
+        setTimeout('parent.callParent()', 1000);
       noteElement.style.opacity = 1;
       gameInProgress = false;
     } else {

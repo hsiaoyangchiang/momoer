@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <section id="menu">
+            <div class="center-align">
+                <div class="circle">
+                    <p style="font-size: 30px; line-height: 100%;">歡迎光臨</p>
+                    <br><br>
+                    <p style="font-size: 64px; line-height: 100%;" class="cursive bold">Labu Labu</p>
+                    <br>
+                    <p style="font-size: 50px; line-height: 100%;">小酒館</p>
+                </div>
+                <button class="rect start">ENTER</button>
+            </div>
+        </section>
+        
+        <section id="instuctions">
+            <div class="center-align">
+                <img src="assets/light.png" class="light" width="892px">
+                <div class="rectangle-orange">
+                    <p style="font-size: 40px; line-height: 48px;" class="cursive green center-align">Labu Labu<br>Menu</p>
+                    <br>
+                    <p style="font-size: 16px; line-height: 24px;" class="cyan center-align">
+                        在LABU LABU小酒館裡，<br>
+                        沒有酒單。<br><br>
+                        跟我們去情境裡走一遭，酒保就會調好一杯屬於你的愛情酒。<br><br>
+                        我們在愛情裡是什麼酒？<br>
+                        又適合什麼酒？<br>
+                        Let’s find out!
+                        </p>
+                </div>
+                <button class="circle cyan beginTest">GO</button>
+            </div>
+        </section>
+
+        <section id="question-1" class="question">
+            <h3>情境 1</h3>
+            <h2>你和人約了過幾天見面、逛街、吃飯。請問你會：</h2>
+            <button class="rect answer" value="1">一定和對方一起計畫好去哪裡、逛什麼、吃哪家、先訂位。</button>
+            <button class="rect answer" value="2">船到橋頭自然直，決定大概區域就好，其他當天再說。</button>
+            <button class="rect answer" value="3">丟給對方計畫</button>
+            <button class="rect answer" value="4">看對方是誰決定要不要計畫</button>
+
+            <button class="circle orange next">NEXT</button>
+        </section>
+
+        <section id="question-2" class="question">
+            <h3>情境 2</h3>
+            <h2>到了當天，你打算搭綠1到達目的地。要準備出門時卻發現時間抓錯快遲到了，請問你會：</h2>
+            <button class="rect answer" value="1">不管打扮，火速出門，叫計程車，務必提早到達。</button>
+            <button class="rect answer" value="2">隨便打扮，快速出門，按照原計劃搭公車，盡量準時到。</button>
+            <button class="rect answer" value="3">稍微打扮，叫Uber，盡量準時到。</button>
+            <button class="rect answer" value="4">不打扮到滿意絕不出門，「遲到一下沒關係啦！」</button>
+
+            <button class="circle orange next">NEXT</button>
+        </section>
+
+        <section id="question-3" class="question">
+            <h3>情境 3</h3>
+            <h2>到達目的地後你們決定先去逛街，逛之前你給自己設一個預算，卻發現一間非常好逛的店。請問你會：</h2>
+            <button class="rect answer" value="1">錢再賺就有，東西錯過不再，人生及時行樂，先買再說。</button>
+            <button class="rect answer" value="2">猶豫半天，東看看西看看，問朋友意見，拿出手機上網比價、查評價。</button>
+            <button class="rect answer" value="3">先去看別家晚點再回來。</button>
+            <button class="rect answer" value="4">堅決不超過預算，立即轉頭走人，遠離誘惑。</button>
+
+            <button class="circle orange next">NEXT</button>
+        </section>
+
+        <section id="question-4" class="question">
+            <h3>情境 4</h3>
+            <h2>到了另一家店，碰到了一個熱情的店員，一直誇獎你、説你多適合他們家的產品。請問你會：</h2>
+            <button class="rect answer" value="1">越看東西越覺得「哎呀真的好適合」，就多買了一些。</button>
+            <button class="rect answer" value="2">知道對方只是想賣你東西，雖然心裡可能稍微暗爽，還是不會被影響，理智購物。</button>
+            <button class="rect answer" value="3">他越講你越不開心，本來有點喜歡的東西會變得不想買，但是還是會表現的客氣、敷衍道謝。</button>
+            <button class="rect answer" value="4">臭臉，轉身轉走人。</button>
+
+            <button class="circle orange next">NEXT</button>
+        </section>
+
+        <section id="question-5" class="question">
+            <h3>情境 5</h3>
+            <h2>逛完街、吃完飯後，你們決定去附近公園走走，半路你卻突然很想上廁所，大號，大大號。你會：</h2>
+            <button class="rect answer" value="1">趕快在附近找公廁上廁所</button>
+            <button class="rect answer" value="2">一定要忍到回家</button>
+
+            <button class="circle orange end">RESULT</button>
+        </section>
+        
+        <section id="result" class="result">
+            <div class="sign-holding"></div>
+            <div class="sign">
+                <h1 id="name"></h1>
+            </div>
+            <div class="result-div">
+                <img class="cocktail" width="300px" height="300px">
+                <div class="result-text">
+                    <p id="language" class="green" style="font-size: 22px; line-height: 30px; margin-bottom: 12px;"></p>
+                    <p id="short" class="cyan" style="font-size: 18px; line-height: 26px; margin-bottom: 12px;"></p>
+                    <p id="description" class="cyan" style="font-size: 18px; line-height: 26px;"></p>
+                </div>
+            </div>
+            <div class="table-position">
+                <div class="table" style="height: 84px;"></div>
+                <div class="table" style="height: 16px;"></div>
+            </div>
+            
+            <button class="circle orange leave">END</button>
+        </section>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="script.js"></script>
+    </body>
+</html>

@@ -383,6 +383,7 @@ function Game(id,params){
         stage.index = _stages.length;
         _stages.push(stage);
         return stage;
+        alert("start")
     };
     //指定布景
     this.setStage = function(index){

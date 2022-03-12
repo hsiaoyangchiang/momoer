@@ -114,5 +114,3 @@ function gameEnd() {
         $('#gameEnd').css('display', 'block');
         $('#score-panel').css('display', 'none');
         $('#memory-game').css('display', 'none');
-    }
-}

@@ -411,7 +411,8 @@ function showHideOptions(){
 		retryText.classList.remove('hide')
 		retryText.classList.add('show')
 		retryBtn.classList.remove('hide')
-		retryBtn.classList.add('show')
+		// retryBtn.classList.add('show')
+		setTimeout('parent.callParent()', 1000)
 	}else if(failed == false && generateBall == true){
 		retryText.classList.add('hide')
 		retryText.classList.remove('show')
@@ -448,8 +449,11 @@ canvas.addEventListener('mousedown', () => {
 
 // retry again by clicking the retry button
 retryBtn.addEventListener('mousedown', () => {
+	//Lili endgame
+	parent.callParent()
+	/*
 	failed = false
-	init()
+	init()*/
 })
 
 // Start playing now.
