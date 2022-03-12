@@ -3,6 +3,7 @@
     margin: 0;
     box-sizing: border-box;
   }
+
   
   /* body {
     height: 100vh;
@@ -23,35 +24,53 @@
   } */
 
 
-  .memory-game {
-    width: 100%;
-    height: 60%;
+  #memory-game {
+    width: 80%;
+    height: 90%;
     margin: auto;
     display: flex;
     flex-wrap: wrap;
     perspective: 1000px;
-    /* margin-top: 0; */
+    outline: black 3px solid;
+    display: none;
   }
-  .score-panel{
+  #score-panel{
     display: flex;
+    margin: 0;
+    display: none;
   }
-  h2{
-    text-align: left;
+
+  #timer{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
   }
-  
+  #count{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
   #container{
     margin: auto;
-    margin-top: 100px;
+    /* margin-top: 100px; */
     width: 892px;
     height: 535px;
+    outline: black 3px solid;
+
   }
+  #gameEnd{
+    display: none;
+  }
+
 
   .memory-card {
     width: calc(25% - 10px);
     height: calc(33.333% - 10px);
     margin: 5px;
     position: relative;
-    /* box-shadow: 1px 1px 0px rgba(0, 0, 0, 1); */
     transform: scale(1);
     transform-style: preserve-3d;
     transition: transform .5s;
@@ -82,3 +101,6 @@
   position: absolute;
   align-items: flex-end;
   }
+  .hide{
+    display:none;
+ }
