@@ -218,7 +218,7 @@ class Game {
                 break;
             case this.STATES.ENDED:
                 //Lili edit endgame
-                parent.callParent()
+                setTimeout('parent.callParent()', 1000);
                 //this.restartGame();
                 break;
         }

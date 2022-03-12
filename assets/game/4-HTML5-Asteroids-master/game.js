@@ -1014,7 +1014,7 @@ Game = {
       // wait 5 seconds then go back to replay
       if (Date.now() - this.timer > 2000) {
         this.timer = null;
-        parent.callParent()
+        setTimeout('parent.callParent()', 1000);
       }
 
       window.gameStart = false;

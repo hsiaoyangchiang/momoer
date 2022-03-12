@@ -103,7 +103,9 @@ var downloadTimer = setInterval(function(){
 function winOrNot(){
     if(score===8){
         window.alert('you win');
+        setTimeout('parent.callParent()', 1000);
     }else{
         window.alert('you lose');
+        setTimeout('parent.callParent()', 1000);
     }
 }
