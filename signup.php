@@ -69,8 +69,6 @@ if(empty(trim($username))){
 
 //加入資料表game
 $sql = "INSERT INTO Game(username, pwd) VALUES (:username, :pwd)";
-// echo $checkUsername;
-// echo $pwd;
 $stmt = $dbh->prepare($sql);
 $stmt -> bindParam(":username", $checkUsername);
 $stmt -> bindParam(":pwd", $pwd);

@@ -22,7 +22,6 @@
                 <span class="leaderboard-green">全台數位內容首府 來電詢問2939-3091</span>
             </marquee>
             <div id="btn-signup">
-            <button><a href="signup.html">signup</button>
             <button><a href="login.html">login</button>
             </div>
         </div>

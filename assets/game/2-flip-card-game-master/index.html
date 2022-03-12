@@ -5,15 +5,20 @@
     <meta charset="UTF-8">
     <link href="style.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 
 <body>
     <div id="container">
-        <div class="score-panel">
-            <h2>Memory Game</h2>
-            <h2 id="timer">50</h2>  
+        <div id="startScreen">
+            <h1>翻牌遊戲</h1>
+            <button onclick="gameStart()">start game</button>
         </div>
-        <section class="memory-game">
+        <div id="score-panel">
+            <h2 id="count">0</h2> 
+            <h2 id="timer">40</h2>  
+        </div>
+        <section id="memory-game">
             <div class="memory-card" data-framework="banana">
                 <img class="front-face" src="../2-flip-card-game-master/img/banana.png" alt="banana"/>
                 <img class="back-face" src="../2-flip-card-game-master/img/card_bg.png" alt="Memory Card"/>
@@ -36,14 +41,6 @@
             </div>
             <div class="memory-card" data-framework="watermelon">
                 <img class="front-face" src="../2-flip-card-game-master/img/watermelon.png" alt="watermelon" />
-                <img class="back-face" src="../2-flip-card-game-master/img/card_bg.png" alt="Memory Card" />
-            </div>
-            <div class="memory-card" data-framework="lemon">
-                <img class="front-face" src="../2-flip-card-game-master/img/lemon.png" alt="lemon" />
-                <img class="back-face" src="../2-flip-card-game-master/img/card_bg.png" alt="Memory Card" />
-            </div>
-            <div class="memory-card" data-framework="kiwi">
-                <img class="front-face" src="../2-flip-card-game-master/img/kiwi.png" alt="kiwi" />
                 <img class="back-face" src="../2-flip-card-game-master/img/card_bg.png" alt="Memory Card" />
             </div>
             <div class="memory-card" data-framework="banana">
@@ -69,17 +66,14 @@
             <div class="memory-card" data-framework="watermelon">
                 <img class="front-face" src="../2-flip-card-game-master/img/watermelon.png" alt="watermelon" />
                 <img class="back-face" src="../2-flip-card-game-master/img/card_bg.png" alt="Memory Card" />
-            </div>
-            <div class="memory-card" data-framework="lemon">
-                <img class="front-face" src="../2-flip-card-game-master/img/lemon.png" alt="lemon" />
-                <img class="back-face" src="../2-flip-card-game-master/img/card_bg.png" alt="Memory Card" />
-            </div>
-            <div class="memory-card" data-framework="kiwi">
-                <img class="front-face" src="../2-flip-card-game-master/img/kiwi.png" alt="kiwi" />
-                <img class="back-face" src="../2-flip-card-game-master/img/card_bg.png" alt="Memory Card" />
-            </div>
+            </div>        
         </section>
+        <div id="gameEnd">
+            <h1 id="result"></h1>
+            <button>結束遊戲</button>
+        </div>
     </div>
+    
     <script src="script.js"></script>
 </body>
 
