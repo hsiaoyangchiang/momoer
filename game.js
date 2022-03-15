@@ -195,6 +195,7 @@ function replay(){
     console.log("replay")
     modal_endgame.hide()
     hideOverlay()
+    // localStorage.setItem("ad_change",1)
     setAdChange()
     window.location.reload()
     console.log("page reloaded")
@@ -210,6 +211,7 @@ function backtoMain(){
     console.log("back to main")
     modal_endgame.hide()
     hideOverlay()
+    // localStorage.setItem("ad_change",0)
     setAdChange()
     window.location = "main.php"
     $.ajax({
@@ -221,6 +223,7 @@ function backtoMain(){
 }
 
 $("img.img-logo-small").click(function() {
+    // localStorage.setItem("ad_change",0)
     setAdChange()
 })
 
