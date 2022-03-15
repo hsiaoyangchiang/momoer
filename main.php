@@ -375,7 +375,7 @@
         <div id="overlay"></div>
     </body>
 
-    <!-- <script src="ad.js"></script> -->
+    <script src="ad.js"></script>
     <script src="script.js"></script>
     
 

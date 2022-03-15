@@ -28,6 +28,7 @@ var game_session = 1
 window.onload = function() {
     // variable askQuestion is declared at game.php
     console.log("askQuestion: "+askQuestion)
+    alert("askQuestion: "+askQuestion)
 
     // Determine show Question or not
     if(askQuestion != 0 & game_id<=9) {
@@ -37,7 +38,7 @@ window.onload = function() {
             game_session = parseInt(data)+1
             alert("gs from php: "+game_session)
             console.log("game_session: "+game_session)
-            localStorage.setItem("game_session", game_session)
+            localStorage.setItem("game_session", game_session) //這邊會設置game session
             showQuestion(game_session)
         }, "text")
     }
@@ -162,11 +163,30 @@ $("#send_my_data").click(function(){
 })
 
 
+// Count ad_change
+// 換廣告：調整local storage ad_change變數的地方
+function setAdChange() {
+    alert("function set ad change")
+    if (typeof(localStorage.getItem("ad_change")) != "undefined" && localStorage.getItem("ad_change") !== null) {
+        ad_change = parseInt(localStorage.getItem("ad_change"))
+        alert("local storage取出的"+ad_change)
+        ad_change = ad_change + 1
+        localStorage.setItem("ad_change",ad_change)
+        console.log("adchange game.js"+ad_change)
+    }
+    else {
+        alert("no set ad change")
+        // 註冊後local storage都還不曾新增過ad_change，將在第二次玩完遊戲後離開時新增該變數(第一次玩遊戲不跳問題，因此也不會需要換廣告)
+        localStorage.setItem("ad_change",0)
+    }
+}
+
+
 // After playing the Game
 const modal_endgame = $(".modal-endgame")
 
 function callParent(){
-    console.log("game has ended")
+    // console.log("game has ended")
     modal_endgame.show()
     showOverlay()
 }
@@ -175,17 +195,34 @@ function replay(){
     console.log("replay")
     modal_endgame.hide()
     hideOverlay()
+    setAdChange()
     window.location.reload()
     console.log("page reloaded")
+    $.ajax({
+        url: 'php/setQ.php',
+        success: function(data) {
+            $('.result').html(data);
+        }
+    });
 }
 
 function backtoMain(){
     console.log("back to main")
     modal_endgame.hide()
     hideOverlay()
+    setAdChange()
     window.location = "main.php"
+    $.ajax({
+        url: 'php/setQ.php',
+        success: function(data) {
+            $('.result').html(data);
+        }
+    });
 }
 
+$("img.img-logo-small").click(function() {
+    setAdChange()
+})
 
 // Show overlay and lock y-scroll when modal appears
 const overlay = $("#overlay")
