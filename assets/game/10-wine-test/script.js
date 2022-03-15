@@ -1,6 +1,6 @@
 function changeSection() {
     var currentSection = $("body").find("section").css("display", "block").attr("id")
-    console.log(currentSection)
+    // console.log(currentSection)
 
     switch(currentSection) {
         case "menu":
@@ -34,29 +34,35 @@ $("button.answer").click(function() {
     }
     selected_value = $(this).attr("value")
     $(this).addClass("active")
+    $("button.orange.deactivate").removeClass("deactivate")
     console.log("Selected: "+selected_value)
 })
 
 $("button.next").click(function() {
-    arr_selected.push(parseInt(selected_value))
-    console.log(arr_selected)
-    switch(arr_selected.length) {
-        case 1:
-            $("#question-1").hide()
-            $("#question-2").show()
-            break
-        case 2:
-            $("#question-2").hide()
-            $("#question-3").show()
-            break
-        case 3:
-            $("#question-3").hide()
-            $("#question-4").show()
-            break
-        case 4:
-            $("#question-4").hide()
-            $("#question-5").show()
-            break
+    if (selected_value != 0) {
+        arr_selected.push(parseInt(selected_value))
+        selected_value = 0
+        // console.log("selected"+arr_selected)
+        // console.log("sv"+selected_value)
+        $("button.orange.deactivate").addClass("deactivate")
+        switch(arr_selected.length) {
+            case 1:
+                $("#question-1").hide()
+                $("#question-2").show()
+                break
+            case 2:
+                $("#question-2").hide()
+                $("#question-3").show()
+                break
+            case 3:
+                $("#question-3").hide()
+                $("#question-4").show()
+                break
+            case 4:
+                $("#question-4").hide()
+                $("#question-5").show()
+                break
+        }
     }
 })
 
@@ -66,42 +72,42 @@ var cocktail = [
         language:"願者上勾，後果自負。",
         short:"粉粉嫩嫩的顏色，看起來夢幻、適合新手，其實酒精濃度不低，算是Sour系的調酒。",
         description:"你表面溫和有禮，實際內心嗆辣戲很多。懂的創造自身的優勢，又不會給人愛現的感覺，外人通常覺得你是個相處起來舒服的人。在感情中，和對方相處到一定程度，才會慢慢的開始展現真正的自己，容易是驚喜包（或是驚嚇包）。很會在關係中創造新鮮感。",
-        imgURL:""
+        imgURL:"assets/1.png"
     },
     {
         name:"琴通寧 Gin Tonic",
         language:"看似平平無奇，沒我你卻不行。",
         short:"相當經典的 1+1 調酒，材料簡單，但是一杯可以很居家、也可以很專業的調酒。",
         description:"計畫在你的人生中佔很重要的部分，包括感情。比起轟轟烈烈、曇花一現的戀愛，你更在意細水長流、知根知底的陪伴。或許你在關係中比較比較不會耍花樣、玩浪漫，但在你身邊的人總是能感覺到濃濃的安全感。比起出去玩，大部分時間更喜歡和喜歡的人窩在家裡享受靜謐的兩人時光。",
-        imgURL:""
+        imgURL:"assets/2.png"
     },
     {
         name:"藍色夏威夷 Blue Hawaii",
         language:"哪裡有鳳梨，哪裡就有夏威夷，讓我和你形影不離。",
         short:"是一杯相當熱帶感的調酒，它的誕生地是在夏威夷的度假村中，因為加入了藍柑橘酒而得名。",
         description:"你的情感熱烈，心中大火熊熊燃燒，外表也毫不掩飾。雙方表達、展現熱情對你來說是必須，你享受戀愛中的酸酸甜甜，最喜歡對方的各種浪漫動作。只要一陷入愛河通常難以自拔，容易眼睛充滿粉紅泡泡濾鏡，不願意回到現實之中，也容易錯過感情中的red flag。",
-        imgURL:""
+        imgURL:"assets/3.png"
     },
     {
         name:"自由古巴 Cuba Libre",
         language:"你的引力抓不住我",
         short:"就是鼎鼎大名的Rum and Coke，是很好入門的調酒。相傳這杯調酒就是在古巴獨立戰爭這段時間所發明的。",
         description:"你享受生活中的刺激與變化，在感情中，你比較在意和對方相處起來的Chemistry，不會想太多、也不太在意繁瑣的小細節，覺得感覺對就好。但同時，只要相處感覺一變，通常對方就很難再抓住你，關係會被你以迅雷不及掩耳的速度結束。你覺得照顧好自己是最重要的，不一定要戀愛自己也能過的瀟灑自在，戀愛對你來說是錦上添花，卻不是必須。看似帥氣、能切割得很清楚，其實有時候是自己的保護機制，怕失控、失去自我，而不願投注所有感情。",
-        imgURL:""
+        imgURL:"assets/4.png"
     },
     {
         name:"野格炸彈 Jägerbomb",
         language:"愛到斷片，醒來再見",
         short:"野格是相當常用來喝 shot 的藥草酒，強烈的藥草味讓他評價很兩極。酒精濃度高達35%，加上能量飲，容易讓人不覺得醉而喝過底線，等到後勁一上來直接斷片。",
         description:"你從不掩飾自己，別人喜歡也好不喜歡也好，對你都不重要。你不在乎天長地久，只在乎曾經擁有，屬於只追求刺激的人，常常在試探自己冒險的底線。感情對你來說也是，你享受一時的刺激，卻不見得願意付出多於的努力經營關係。對你來說沒有什麼事比自己開心來得重要。",
-        imgURL:""
+        imgURL:"assets/5.png"
     },
 ]
 
 $("button.end").click(function() {
-    console.log("show result")
+    // console.log("show result")
     var score = parseInt(arr_selected.join(""))
-    console.log(score)
+    // console.log(score)
 
     var result = {
         1111:0,
@@ -361,7 +367,7 @@ $("button.end").click(function() {
         4443:3,
         4444:4
     }
-    console.log(result[score])
+    // console.log(result[score])
     resultType = result[score]
     $(".question").hide()
     $("#result").show()
@@ -374,5 +380,19 @@ $("button.end").click(function() {
 })
 
 $("button.leave").click(function() {
-    // window.location = "main.php"
+    parent.window.location = "../../../main.php"
+    let gamePlayed = true
+    $.post("../../../php/submit-test.php",
+    {
+        gamePlayed: gamePlayed,
+    },
+    function(data, status){
+        alert("Data: " + data + "\nStatus: " + status); //回傳回來的資料
+    })
+        .done(function(data) {
+            alert("done :)")
+        })
+        .fail(function(xhr, status, error) {
+            alert(xhr.responseText)
+        })
 })

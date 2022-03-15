@@ -15,7 +15,7 @@ body {
     margin: 0;
     padding: 0;
     background-color: #000;
-    outline: 1px solid white;
+    /* outline: 1px solid white; */
     overflow-y: hidden;
 }
 section {
@@ -112,10 +112,19 @@ div.result-div {
     width: 100%;
     height: 300px;
     flex-direction: row;
+    padding: 0 44px;
     align-items: top;
 }
 div.result-text {
-    width: 500px;
+    width: 484px;
+}
+div.img-container {
+    position: relative;
+    width: 280px;
+    height: 302px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
 
 .center-align {
@@ -203,8 +212,9 @@ button.answer {
     text-align: left;
 }
 button.answer.active {
-    background-color: #07100E;
-    color: #008276;
+    background-color: #003632;
+    border: 1px solid #B6ECE2;
+    color: #B4E5DD;
 }
 
 button.circle {
@@ -238,11 +248,15 @@ button.circle.orange:hover{
     background-color: #271204;
     color: #FC8D44;
 }
+button.deactivate {
+    opacity: 0.4;
+}
 
 
 img.light {
     margin-top: 22px;
 }
 img.cocktail {
-    margin-right: 24px;
+    max-width: 90%;
+    margin-right: 60px;
 }
