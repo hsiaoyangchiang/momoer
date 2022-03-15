@@ -131,7 +131,7 @@ if($_SESSION['askQuestion'] == 0) {
         </div>
         <div id="overlay"></div>
 
-        <!-- <script src="ad.js"></script> -->
+        <script src="ad.js"></script>
         <script src="game.js"></script>
 
     </body>
