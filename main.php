@@ -1,8 +1,8 @@
-<?php
+<!-- <?php
     session_start();
     $game_id = "";
     include("pdoInc.php");
-?>
+?> -->
 
 <!DOCTYPE html>
 <html>
@@ -21,14 +21,23 @@
                 <span class="leaderboard-margenta">&#128081; 王小明 600 &#9733; 王宏宏 450 &#9733; 楊明王 400 &#9733; 阿翔 350 &#9733; 小羊 200 &nbsp;&nbsp;</span>
                 <span class="leaderboard-green">全台數位內容首府 來電詢問2939-3091</span>
             </marquee>
-            <div id="btn-signup">
-            <button><a href="signup.html">signup</button>
-            <button><a href="login.html">login</button>
-            </div>
+            <!-- <div id="btn-signup">
+                <button><a href="signup.html">signup</button>
+                <button><a href="login.html">login</button>
+            </div> -->
         </div>
 
         <div class="header">
             <a href="main.php"><img src="assets/img-logo.png" class="img-logo cursor-pointer"></a>
+            <div class="profile">
+                <div>
+                    <p>Username</p>
+                    <p>Exp.</p>
+                </div>
+                <div class="exp-bar">
+                    <div class="exp"></div>
+                </div>
+            </div>
         </div>
         
         <div class="modal-signup">

@@ -1,5 +1,5 @@
 <?php
 session_start();
-include("pdoInc.php");
+include("../pdoInc.php");
 $_SESSION['askQuestion'] = 1;
 ?>

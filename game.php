@@ -39,7 +39,7 @@ if($_SESSION['askQuestion'] == 0) {
         </div>
 
         <div class="header-game">
-            <a href="main.php"><img src="assets/img-logo.png" class="img-logo-small cursor-pointer"></a>
+            <img src="assets/img-logo.png" class="img-logo-small cursor-pointer">
         </div>
 
         <!-- <div id="backend-panel"> 模擬後端操作面板
