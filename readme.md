@@ -1,4 +1,6 @@
 # 檔案紀錄
+### main.php
+[]換廣告
 *[3/10] by lili*
 ### main.php
 + 註冊後前端取得session值, 前後端連結
