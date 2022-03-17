@@ -75,6 +75,7 @@ $stmt -> bindParam(":pwd", $pwd);
 
 if ($stmt->execute()) {
     echo "<script> {window.alert('成功加入');} </script>";
+    // echo "<script> localStorage.setItem('ad_change',0) </script>";
     session_start();
     $_SESSION["loggedin"] = 1;
 

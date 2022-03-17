@@ -35,6 +35,16 @@ game.mouseleave(() => {
     game_title.hide()
 })
 
+// Lock y-scroll when modal appears
+function lockScroll() {
+    // alert("lock scroll")
+    console.log("lock scroll")
+    $("body").attr("overflow-y", "hidden")
+}
+
+function unlockScroll() {
+    $("body").attr("overflow-y", "visible")
+}
 
 // Switch to specific game page
 const modal_signup = $(".modal-signup")
@@ -50,7 +60,6 @@ for(let i=0; i<12; i++) {
             console.log("first time to play game")
             overlay.show()
             modal_signup.show()
-            lockScroll()
         }
         else {
             location.href="game.php?game_id="+game_id
@@ -70,12 +79,3 @@ $("#toc-back").click(function(){
     $(".form-signup").show()
     $(".div-toc").hide()
 })
-
-// Lock y-scroll when modal appears
-function lockScroll() {
-    $("body").attr("overflow-y", "hidden")
-}
-
-function unlockScroll() {
-    $("body").attr("overflow-y", "visible")
-}

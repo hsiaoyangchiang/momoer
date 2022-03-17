@@ -38,8 +38,11 @@ body {
 }
 
 /* layout */
-
 .header {
+    border: 1px solid green;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
     position: relative;
     width: 100%;
     height: auto;
@@ -264,12 +267,20 @@ iframe {
     height: 100%;
     border: 0px;
 }
+/* profile */
+div.profile {
+    position: relative;
+    width: 336px;
+    height: 200px;
+    border: 1px solid red;
+}
 
 
 /* assets */
 .img-logo {
     width: auto;
     height: 200px;
+    border: 1px solid red;
 }
 
 .img-logo-small {
