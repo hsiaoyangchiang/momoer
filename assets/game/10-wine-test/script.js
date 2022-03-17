@@ -373,6 +373,4 @@ $("button.end").click(function() {
     $("img.cocktail").attr("src",cocktail[resultType]["imgURL"])
 })
 
-$("button.leave").click(function() {
-    // window.location = "main.php"
-})
+

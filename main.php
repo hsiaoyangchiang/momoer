@@ -2,6 +2,20 @@
     session_start();
     $game_id = "";
     include("pdoInc.php");
+
+    // if(isset($_SESSION['username'])){
+    //     // echo $_SESSION['username'];
+    // }
+
+    // if(isset($_SESSION['askQuestion'])){
+    //     $askQuestion = $_SESSION['askQuestion'];
+    // }
+
+    // //判斷是否註冊過
+    // if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true){
+    //     echo "你好，".$_SESSION['username'];
+    //     echo "應不應該回答問題：".$askQuestion;
+    // }
 ?>
 
 <!DOCTYPE html>

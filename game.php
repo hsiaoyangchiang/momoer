@@ -1,7 +1,7 @@
 <?php
 session_start();
 require_once"pdoInc.php";
-error_reporting(E_ALL & ~E_NOTICE);
+// error_reporting(E_ALL & ~E_NOTICE);
 
 if($_SESSION['askQuestion'] == 0) {
     // echo "<script>alert('ask Question = 0')</script>";
@@ -33,7 +33,6 @@ if($_SESSION['askQuestion'] == 0) {
                 <span class="leaderboard-green">全台數位內容首府 來電詢問2939-3091</span>
             </marquee>
             <div id="btn-signup">
-            <button><a href="signup.html">signup</button>
             <button><a href="login.html">login</button>
             </div>
         </div>

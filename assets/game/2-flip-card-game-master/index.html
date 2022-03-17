@@ -11,8 +11,12 @@
 <body>
     <div id="container">
         <div id="startScreen">
-            <h1>翻牌遊戲</h1>
-            <button onclick="gameStart()">start game</button>
+            <div class="title">
+                <img src="../2-flip-card-game-master/cardImg/01_Title no bg.png" width="400px" height="auto" alt="">
+                <button onclick="gameStart()">
+                    <img src="./cardImg/01_start.png" alt="" width="400px" height="auto">
+                </button>
+            </div>
         </div>
         <div id="score-panel">
             <h2 id="count">0</h2> 
@@ -20,57 +24,59 @@
         </div>
         <section id="memory-game">
             <div class="memory-card" data-framework="banana">
-                <img class="front-face" src="../2-flip-card-game-master/img/banana.png" alt="banana"/>
-                <img class="back-face" src="../2-flip-card-game-master/img/card_bg.png" alt="Memory Card"/>
+                <img class="front-face" src="../2-flip-card-game-master/cardImg/02_card_1.png" alt="banana"/>
+                <img class="back-face" src="../2-flip-card-game-master/cardImg/02_card_back.png" alt="Memory Card"/>
             </div>
             <div class="memory-card" data-framework="apple">
-                <img class="front-face" src="../2-flip-card-game-master/img/apple.png" alt="apple" />
-                <img class="back-face" src="../2-flip-card-game-master/img/card_bg.png" alt="Memory Card" />
+                <img class="front-face" src="../2-flip-card-game-master/cardImg/02_card_2.png" alt="Memory Card"/>
+                <img class="back-face" src="../2-flip-card-game-master/cardImg/02_card_back.png" alt="Memory Card"/>
             </div>
             <div class="memory-card" data-framework="cherry">
-                <img class="front-face" src="../2-flip-card-game-master/img/cherry.png" alt="cherry" />
-                <img class="back-face" src="../2-flip-card-game-master/img/card_bg.png" alt="Memory Card" />
+                <img class="front-face" src="../2-flip-card-game-master/cardImg/02_card_3.png" alt="Memory Card"/>
+                <img class="back-face" src="../2-flip-card-game-master/cardImg/02_card_back.png" alt="Memory Card"/>
             </div>
             <div class="memory-card" data-framework="grape">
-                <img class="front-face" src="../2-flip-card-game-master/img/grape.png" alt="grape" />
-                <img class="back-face" src="../2-flip-card-game-master/img/card_bg.png" alt="Memory Card" />
+                <img class="front-face" src="../2-flip-card-game-master/cardImg/02_card_4.png" alt="Memory Card"/>
+                <img class="back-face" src="../2-flip-card-game-master/cardImg/02_card_back.png" alt="Memory Card"/>
             </div>
             <div class="memory-card" data-framework="orange">
-                <img class="front-face" src="../2-flip-card-game-master/img/orange.png" alt="orange" />
-                <img class="back-face" src="../2-flip-card-game-master/img/card_bg.png" alt="Memory Card" />
+                <img class="front-face" src="../2-flip-card-game-master/cardImg/02_card_5.png" alt="Memory Card"/>
+                <img class="back-face" src="../2-flip-card-game-master/cardImg/02_card_back.png" alt="Memory Card"/>
             </div>
             <div class="memory-card" data-framework="watermelon">
-                <img class="front-face" src="../2-flip-card-game-master/img/watermelon.png" alt="watermelon" />
-                <img class="back-face" src="../2-flip-card-game-master/img/card_bg.png" alt="Memory Card" />
+                <img class="front-face" src="../2-flip-card-game-master/cardImg/02_card_6.png" alt="Memory Card"/>
+                <img class="back-face" src="../2-flip-card-game-master/cardImg/02_card_back.png" alt="Memory Card"/>
             </div>
             <div class="memory-card" data-framework="banana">
-                <img class="front-face" src="../2-flip-card-game-master/img/banana.png" alt="banana" />
-                <img class="back-face" src="../2-flip-card-game-master/img/card_bg.png" alt="Memory Card" />
+                <img class="front-face" src="../2-flip-card-game-master/cardImg/02_card_1.png" alt="Memory Card"/>
+                <img class="back-face" src="../2-flip-card-game-master/cardImg/02_card_back.png" alt="Memory Card"/>
             </div>
             <div class="memory-card" data-framework="apple">
-                <img class="front-face" src="../2-flip-card-game-master/img/apple.png" alt="apple" />
-                <img class="back-face" src="../2-flip-card-game-master/img/card_bg.png" alt="Memory Card" />
+                <img class="front-face" src="../2-flip-card-game-master/cardImg/02_card_2.png" alt="Memory Card"/>
+                <img class="back-face" src="../2-flip-card-game-master/cardImg/02_card_back.png" alt="Memory Card"/>
             </div>
             <div class="memory-card" data-framework="cherry">
-                <img class="front-face" src="../2-flip-card-game-master/img/cherry.png" alt="cherry" />
-                <img class="back-face" src="../2-flip-card-game-master/img/card_bg.png" alt="Memory Card" />
+                <img class="front-face" src="../2-flip-card-game-master/cardImg/02_card_3.png" alt="Memory Card"/>
+                <img class="back-face" src="../2-flip-card-game-master/cardImg/02_card_back.png" alt="Memory Card"/>
             </div>
             <div class="memory-card" data-framework="grape">
-                <img class="front-face" src="../2-flip-card-game-master/img/grape.png" alt="grape" />
-                <img class="back-face" src="../2-flip-card-game-master/img/card_bg.png" alt="Memory Card" />
+                <img class="front-face" src="../2-flip-card-game-master/cardImg/02_card_4.png" alt="Memory Card"/>
+                <img class="back-face" src="../2-flip-card-game-master/cardImg/02_card_back.png" alt="Memory Card"/>
             </div>
             <div class="memory-card" data-framework="orange">
-                <img class="front-face" src="../2-flip-card-game-master/img/orange.png" alt="orange" />
-                <img class="back-face" src="../2-flip-card-game-master/img/card_bg.png" alt="Memory Card" />
+                <img class="front-face" src="../2-flip-card-game-master/cardImg/02_card_5.png" alt="Memory Card"/>
+                <img class="back-face" src="../2-flip-card-game-master/cardImg/02_card_back.png" alt="Memory Card"/>
             </div>
             <div class="memory-card" data-framework="watermelon">
-                <img class="front-face" src="../2-flip-card-game-master/img/watermelon.png" alt="watermelon" />
-                <img class="back-face" src="../2-flip-card-game-master/img/card_bg.png" alt="Memory Card" />
+                <img class="front-face" src="../2-flip-card-game-master/cardImg/02_card_6.png" alt="Memory Card"/>
+                <img class="back-face" src="../2-flip-card-game-master/cardImg/02_card_back.png" alt="Memory Card"/>
             </div>        
         </section>
         <div id="gameEnd">
-            <h1 id="result"></h1>
-            <button>結束遊戲</button>
+            <img id="result" src="../2-flip-card-game-master/cardImg/03_with bg.png" alt="">
+            <button id="leave">
+                <img src="../2-flip-card-game-master/cardImg/Asset 11@2x.png" width="400px" height="auto"alt="">
+            </button>
         </div>
     </div>
     
