@@ -14,6 +14,15 @@ function gameStart() {
     $('#startScreen').hide();
     $('#score-panel').css('display', 'flex');
     $('#memory-game').css('display', 'flex');
+    var downloadTimer = setInterval(function(){
+        if(time <= 0){
+          clearInterval(downloadTimer);
+          gameEnd();
+        }
+        document.getElementById("timer").innerHTML = time;
+        time -= 1;
+      }, 1000);
+      
 }
 
 
@@ -71,11 +80,8 @@ function resetBoard() {
 
 function plusOne(){
     score+=1;
-    if(score===6){
-        document.getElementById("result").innerHTML = "YOU WIN";
-        $('#gameEnd').css('display', 'block');
-        $('#score-panel').css('display', 'none');
-        $('#memory-game').css('display', 'none');
+    if(score == 6){
+        gameEnd();
     }
     document.getElementById('count').innerHTML = score;
     
@@ -90,27 +96,23 @@ function plusOne(){
     });
 })();
 
-var downloadTimer = setInterval(function(){
-  if(time <= 0){
-    clearInterval(downloadTimer);
-    gameEnd();
-  }
-  document.getElementById("timer").innerHTML = time;
-  time -= 1;
-}, 1000);
 
 // gameEnd();
 
+
 function gameEnd() {
+    $('#gameEnd').css('display', 'flex');
+    $('#score-panel').css('display', 'none');
+    $('#memory-game').css('display', 'none');
     if(score === 6){
         console.log("win");
-        document.getElementById("result").innerHTML = "YOU WIN";
-        $('#gameEnd').css('display', 'block');
-        $('#score-panel').css('display', 'none');
-        $('#memory-game').css('display', 'none');
+        $('#result').attr("src", "../2-flip-card-game-master/cardImg/03_title no bg.png");
+        $('#gameEnd').css('background-color', '#F15928')
+
     }else{
         console.log('lose');
-        document.getElementById("result").innerHTML = " YOU LOSE";
-        $('#gameEnd').css('display', 'block');
-        $('#score-panel').css('display', 'none');
-        $('#memory-game').css('display', 'none');
+        $('#result').attr("src", "../2-flip-card-game-master/cardImg/04_title no bg.png")
+        $('#gameEnd').css('background-color', '#006F84')
+
+    }
+}
