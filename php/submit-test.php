@@ -1,5 +1,5 @@
 <?php
-    require_once"pdoInc.php";
+    require_once"../pdoInc.php";
     session_start();
     $username = $_SESSION['username'];
 

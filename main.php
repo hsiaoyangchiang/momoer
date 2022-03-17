@@ -34,7 +34,9 @@
                     <p>Username</p>
                     <p>Exp.</p>
                 </div>
-                <div class="exp-bar"></div>
+                <div class="exp-bar">
+                    <div class="exp"></div>
+                </div>
             </div>
         </div>
         

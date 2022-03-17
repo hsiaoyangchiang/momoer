@@ -1,6 +1,6 @@
 <?php
 session_start();
-include("pdoInc.php");
+include("../pdoInc.php");
 
 if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] == true) {
     $user_session = array(
