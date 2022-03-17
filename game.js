@@ -20,7 +20,7 @@ var arr_game_src = [ //小遊戲連結
 // Game Session
 var game_session = 1
 //game_session 代表玩過遊戲的次數
-//game_session 不來自amount
+//game_session 是amount+1 (amount代表目前回答過的題數)
 //第一次玩的時候, 因為askQuestion = 0, 不應該要跳問題. 此時game_session等0
 //第二次玩的時候, 因為askQuestion = 1, 所以應該要跳問題. 此時game_session等於1
 
@@ -28,7 +28,7 @@ var game_session = 1
 window.onload = function() {
     // variable askQuestion is declared at game.php
     console.log("askQuestion: "+askQuestion)
-    alert("askQuestion: "+askQuestion)
+    // alert("askQuestion: "+askQuestion)
 
     // Determine show Question or not
     if(askQuestion != 0 & game_id<=9) {
@@ -36,7 +36,7 @@ window.onload = function() {
         $.get("amount.php", function(data, status){
             // alert(data + "\nStatus: " + status)
             game_session = parseInt(data)+1
-            alert("gs from php: "+game_session)
+            // alert("gs from php: "+game_session)
             console.log("game_session: "+game_session)
             localStorage.setItem("game_session", game_session) //這邊會設置game session
             showQuestion(game_session)
@@ -54,10 +54,6 @@ window.onload = function() {
     // Load Game
     let game_src = arr_game_src[game_id-1]
     $("iframe").attr("src", game_src)
-
-    // Log Player Status
-    console.log("now game session: "+game_session)
-    console.log("game id: "+game_id)
 }
 
 
@@ -127,55 +123,51 @@ function showQuestion(game_session) {
 }
 
 
-// Submit answer to database
-function submitAns() {
+// Submit Answer
+$( "form" ).on( "submit", function(e) {
+    // alert("form here")
     $.ajax({
         url: 'php/resetQ.php',
         success: function(data) {
-            $('.result').html(data);
+            if(game_session == 7) {
+                //提交的不是select radio而是文字
+            }
+            else {
+                // Save answer into local storage
+                var selected_radio = $("input[name=option]:checked", '#form-question').val()
+                // alert("Selected Radio: "+selected_radio)
+                localStorage.setItem("game_id", game_id)
+                localStorage.setItem("selected_radio", selected_radio)
+        
+                // Submit answer + update game_session
+                $.post("submit.php", {selected_radio: selected_radio}, function() {
+                    // alert("run")
+                })
+                    .done(function(data) {
+                        // alert("after amount: "+data)
+                    })
+                    .fail(function(xhr, status, error) {
+                        // alert(xhr.responseText)
+                    })
+            }
         }
-    });
-    if(game_session == 7) {
-        //提交的不是select radio而是文字
-    }
-    else {
-        // Save answer into local storage
-        var selected_radio = $("input[name=option]:checked", '#form-question').val()
-        alert("Selected Radio: "+selected_radio)
-        localStorage.setItem("game_id", game_id)
-        localStorage.setItem("selected_radio", selected_radio)
-
-        // Submit answer + update game_session
-        $.post("submit.php", {selected_radio: selected_radio}, function() {
-            alert("run")
-        })
-            .done(function(data) {
-                // alert("after amount: "+data)
-            })
-            .fail(function(xhr, status, error) {
-                alert(xhr.responseText)
-            })
-    }
-}
-
-$("#send_my_data").click(function(){
-    submitAns()
+    })
 })
 
 
 // Count ad_change
 // 換廣告：調整local storage ad_change變數的地方
 function setAdChange() {
-    alert("function set ad change")
+    // alert("function set ad change")
     if (typeof(localStorage.getItem("ad_change")) != "undefined" && localStorage.getItem("ad_change") !== null) {
         ad_change = parseInt(localStorage.getItem("ad_change"))
-        alert("local storage取出的"+ad_change)
+        // alert("local storage取出的"+ad_change)
         ad_change = ad_change + 1
         localStorage.setItem("ad_change",ad_change)
         console.log("adchange game.js"+ad_change)
     }
     else {
-        alert("no set ad change")
+        // alert("no set ad change")
         // 註冊後local storage都還不曾新增過ad_change，將在第二次玩完遊戲後離開時新增該變數(第一次玩遊戲不跳問題，因此也不會需要換廣告)
         localStorage.setItem("ad_change",0)
     }

@@ -37,7 +37,7 @@ game.mouseleave(() => {
 
 // Lock y-scroll when modal appears
 function lockScroll() {
-    alert("lock scroll")
+    // alert("lock scroll")
     console.log("lock scroll")
     $("body").attr("overflow-y", "hidden")
 }
