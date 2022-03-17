@@ -38,8 +38,11 @@ body {
 }
 
 /* layout */
-
 .header {
+    border: 1px solid green;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
     position: relative;
     width: 100%;
     height: auto;
@@ -264,12 +267,35 @@ iframe {
     height: 100%;
     border: 0px;
 }
+/* profile */
+div.profile {
+    position: relative;
+    width: 336px;
+    height: 200px;
+    border: 1px solid red;
+}
+div.exp-bar {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 18px;
+    border-radius: 4px;
+    background-color: #FFF;
+}
+div.exp {
+    position: relative;
+    width: 10%;
+    height: 100%;
+    border-radius: 4px 2px 2px 4px;
+    background-color: #88E998;
+}
 
 
 /* assets */
 .img-logo {
     width: auto;
     height: 200px;
+    border: 1px solid red;
 }
 
 .img-logo-small {

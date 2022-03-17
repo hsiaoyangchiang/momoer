@@ -44,7 +44,7 @@
             <button class="rect answer" value="3">丟給對方計畫</button>
             <button class="rect answer" value="4">看對方是誰決定要不要計畫</button>
 
-            <button class="circle orange next">NEXT</button>
+            <button class="circle orange next deactivate">NEXT</button>
         </section>
 
         <section id="question-2" class="question">
@@ -55,7 +55,7 @@
             <button class="rect answer" value="3">稍微打扮，叫Uber，盡量準時到。</button>
             <button class="rect answer" value="4">不打扮到滿意絕不出門，「遲到一下沒關係啦！」</button>
 
-            <button class="circle orange next">NEXT</button>
+            <button class="circle orange next deactivate">NEXT</button>
         </section>
 
         <section id="question-3" class="question">
@@ -66,7 +66,7 @@
             <button class="rect answer" value="3">先去看別家晚點再回來。</button>
             <button class="rect answer" value="4">堅決不超過預算，立即轉頭走人，遠離誘惑。</button>
 
-            <button class="circle orange next">NEXT</button>
+            <button class="circle orange next deactivate">NEXT</button>
         </section>
 
         <section id="question-4" class="question">
@@ -77,7 +77,7 @@
             <button class="rect answer" value="3">他越講你越不開心，本來有點喜歡的東西會變得不想買，但是還是會表現的客氣、敷衍道謝。</button>
             <button class="rect answer" value="4">臭臉，轉身轉走人。</button>
 
-            <button class="circle orange next">NEXT</button>
+            <button class="circle orange next deactivate">NEXT</button>
         </section>
 
         <section id="question-5" class="question">
@@ -86,7 +86,7 @@
             <button class="rect answer" value="1">趕快在附近找公廁上廁所</button>
             <button class="rect answer" value="2">一定要忍到回家</button>
 
-            <button class="circle orange end">RESULT</button>
+            <button class="circle orange end deactivate">RESULT</button>
         </section>
         
         <section id="result" class="result">
@@ -95,7 +95,9 @@
                 <h1 id="name"></h1>
             </div>
             <div class="result-div">
-                <img class="cocktail" width="300px" height="300px">
+                <div class="img-container">
+                    <img class="cocktail">
+                </div>
                 <div class="result-text">
                     <p id="language" class="green" style="font-size: 22px; line-height: 30px; margin-bottom: 12px;"></p>
                     <p id="short" class="cyan" style="font-size: 18px; line-height: 26px; margin-bottom: 12px;"></p>
