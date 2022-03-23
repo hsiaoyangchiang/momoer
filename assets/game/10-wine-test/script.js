@@ -382,7 +382,7 @@ $("button.end").click(function() {
 $("button.leave").click(function() {
     parent.window.location = "../../../main.php"
     let gamePlayed = true
-    $.post("../../../php/submit-test.php",
+    $.post("../php/submit-test.php",
     {
         gamePlayed: gamePlayed,
     },

@@ -3,10 +3,16 @@ require_once"pdoInc.php";
 // error_reporting(E_ALL & ~E_NOTICE);
 
 
+if(isset($_POST['username'])){
+    $username = $_POST['username'];
+}
+if(isset($_POST['password'])){
+    $pwd = $_POST['password'];
 
-$username = $_POST['username'];
-$pwd = $_POST['password'];
-$checkbox = $_POST['agree_toc'];
+}
+if(isset($_POST['agree_toc'])){
+    $checkbox = $_POST['agree_toc'];
+}
 // echo $checkbox;
 //有勾：on
 //沒勾：underdefined
