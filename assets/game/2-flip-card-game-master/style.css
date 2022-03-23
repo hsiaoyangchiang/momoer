@@ -49,11 +49,12 @@
   #timer{
     display: inline;
     align-content: start;
-    padding-left: 800px;
+    padding-right: 700px;
+    padding-left: 10px;
   }
   #count{
     display: inline;
-    align-content: end;  
+    align-content: flex-end;  
     padding-left: 10px;
 
   }

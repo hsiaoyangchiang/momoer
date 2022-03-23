@@ -22,11 +22,13 @@ if(!isset($beforeAmount)){
         // echo "未答題前遊戲次數:".$beforeAmount."<br>";
     }
 }
-$ans = $_POST['selected_radio'];
+
 // echo $ans;
 //把post來的答案放入$ans
 if(isset($_POST['selected_radio'])){
     // echo "答案：".$ans."<br>";
+    $ans = $_POST['selected_radio'];
+    echo $ans;
 }
 
 
@@ -37,8 +39,17 @@ if(isset($ans)){
         break;
     }
 }
+if(isset($_POST['gameID'])){
+    $gameID = $_POST['gameID'];
+    $a = "{$gameID}-{$ans}";
+}
+
+
+
+//前兩題要gameID
+//後面一樣就好
 if(isset($afterAmount)){
-    $sql = "UPDATE Game SET Q{$afterAmount} = '{$ans}', amount = '{$afterAmount}' WHERE username = '{$username}' ";
+    $sql = "UPDATE Game SET Q{$afterAmount} = '{$a}', amount = '{$afterAmount}' WHERE username = '{$username}' ";
     $stmt = $dbh->prepare($sql);
     $stmt->execute(array());
     $row = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -47,16 +58,6 @@ if(isset($afterAmount)){
     // echo "加入成功";
 }
 
-// echo $_SESSION['askQuestion'];
-
-
-// $_REQUEST["s"]=$afterAmount;
-
-// $data[] = 
 
 echo $afterAmount;
-
-// echo "<script> {location.href='game.php?game_id=1'} </script>";
-// echo $afterAmount;
-
 ?>

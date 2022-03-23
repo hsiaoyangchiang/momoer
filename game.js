@@ -138,16 +138,19 @@ $( "form" ).on( "submit", function(e) {
                 // alert("Selected Radio: "+selected_radio)
                 localStorage.setItem("game_id", game_id)
                 localStorage.setItem("selected_radio", selected_radio)
-        
                 // Submit answer + update game_session
-                $.post("submit.php", {selected_radio: selected_radio}, function() {
-                    // alert("run")
+                $.post("submit.php", 
+                {
+                    selected_radio: selected_radio,
+                    gameID: game_id,
+                }, 
+                function(data, status) {
+                    alert("DATA:" + data + "\nStatus:" + status)
                 })
                     .done(function(data) {
-                        // alert("after amount: "+data)
                     })
                     .fail(function(xhr, status, error) {
-                        // alert(xhr.responseText)
+                        alert(xhr.responseTest)
                     })
             }
         }

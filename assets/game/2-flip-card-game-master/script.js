@@ -113,6 +113,10 @@ function gameEnd() {
         console.log('lose');
         $('#result').attr("src", "../2-flip-card-game-master/cardImg/04_title no bg.png")
         $('#gameEnd').css('background-color', '#006F84')
-
     }
+}
+
+function goEnd(){
+	parent.callParent()    
+    console.log('game end');
 }

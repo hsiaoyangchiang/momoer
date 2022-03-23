@@ -21,10 +21,11 @@
                 <span class="leaderboard-margenta">&#128081; 王小明 600 &#9733; 王宏宏 450 &#9733; 楊明王 400 &#9733; 阿翔 350 &#9733; 小羊 200 &nbsp;&nbsp;</span>
                 <span class="leaderboard-green">全台數位內容首府 來電詢問2939-3091</span>
             </marquee>
-            <!-- <div id="btn-signup">
-                <button><a href="signup.html">signup</button>
-                <button><a href="login.html">login</button>
-            </div> -->
+            <div>
+                <button method="post" action="ending.php">
+                    logout
+                </button>
+            </div>
         </div>
 
         <div class="header">
@@ -326,15 +327,15 @@
             </div>
             <div class="game-grid-container">
                 <div id="game-1" class="game cursor-pointer">
-                    <img class="img-game-thumbnail" src="assets/game thumbnail/coli.png">
+                    <img class="img-game-thumbnail" src="assets/game thumbnail/blue dots.png">
                     <div id="game-title" class="game-title noselect cursor-pointer">圈藍點點</div>
                 </div>
                 <div id="game-2" class="game cursor-pointer">
-                    <img class="img-game-thumbnail" src="assets/game thumbnail/nan.png">
+                    <img class="img-game-thumbnail" src="./assets/game/2-flip-card-game-master/cardImg/縮圖.png">
                     <div id="game-title" class="game-title noselect cursor-pointer">翻牌遊戲</div>
                 </div>
                 <div id="game-3" class="game cursor-pointer">
-                    <img class="img-game-thumbnail" src="assets/game thumbnail/blue dots.png">
+                    <img class="img-game-thumbnail" src="assets/game thumbnail/coli.png">
                     <div id="game-title" class="game-title noselect cursor-pointer">專注遊戲</div>
                 </div>
                 <div id="game-4" class="game cursor-pointer">
