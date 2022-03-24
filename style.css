@@ -1,4 +1,6 @@
 * {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
     box-sizing: border-box;
 }
 
@@ -6,7 +8,11 @@ body {
     position: relative;
     min-height: 100%;
     margin: 0 0px;
-    background-color: #05246A;
+    /* background-color: #05246A; */
+    background-image: url("assets/bg/1.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;  
+    background-size: cover;
     /*font-family: ;
     font-weight: ;*/
 }
@@ -38,8 +44,10 @@ body {
 }
 
 /* layout */
-
 .header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
     position: relative;
     width: 100%;
     height: auto;
@@ -264,6 +272,47 @@ iframe {
     height: 100%;
     border: 0px;
 }
+/* profile */
+div.profile {
+    display: none;
+    position: relative;
+    width: 336px;
+    height: 200px;
+}
+div.profile-blur {
+    display: block;
+    position: absolute;
+    right: 24px;
+    bottom: -4px;
+    width: 352px;
+    height: 216px;
+    background: rgba(0, 0, 0, 0.5);
+    
+    /* filter: blur(2px); /* soften edge
+    -webkit-filter: blur(2px); */
+
+    backdrop-filter: blur(8px); /* blur */
+    border-radius: 24px;
+}
+div.user-stats {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+}
+div.exp-bar {
+    width: 100%;
+    height: 20px;
+    border-radius: 10px;
+    margin-top: 8px;
+    border: 2px solid #88E998;
+}
+div.exp {
+    position: relative;
+    width: 0%;
+    height: 100%;
+    border-radius: 10px 0px 0px 10px;
+    background-color: #88E998;
+}
 
 
 /* assets */
@@ -276,7 +325,12 @@ iframe {
     width: auto;
     height: 133px;
 }
-
+.img-cat {
+    position: absolute;
+    right: 0;
+    width: auto;
+    height: 200px;
+}
 .img-ad {
     position: relative;
     object-fit: cover;
@@ -288,6 +342,10 @@ iframe {
 .img-game-thumbnail {
     width: 100%;
     object-fit: cover;
+}
+.img-checkbox {
+    position: relative;
+    top: 2px;
 }
 
 
@@ -461,6 +519,9 @@ p {
 
     color: #F6CD63;
 }
+p.green {
+    color: #88E998;
+}
 
 label.label-signup {
     font-family: 'DotGothic16';
@@ -499,6 +560,9 @@ input:focus {
     color: #000;
     border: 0;
     outline: #FFF;
+}
+input.checkbox-signup {
+    display: none;
 }
 
 .game-title {

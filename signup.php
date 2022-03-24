@@ -17,25 +17,25 @@ $checkbox = $_POST['agree_toc'];
 // echo $username, $pwd, $confirm_pwd, $nickname;
 
 if($checkbox != 'on'){
-    echo "<script> {window.alert('請同意使用條款');location.href='signup.html'} </script>";
+    echo "<script> {window.alert('請同意使用條款');location.href='main.php'} </script>";
     exit;
 }
 //確認密碼是否為空
 if (empty(trim($pwd))){
-    echo "<script> {window.alert('密碼不得為空');location.href='signup.html'} </script>";   
+    echo "<script> {window.alert('密碼不得為空');location.href='main.php'} </script>";   
     exit;
 } 
 //密碼長度
 if(strlen($pwd)<3){
-    echo "<script> {window.alert('密碼太短');location.href='signup.html'} </script>";
+    echo "<script> {window.alert('密碼太短');location.href='main.php'} </script>";
     exit;
 }
 //確認密碼與密碼相同
 // if (empty(trim($confirm_pwd))) {
-//     echo "<script> {window.alert('請確認密碼');location.href='signup.html'} </script>";
+//     echo "<script> {window.alert('請確認密碼');location.href='main.php'} </script>";
 //     // exit;
 // } else if ($confirm_pwd != $pwd) {
-//     echo "<script> {window.alert('請確認密碼');location.href='signup.html'} </script>";
+//     echo "<script> {window.alert('請確認密碼');location.href='main.php'} </script>";
 // }else{
 //     $checkPassword = $pwd;
 //     // echo $checkPassword;
@@ -49,7 +49,7 @@ if(empty(trim($username))){
         $stmt->bindParam(":username", $username, PDO::PARAM_STR);
         if ($stmt->execute()){
             if ($stmt->rowCount() == 1) {
-                echo "<script> {window.alert('帳號被用過');location.href='signup.html'} </script>";
+                echo "<script> {window.alert('帳號被用過');location.href='main.php'} </script>";
                 // echo "帳號被用過";
                 exit;
             } 
@@ -57,7 +57,7 @@ if(empty(trim($username))){
                 $checkUsername = $username;
             }
         } else {
-            echo "<script> {window.alert('Opps, 現在有問題請稍等');location.href='signup.html'} </script>";
+            echo "<script> {window.alert('Opps, 現在有問題請稍等');location.href='main.php'} </script>";
             exit;
         }
         // Close statement
@@ -88,7 +88,7 @@ if ($stmt->execute()) {
     sleep(3);
     echo '<meta http-equiv=REFRESH CONTENT=0;url=main.php>';
 } else {
-    // echo "<script> {window.alert('Opps, 現在有問題請稍等');location.href='signup.html'} </script>";
+    // echo "<script> {window.alert('Opps, 現在有問題請稍等');location.href='main.php'} </script>";
 }
 unset($stmt);
 

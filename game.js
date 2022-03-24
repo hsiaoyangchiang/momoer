@@ -14,21 +14,23 @@ var arr_game_src = [ //小遊戲連結
     "assets/game/7-tower-blocks/dist/index.html",
     "assets/game/8-digger-main/index.html",
     "assets/game/9-DuckHunt-JS-master/dist/index.html", //點擊重玩
-    "assets/game/10-wine-test/index.html"
+    "assets/game/10-wine-test/index.html",
+    "assets/game/11-elf-test/index.html"
 ];
 
 // Game Session
 var game_session = 1
 //game_session 代表玩過遊戲的次數
-//game_session 不來自amount
+//game_session 是amount+1 (amount代表目前回答過的題數)
 //第一次玩的時候, 因為askQuestion = 0, 不應該要跳問題. 此時game_session等0
 //第二次玩的時候, 因為askQuestion = 1, 所以應該要跳問題. 此時game_session等於1
 
 // Start
 window.onload = function() {
+    // alert("change")
     // variable askQuestion is declared at game.php
     console.log("askQuestion: "+askQuestion)
-    alert("askQuestion: "+askQuestion)
+    // alert("askQuestion: "+askQuestion)
 
     // Determine show Question or not
     if(askQuestion != 0 & game_id<=9) {
@@ -36,16 +38,18 @@ window.onload = function() {
         $.get("amount.php", function(data, status){
             // alert(data + "\nStatus: " + status)
             game_session = parseInt(data)+1
-            alert("gs from php: "+game_session)
+            // alert("gs from php: "+game_session)
             console.log("game_session: "+game_session)
             localStorage.setItem("game_session", game_session) //這邊會設置game session
+
+            changebg(game_session-1)
             showQuestion(game_session)
         }, "text")
     }
     else {
         modal_question.hide()
         hideOverlay()
-
+        changebg(parseInt(localStorage.getItem("game_session"))-1)
         //Auto scroll to game
         // $('html,body').animate({
         //     scrollTop: $("iframe").offset().top
@@ -54,10 +58,6 @@ window.onload = function() {
     // Load Game
     let game_src = arr_game_src[game_id-1]
     $("iframe").attr("src", game_src)
-
-    // Log Player Status
-    console.log("now game session: "+game_session)
-    console.log("game id: "+game_id)
 }
 
 
@@ -127,55 +127,51 @@ function showQuestion(game_session) {
 }
 
 
-// Submit answer to database
-function submitAns() {
+// Submit Answer
+$( "form" ).on( "submit", function(e) {
+    // alert("form here")
     $.ajax({
         url: 'php/resetQ.php',
         success: function(data) {
-            $('.result').html(data);
+            if(game_session == 7) {
+                //提交的不是select radio而是文字
+            }
+            else {
+                // Save answer into local storage
+                var selected_radio = $("input[name=option]:checked", '#form-question').val()
+                // alert("Selected Radio: "+selected_radio)
+                localStorage.setItem("game_id", game_id)
+                localStorage.setItem("selected_radio", selected_radio)
+        
+                // Submit answer + update game_session
+                $.post("submit.php", {selected_radio: selected_radio}, function() {
+                    // alert("run")
+                })
+                    .done(function(data) {
+                        // alert("after amount: "+data)
+                    })
+                    .fail(function(xhr, status, error) {
+                        // alert(xhr.responseText)
+                    })
+            }
         }
-    });
-    if(game_session == 7) {
-        //提交的不是select radio而是文字
-    }
-    else {
-        // Save answer into local storage
-        var selected_radio = $("input[name=option]:checked", '#form-question').val()
-        alert("Selected Radio: "+selected_radio)
-        localStorage.setItem("game_id", game_id)
-        localStorage.setItem("selected_radio", selected_radio)
-
-        // Submit answer + update game_session
-        $.post("submit.php", {selected_radio: selected_radio}, function() {
-            alert("run")
-        })
-            .done(function(data) {
-                // alert("after amount: "+data)
-            })
-            .fail(function(xhr, status, error) {
-                alert(xhr.responseText)
-            })
-    }
-}
-
-$("#send_my_data").click(function(){
-    submitAns()
+    })
 })
 
 
 // Count ad_change
 // 換廣告：調整local storage ad_change變數的地方
 function setAdChange() {
-    alert("function set ad change")
+    // alert("function set ad change")
     if (typeof(localStorage.getItem("ad_change")) != "undefined" && localStorage.getItem("ad_change") !== null) {
         ad_change = parseInt(localStorage.getItem("ad_change"))
-        alert("local storage取出的"+ad_change)
+        // alert("local storage取出的"+ad_change)
         ad_change = ad_change + 1
         localStorage.setItem("ad_change",ad_change)
-        console.log("adchange game.js"+ad_change)
+        // console.log("adchange game.js"+ad_change)
     }
     else {
-        alert("no set ad change")
+        // alert("no set ad change")
         // 註冊後local storage都還不曾新增過ad_change，將在第二次玩完遊戲後離開時新增該變數(第一次玩遊戲不跳問題，因此也不會需要換廣告)
         localStorage.setItem("ad_change",0)
     }
@@ -184,11 +180,53 @@ function setAdChange() {
 
 // After playing the Game
 const modal_endgame = $(".modal-endgame")
+var cat_level = $("#cat-level")
+var player_level = $("#player-level")
 
 function callParent(){
     // console.log("game has ended")
     modal_endgame.show()
+    if (localStorage.getItem("game_session") == null) {
+        levelUp(0)
+        // console.log("undefined gs")
+    }
+    else {
+        levelUp(parseInt(localStorage.getItem("game_session")))
+    }
     showOverlay()
+}
+
+function levelUp(level){
+    switch(level) { //level=gs
+        case 1:
+            $(".hide-level").show()
+            cat_level.text("二")
+            player_level.text("咖啡杯玩家") 
+            break
+        case 2:
+            cat_level.text("三")
+            player_level.text("旋轉木馬玩家")
+            break
+        case 3:
+            $(".hide-level").hide()
+            break
+        case 4:
+            $(".hide-level").show()
+            cat_level.text("四")
+            player_level.text("海盜船玩家")
+            break
+        case 5:
+            $(".hide-level").hide()
+            break
+        case 6:
+            $(".hide-level").show()
+            cat_level.text("五")
+            player_level.text("自由落體玩家")
+            break
+        default:
+            $(".hide-level").hide()
+            break
+    }
 }
 
 function replay(){
@@ -238,6 +276,82 @@ function showOverlay() {
 function hideOverlay() {
     overlay.hide()
     $("body").attr("overflow-y", "visible")
+}
+
+
+// Change Background & Logo
+var img_logo = $("img.img-logo-small")
+var body = $("body")
+var meow = [
+    {//gs=0, 摩天輪玩家
+        bg:"assets/bg/1.jpg",
+        logo:"assets/logo/1.png",
+        cat:""
+    },
+    {//gs=1, 咖啡杯玩家
+        bg:"assets/bg/2.jpg",
+        logo:"assets/logo/2.png",
+        cat:""
+    },
+    {//gs=2,3, 旋轉木馬玩家
+        bg:"assets/bg/3.jpg",
+        logo:"assets/logo/3.png",
+        cat:""
+    },
+    {//gs=4,5, 海盜船玩家
+        bg:"assets/bg/4.jpg",
+        logo:"assets/logo/4.png",
+        cat:""
+    },
+    {//gs=6, 自由落體玩家
+        bg:"assets/bg/5.jpg",
+        logo:"assets/logo/5.png",
+        cat:""
+    },
+    {//gs=7, 進入結局
+        bg:"",
+        logo:"",
+        cat:""
+    }
+]
+
+function changebg(level) {
+    // alert("change bg")
+    console.log("change image!!")
+    switch(level) { //level = amount = gs-1
+        case 1:
+            console.log("咖啡杯玩家")
+            img_logo.attr("src",meow[1].logo)
+            body.css("background-image","url("+meow[1].bg+")")
+            break
+        case 2:
+            console.log("旋轉木馬玩家")
+            img_logo.attr("src",meow[2].logo)
+            body.css("background-image","url("+meow[2].bg+")")
+            break
+        case 3:
+            img_logo.attr("src",meow[2].logo)
+            body.css("background-image","url("+meow[2].bg+")")
+            break
+        case 4:
+            console.log("海盜船玩家")
+            img_logo.attr("src",meow[3].logo)
+            body.css("background-image","url("+meow[3].bg+")")
+            break
+        case 5:
+            img_logo.attr("src",meow[3].logo)
+            body.css("background-image","url("+meow[3].bg+")")
+            break
+        case 6:
+            console.log("自由落體玩家")
+            img_logo.attr("src",meow[4].logo)
+            body.css("background-image","url("+meow[4].bg+")")
+            break
+        default:
+            img_logo.attr("src",meow[0].logo)
+            body.css("background-image","url("+meow[0].bg+")")
+            break
+    }
 }
 
 
