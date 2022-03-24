@@ -3,12 +3,16 @@ require_once"pdoInc.php";
 // error_reporting(E_ALL & ~E_NOTICE);
 
 
+if(isset($_POST['username'])){
+    $username = $_POST['username'];
+}
+if(isset($_POST['password'])){
+    $pwd = $_POST['password'];
 
-$username = $_POST['username'];
-$pwd = $_POST['password'];
-$confirm_pwd = $_POST['confirm_password'];
-$nickname = $_POST['nickname'];
-$checkbox = $_POST['agree_toc'];
+}
+if(isset($_POST['agree_toc'])){
+    $checkbox = $_POST['agree_toc'];
+}
 // echo $checkbox;
 //有勾：on
 //沒勾：underdefined
@@ -77,16 +81,13 @@ if ($stmt->execute()) {
     echo "<script> {window.alert('成功加入');} </script>";
     // echo "<script> localStorage.setItem('ad_change',0) </script>";
     session_start();
-    $_SESSION["loggedin"] = 1;
-
-    // $_SESSION["id"] = $id;
-    // $_SESSION["nickname"] = $checkNickname;
+    $_SESSION["loggedin"] = true;
     $_SESSION['username'] = $checkUsername;
     $_SESSION['askQuestion'] = 0;
     sleep(3);
     echo '<meta http-equiv=REFRESH CONTENT=0;url=main.php>';
 } else {
-    // echo "<script> {window.alert('Opps, 現在有問題請稍等');location.href='main.php'} </script>";
+  echo "<script> {window.alert('Opps, 現在有問題請稍等');location.href='main.php'} </script>";
 }
 unset($stmt);
 

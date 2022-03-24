@@ -1,7 +1,7 @@
 <?php
 session_start();
 require_once"pdoInc.php";
-error_reporting(E_ALL & ~E_NOTICE);
+// error_reporting(E_ALL & ~E_NOTICE);
 
 if($_SESSION['askQuestion'] == 0) {
     // echo "<script>alert('ask Question = 0')</script>";
