@@ -30,13 +30,16 @@
 
         <div class="header">
             <a href="main.php"><img src="assets/img-logo.png" class="img-logo cursor-pointer"></a>
+
+            <div class="profile-blur"></div>
             <div class="profile">
-                <div>
-                    <p>Username</p>
-                    <p>Exp.</p>
-                </div>
-                <div class="exp-bar">
-                    <div class="exp"></div>
+                <img class="img-cat" src="assets/meow/cat.png">
+                <div class="user-stats">
+                    <p id="profile-username" class="green">Username</p>
+                    <p class="green">EXP.<span class="exp-num">0</span> (<span class="player-title">摩天輪玩家</span>)</p>
+                    <div class="exp-bar">
+                        <div class="exp"></div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -51,12 +54,13 @@
                 <br>
                 <div class="flex-horizontal">
                     <label class="label-signup" for="password">密碼</label>
-                    <input class="input-signup" type="text" id="password" name="password" placeholder="你的密碼很安全的~"></input>
+                    <input class="input-signup" type="password" id="password" name="password" placeholder="你的密碼很安全的~"></input>
                 </div>
                 <br>
                 <label class="label-signup" for="agree_toc">
                     <input class="checkbox-signup" type="checkbox" id="agree_toc" name="agree_toc"></input>
-                    <span class="checkmark"></span>我同意<span class="toc-link">使用條款</span>
+                    <img class="img-checkbox" src="assets/icon/img-checkbox-unchecked.png">
+                    <span class="checkmark">我同意</span><span class="toc-link">使用條款</span>
                 </label>
                 <br>
                 <button class="btn-large" type="submit" id="btn-signup">進入遊戲</button>
@@ -330,8 +334,7 @@
                     <img class="img-game-thumbnail" src="assets/game thumbnail/blue dots.png">
                     <div id="game-title" class="game-title noselect cursor-pointer">圈藍點點</div>
                 </div>
-                <div id="game-2" class="game cursor-pointer">
-                    <img class="img-game-thumbnail" src="./assets/game/2-flip-card-game-master/cardImg/縮圖.png">
+                <div id="game-2" class="game cursor-pointer"><img class="img-game-thumbnail" src="assets/game thumbnail/flip-card.png">
                     <div id="game-title" class="game-title noselect cursor-pointer">翻牌遊戲</div>
                 </div>
                 <div id="game-3" class="game cursor-pointer">
@@ -363,12 +366,12 @@
                     <div id="game-title" class="game-title noselect cursor-pointer">射鴨</div>
                 </div>
                 <div id="game-10" class="game cursor-pointer">
-                    <img class="img-game-thumbnail" src="assets/game thumbnail/nan.png">
-                    <div id="game-title" class="game-title noselect cursor-pointer">心理測驗(一)</div>
+                    <img class="img-game-thumbnail" src="assets/game thumbnail/test-1.png">
+                    <div id="game-title" class="game-title noselect cursor-pointer">Labu Labu小酒館</div>
                 </div>
                 <div id="game-11" class="game cursor-pointer">
-                    <img class="img-game-thumbnail" src="assets/game thumbnail/nan.png">
-                    <div id="game-title" class="game-title noselect cursor-pointer">心理測驗(二)</div>
+                    <img class="img-game-thumbnail" src="assets/game thumbnail/test-2.png">
+                    <div id="game-title" class="game-title noselect cursor-pointer">精靈の算命小屋</div>
                 </div>
                 <div id="game-12" class="game cursor-pointer">
                     <img class="img-game-thumbnail" src="assets/game thumbnail/nan.png">

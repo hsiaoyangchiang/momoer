@@ -1,4 +1,6 @@
 * {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
     box-sizing: border-box;
 }
 
@@ -6,7 +8,11 @@ body {
     position: relative;
     min-height: 100%;
     margin: 0 0px;
-    background-color: #05246A;
+    /* background-color: #05246A; */
+    background-image: url("assets/bg/1.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;  
+    background-size: cover;
     /*font-family: ;
     font-weight: ;*/
 }
@@ -39,7 +45,6 @@ body {
 
 /* layout */
 .header {
-    border: 1px solid green;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -269,24 +274,43 @@ iframe {
 }
 /* profile */
 div.profile {
+    display: none;
     position: relative;
     width: 336px;
     height: 200px;
-    border: 1px solid red;
 }
-div.exp-bar {
+div.profile-blur {
+    display: block;
+    position: absolute;
+    right: 24px;
+    bottom: -4px;
+    width: 352px;
+    height: 216px;
+    background: rgba(0, 0, 0, 0.5);
+    
+    /* filter: blur(2px); /* soften edge
+    -webkit-filter: blur(2px); */
+
+    backdrop-filter: blur(8px); /* blur */
+    border-radius: 24px;
+}
+div.user-stats {
+    width: 100%;
     position: absolute;
     bottom: 0;
+}
+div.exp-bar {
     width: 100%;
-    height: 18px;
-    border-radius: 4px;
-    background-color: #FFF;
+    height: 20px;
+    border-radius: 10px;
+    margin-top: 8px;
+    border: 2px solid #88E998;
 }
 div.exp {
     position: relative;
-    width: 10%;
+    width: 0%;
     height: 100%;
-    border-radius: 4px 2px 2px 4px;
+    border-radius: 10px 0px 0px 10px;
     background-color: #88E998;
 }
 
@@ -302,7 +326,12 @@ div.exp {
     width: auto;
     height: 133px;
 }
-
+.img-cat {
+    position: absolute;
+    right: 0;
+    width: auto;
+    height: 200px;
+}
 .img-ad {
     position: relative;
     object-fit: cover;
@@ -314,6 +343,10 @@ div.exp {
 .img-game-thumbnail {
     width: 100%;
     object-fit: cover;
+}
+.img-checkbox {
+    position: relative;
+    top: 2px;
 }
 
 
@@ -487,6 +520,9 @@ p {
 
     color: #F6CD63;
 }
+p.green {
+    color: #88E998;
+}
 
 label.label-signup {
     font-family: 'DotGothic16';
@@ -525,6 +561,9 @@ input:focus {
     color: #000;
     border: 0;
     outline: #FFF;
+}
+input.checkbox-signup {
+    display: none;
 }
 
 .game-title {

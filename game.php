@@ -32,12 +32,10 @@ if($_SESSION['askQuestion'] == 0) {
                 <span class="leaderboard-margenta">&#128081; 王小明 600 &#9733; 王宏宏 450 &#9733; 楊明王 400 &#9733; 阿翔 350 &#9733; 小羊 200 &nbsp;&nbsp;</span>
                 <span class="leaderboard-green">全台數位內容首府 來電詢問2939-3091</span>
             </marquee>
-            <div id="btn-signup">
-            </div>
         </div>
 
         <div class="header-game">
-            <img src="assets/img-logo.png" class="img-logo-small cursor-pointer">
+            <img src="assets/img-logo.png" class="img-logo-small cursor-default">
         </div>
 
         <!-- <div id="backend-panel"> 模擬後端操作面板
@@ -99,10 +97,10 @@ if($_SESSION['askQuestion'] == 0) {
         </div>
 
         <div class="modal-endgame">
-            <h2>WELLDONE ! ! !</h2>
-            <p>EXP +500</p>
-            <p>進化: 第二形態</p>
-            <p>玩家升級: 小學徒</p>
+            <h2>遊戲結束哩 喵</h2>
+            <p>EXP +120</p>
+            <p class="hide-level">進化: 第<span id="cat-level">二</span>形態</p>
+            <p class="hide-level">玩家升級: <span id="player-level">小學徒</span></p>
             <br>
             <div class="flex-horizontal">
                 <button id="replay" class="btn-medium" onclick="replay()" style="margin-right: 32px;">再玩一次</button>

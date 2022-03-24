@@ -231,7 +231,7 @@ let canvasMaxHeight = 800,
 canvas.width = canvasWidth
 canvas.height = canvasHeight
 
-let retryBtn = document.querySelector('.retry-btn')
+// let retryBtn = document.querySelector('.retry-btn')
 let retryText = document.querySelector('.retry-text')
 let playBtn = document.querySelector('.btn.play')
 let startScreen = document.querySelector('.start-screen')
@@ -410,14 +410,14 @@ function showHideOptions(){
 	if(failed == true && generateBall == false){
 		retryText.classList.remove('hide')
 		retryText.classList.add('show')
-		retryBtn.classList.remove('hide')
+		// retryBtn.classList.remove('hide')
 		// retryBtn.classList.add('show')
 		setTimeout('parent.callParent()', 1000)
 	}else if(failed == false && generateBall == true){
 		retryText.classList.add('hide')
 		retryText.classList.remove('show')
-		retryBtn.classList.add('hide')
-		retryBtn.classList.remove('show')
+		// retryBtn.classList.add('hide')
+		// retryBtn.classList.remove('show')
 	}
 }
 
@@ -448,13 +448,13 @@ canvas.addEventListener('mousedown', () => {
 })
 
 // retry again by clicking the retry button
-retryBtn.addEventListener('mousedown', () => {
-	//Lili endgame
-	parent.callParent()
-	/*
-	failed = false
-	init()*/
-})
+// retryBtn.addEventListener('mousedown', () => {
+// 	//Lili endgame
+// 	parent.callParent()
+// 	/*
+// 	failed = false
+// 	init()*/
+// })
 
 // Start playing now.
 playBtn.addEventListener('mousedown', () => {

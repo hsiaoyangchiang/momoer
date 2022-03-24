@@ -1,0 +1,226 @@
+* {
+    box-sizing: border-box;
+}
+@font-face {
+    font-family: 'Corporate Logo Rounded';
+    src: url('assets/Corporate-Logo-Rounded.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    position: relative;
+    width: 892px;
+    height: 535px;
+    margin: 0;
+    padding: 0;
+    background-color: #EEE8CE;
+    outline: 1px solid red;
+    overflow-y: hidden;
+}
+section {
+    display: none;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+section#cover {
+    display: block;
+}
+section#instructions {
+    display: none;
+}
+section#picture {
+    display: none;
+}
+section.question {
+    display: none;
+}
+section#loading {
+    display: none;
+}
+section#result {
+    display: none;
+    height: auto;
+}
+
+.center-align {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+.center-align-baseline {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: baseline;
+    width: 100%;
+    height: 100%;
+}
+.flex-horizontal {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    height: auto;
+}
+
+div#countdown-div {
+    position: relative;
+    background-color: #374D28;
+    margin-top: 40px;
+    width: 164px;
+    height: 160px;
+
+    font-family: 'Corporate Logo Rounded';
+    font-weight: 700;
+    font-size: 120px;
+    line-height: 160px;
+    text-align: center;
+    color: #FFF;
+}
+div.question-list {
+    width: 668px;
+    height: auto;
+    justify-content: space-between;
+}
+div.question {
+    margin-bottom: 68px;
+}
+div.option {
+    width: 182px;
+    height: 196px;
+    background-color: #F6D180;
+    border-radius: 34px;
+}
+div.scroll-down {
+    position: absolute;
+    height: 535px;
+}
+div.result {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 892px;
+    height: 535px;
+}
+span.round {
+    width: 62px;
+    height: 62px;
+    background-color: #374D28;
+    border-radius: 50%;
+    transform: rotate(-15deg);
+    margin-right: 18px;
+
+    font-family: 'Corporate Logo Rounded';
+    font-weight: 700;
+    font-size: 54px;
+    line-height: 62px;
+    text-align: center;
+    color: #FFF;
+}
+span.row-space {
+    position: relative;
+    width: 32px;
+}
+
+h1 {
+    font-family: 'Corporate Logo Rounded';
+    font-weight: 700;
+    font-size: 60px;
+    line-height: 72px;
+    text-align: center;
+    margin: 0;
+    color: #1A1919;
+}
+h2 {
+    font-family: 'Corporate Logo Rounded';
+    font-weight: 700;
+    font-size: 44px;
+    line-height: 100%;
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 24px;
+    color: #1A1919;
+}
+h3 {
+    position: absolute;
+    left: 120px;
+    top: 80px;
+
+    font-family: 'Corporate Logo Rounded';
+    font-weight: 700;
+    font-size: 64px;
+    line-height: 100%;
+    text-align: left;
+    margin: 0;
+    color: #488E80;
+}
+h6 {
+    font-family: 'Corporate Logo Rounded';
+    font-weight: 700;
+    font-size: 72px;
+    line-height: 100%;
+    text-align: center;
+    color: #C4252A;
+}
+p {
+    font-family: 'Corporate Logo Rounded';
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 100%;
+    text-align: center;
+    margin-top: 18px;
+    margin-bottom: 0;
+    color: #1A1919;
+}
+p.result {
+    position: absolute;
+    top: 200px;
+    left: 200px;
+    line-height: 44px;
+    text-align: left;
+    margin: 0;
+    color: #FFF;
+    white-space: pre-line;
+}
+button {
+    position: absolute;
+    right: 18px;
+    bottom: 16px;
+    width: 116px;
+    height: 42px;
+    background-color: #61472F;
+    border-radius: 10px;
+    border: 0;
+    outline: 0;
+
+    font-family: 'Corporate Logo Rounded';
+    font-size: 22px;
+    line-height: 100%;
+    letter-spacing: 0.02em;
+    text-align: center;
+    margin: 0;
+    color: #FFF;
+}
+
+img {
+    border: 0;
+    outline: 0;
+    margin: 0;
+}
+img.img-last-step {
+    position: absolute;
+    top: 24px;
+    left: 24px;
+}
+img#result-bg {
+    position: absolute;
+    bottom: 46px;
+    left: 120px;
+}

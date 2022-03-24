@@ -12,6 +12,10 @@ function getSession() {
         loggedin = data.loggedin
         var username = data.username
         var askQuestion = data.askQuestion
+        if(loggedin == 1) {
+            $("div.profile").show()
+            $("p#profile-username").text(username)
+        }       
         console.log("loggedin: "+loggedin)
         console.log("username: "+username)
         console.log("askQuestion: "+askQuestion)
@@ -21,6 +25,106 @@ function getSession() {
 // Run basics
 window.onload = function() {
     getSession()
+    getStats()
+}
+
+// User Stats
+var img_logo = $("img.img-logo")
+var body = $("body")
+var player_title = $(".player-title")
+var meow = [
+    {//gs=0, 摩天輪玩家
+        bg:"assets/bg/1.jpg",
+        logo:"assets/logo/1.png",
+        title: "摩天輪玩家",
+        cat:""
+    },
+    {//gs=1, 咖啡杯玩家
+        bg:"assets/bg/2.jpg",
+        logo:"assets/logo/2.png",
+        title: "咖啡杯玩家",
+        cat:""
+    },
+    {//gs=2,3, 旋轉木馬玩家
+        bg:"assets/bg/3.jpg",
+        logo:"assets/logo/3.png",
+        title: "旋轉木馬玩家",
+        cat:""
+    },
+    {//gs=4,5, 海盜船玩家
+        bg:"assets/bg/4.jpg",
+        logo:"assets/logo/4.png",
+        title: "海盜船玩家",
+        cat:""
+    },
+    {//gs=6, 自由落體玩家
+        bg:"assets/bg/5.jpg",
+        logo:"assets/logo/5.png",
+        title: "自由落體玩家",
+        cat:""
+    },
+    {//gs=7, 進入結局
+        bg:"",
+        logo:"",
+        cat:""
+    }
+]
+
+function getStats() {
+    $.get("amount.php", function(data, status){
+        console.log("getting user stats")
+
+        // Level up
+        level = parseInt(data)
+        console.log("level: "+level)
+        $(".exp-num").text(level*120)
+        $("div.exp").css("width",parseInt(level*14)+"%")
+
+        // Change Images
+        switch(level) { //level = amount = gs-1
+            case 1:
+                console.log("咖啡杯玩家")
+                img_logo.attr("src",meow[1].logo)
+                body.css("background-image","url("+meow[1].bg+")")
+                player_title.text(meow[1].title)
+                break
+            case 2:
+                console.log("旋轉木馬玩家")
+                img_logo.attr("src",meow[2].logo)
+                body.css("background-image","url("+meow[2].bg+")")
+                player_title.text(meow[2].title)
+                break
+            case 3:
+                img_logo.attr("src",meow[2].logo)
+                body.css("background-image","url("+meow[2].bg+")")
+                player_title.text(meow[2].title)
+                break
+            case 4:
+                console.log("海盜船玩家")
+                img_logo.attr("src",meow[3].logo)
+                body.css("background-image","url("+meow[3].bg+")")
+                player_title.text(meow[3].title)
+                break
+            case 5:
+                img_logo.attr("src",meow[3].logo)
+                body.css("background-image","url("+meow[3].bg+")")
+                player_title.text(meow[3].title)
+                break
+            case 6:
+                console.log("自由落體玩家")
+                img_logo.attr("src",meow[4].logo)
+                body.css("background-image","url("+meow[4].bg+")")
+                player_title.text(meow[4].title)
+                break
+            default:
+                img_logo.attr("src",meow[0].logo)
+                body.css("background-image","url("+meow[0].bg+")")
+                player_title.text(meow[0].title)
+                break
+        }
+        // $("body").css("background-image","url("+bg_url+")")
+
+    }, "text")
 }
 
 // Hover game title
@@ -68,6 +172,23 @@ for(let i=0; i<12; i++) {
 }
 
 // TOC
+var agree_toc = 0
+$(".img-checkbox, span.checkmark").click(function() {
+    if (agree_toc == 0) {
+        console.log("agree toc")
+        $(".img-checkbox").attr("src","assets/icon/img-checkbox-checked.png").fadeIn(2000)
+        $("input.checkbox-signup").attr("checked")
+        agree_toc = 1
+    }
+    else {
+        console.log("disagree toc")
+        $(".img-checkbox").attr("src","assets/icon/img-checkbox-unchecked.png").fadeIn(2000)
+        $("input.checkbox-signup").removeAttr("checked")
+        agree_toc = 0
+    }
+    
+})
+
 $(".toc-link").click(function(){
     console.log("show toc")
     $(".form-signup").hide()
