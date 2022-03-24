@@ -319,6 +319,7 @@ div.exp {
 .img-logo {
     width: auto;
     height: 200px;
+    border: 1px solid red;
 }
 
 .img-logo-small {
