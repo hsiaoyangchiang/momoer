@@ -381,10 +381,10 @@ $("button.end").click(function() {
 
 $("button.leave").click(function() {
     parent.window.location = "../../../main.php"
-    let gamePlayed = true
-    $.post("../php/submit-test.php",
+    let gamePlayed1 = true
+    $.post("../../../php/submit-test.php",
     {
-        gamePlayed: gamePlayed,
+        gamePlayed1: gamePlayed1,
     },
     function(data, status){
         alert("Data: " + data + "\nStatus: " + status); //回傳回來的資料

@@ -76,12 +76,12 @@ function showResult(choice) {
 }
 
 $("button#leave-btn").click(function() {
-    console.log("leave game")
     parent.window.location = "../../../main.php"
-    let gamePlayed = true
+    let gamePlayed2 = true
+    console.log(gamePlayed2)
     $.post("../../../php/submit-test.php",
     {
-        gamePlayed: gamePlayed,
+        gamePlayed2: gamePlayed2,
     },
     function(data, status){
         alert("Data: " + data + "\nStatus: " + status); //回傳回來的資料
