@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    </head>
+    <body>
+        <p>aaa</p>
+        <button>Click</button>
+        <script>
+
+            var board = [
+                {
+                    user:"jijei",
+                    pwd:"weijei"
+                },{
+                    user:"222",
+                    pwd:"weijei"
+                },{
+                    user:"333",
+                    pwd:"weijei"
+                }
+            ]
+
+            $("button").click(function() {
+                $.ajax({
+                    url:"php/board.php",
+                    success: function(data) {
+                        len = JSON.parse(data).length
+                        for (let i = 0; i < len ; i++) {
+                            console.log(JSON.parse(data)[i].username)
+                            console.log(JSON.parse(data)[i].score)
+                        }
+                    }
+                })
+            })
+
+        </script>
+    </body>
+</html>
