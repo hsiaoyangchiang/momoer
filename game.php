@@ -81,28 +81,37 @@ if($_SESSION['askQuestion'] == 0) {
                 <div class="question-radio">
                     <!-- 可以做成點擊選項直接提交 -->
                     <input type="radio" id="option-1" class="option" name="option" value="a">
-                    <label id="option-1" for="option">昆布高湯鍋</label><br>
+                    <!-- <label id="option-1" for="option">昆布高湯鍋</label><br> -->
+                    <div id="option-a" class="rect">昆布高湯鍋</div>
+
                     <input type="radio" id="option-2" class="option" name="option" value="b">
-                    <label id="option-2" for="option">牛奶起司鍋</label><br>
+                    <!-- <label id="option-2" for="option">牛奶起司鍋</label><br> -->
+                    <div id="option-b" class="rect">牛奶起司鍋</div>
+
                     <input type="radio" id="option-3" class="option" name="option" value="c">
-                    <label id="option-3" for="option">麻辣鴛鴦鍋</label><br>
+                    <!-- <label id="option-3" for="option">麻辣鴛鴦鍋</label><br> -->
+                    <div id="option-c" class="rect">麻辣鴛鴦鍋</div>
+
+                    <input type="radio" id="option-4" class="option" name="option" value="d">
+                    <!-- <label id="option-4" for="option">養生老火鍋</label><br> -->
+                    <div id="option-d" class="rect">養生老火鍋</div>
                 </div>
                 <div class="question-saq">
                     <input type="text" name="7" value="">
                 </div>
                 <!-- <button class="btn-medium" type="submit" id="end_my_data">開始遊戲</button> -->
-                <input type="submit" id="send_my_data" class="btn-medium" value="開始遊戲">
+                <input type="submit" id="send_my_data" class="btn-medium deactivate" value="開始遊戲">
                 <!-- <button type="button" id="sim-change">Simulate Ad Change</button> 模擬submit，換廣告的效果 -->
             </form>
         </div>
 
         <div class="modal-endgame">
             <h2>遊戲結束哩 喵</h2>
-            <p>EXP +120</p>
+            <p class="hide-level">EXP +120</p>
             <p class="hide-level">進化: 第<span id="cat-level">二</span>形態</p>
             <p class="hide-level">玩家升級: <span id="player-level">小學徒</span></p>
             <br>
-            <div class="flex-horizontal">
+            <div class="btn-group-endgame flex-horizontal">
                 <button id="replay" class="btn-medium" onclick="replay()" style="margin-right: 32px;">再玩一次</button>
                 <button id="backtoMain" class="btn-medium" onclick="backtoMain()">回首頁</button>
             </div>
@@ -126,6 +135,7 @@ if($_SESSION['askQuestion'] == 0) {
             <img id="ad-bottom" class="img-ad" src="assets/ads/simulate-ad-change/ad-bottom.png">
         </div>
         <div id="overlay"></div>
+        <div class="ad-test"><img id="test-ad-src" src=""></div>
 
         <script src="ad.js"></script>
         <script src="game.js"></script>

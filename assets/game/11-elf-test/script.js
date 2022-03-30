@@ -73,6 +73,7 @@ function showResult(choice) {
         $("div.scroll-down").fadeOut()
         $("div.result").fadeIn()
     },500);
+    parent.loadTestAd(2)
 }
 
 $("button#leave-btn").click(function() {
@@ -84,10 +85,10 @@ $("button#leave-btn").click(function() {
         gamePlayed2: gamePlayed2,
     },
     function(data, status){
-        alert("Data: " + data + "\nStatus: " + status); //回傳回來的資料
+        // alert("Data: " + data + "\nStatus: " + status); //回傳回來的資料
     })
         .done(function(data) {
-            alert("done :)")
+            // alert("done :)")
         })
         .fail(function(xhr, status, error) {
             alert(xhr.responseText)

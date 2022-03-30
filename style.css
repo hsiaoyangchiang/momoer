@@ -158,7 +158,7 @@ pre.textarea-toc {
     left: 0;
     right: 0;
     margin: 5% auto; /* Will not center vertically and won't work in IE6/7. */
-    padding: 24px 32px 32px;
+    padding: 24px 32px 8px;
     background-color: white;
     border: 12px solid #F6CD63;
     border-radius: 16px;
@@ -189,6 +189,10 @@ pre.textarea-toc {
     border: 12px solid #88E998;
     border-radius: 16px;
     z-index: 3;
+}
+div.btn-group-endgame {
+    position: absolute;
+    bottom: 24px;
 }
 
 /* all games */
@@ -221,6 +225,7 @@ pre.textarea-toc {
     align-items: center;
     justify-content: center;*/
     background-color: white;
+    opacity: 0.72;
 }
 
 .ad-vertical {
@@ -241,6 +246,14 @@ pre.textarea-toc {
     margin-left: auto;
     margin-right: auto;
     z-index: 1;
+}
+.ad-test {
+    position: fixed;
+    right: 0;
+    bottom: -264px;
+    width: 290px;
+    height: 264px;
+    z-index: 3;
 }
 
 /* single game page */
@@ -319,7 +332,6 @@ div.exp {
 .img-logo {
     width: auto;
     height: 200px;
-    border: 1px solid red;
 }
 
 .img-logo-small {
@@ -501,11 +513,12 @@ h3 {
     font-family: 'DotGothic16';
     font-style: normal;
     font-weight: normal;
-    font-size: 32px;
+    font-size: 30px;
     line-height: 100%;
     text-align: center;
+    letter-spacing: 0.4em;
     margin-top: 0px;
-    margin-bottom: 8px;
+    margin-bottom: 12px;
     
     color: #F6CD63;
 }
@@ -564,6 +577,38 @@ input:focus {
 }
 input.checkbox-signup {
     display: none;
+}
+
+input.option {
+    display: none;
+}
+div.question-radio {
+    margin: 4px 0px 12px;
+}
+div.rect {
+    width: 632px;
+    padding: 10px 12px;
+    background-color: #FFF;
+    border-radius: 6px;
+
+    font-family: 'DotGothic16';
+    font-size: 28px;
+    line-height: 28px;
+    text-align: left;
+
+    color: #88E998;
+}
+div.rect:hover {
+    background-color: #FBE6B1;
+    color: #05246A;
+}
+div.rect.active {
+    background-color: #F6CD63;
+    color: #FFF;
+}
+
+input.deactivate {
+    opacity: 40%;
 }
 
 .game-title {

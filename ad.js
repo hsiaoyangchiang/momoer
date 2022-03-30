@@ -8,28 +8,28 @@ var a = "a"
 var b = "a"
 var c = "a"
 
-var ad_src = [ // gs - game_id - selected_radio
+var ad_src = [ // {gs - game_id - selected_radio}
     [ // gs=1
         {
             "a":"assets/ads/simulate-ad-change/1-1-a.png",
-            "b":"b",
-            "c":"c"
+            "b":"11b",
+            "c":"11c"
         },{
-            "a":"a",
-            "b":"b",
-            "c":"c"
+            "a":"12a",
+            "b":"12b",
+            "c":"12c"
         },{
-            "a":"a",
-            "b":"b",
-            "c":"c"
+            "a":"13a",
+            "b":"13b",
+            "c":"13c"
         },{
-            "a":"a",
-            "b":"b",
-            "c":"c"
+            "a":"14a",
+            "b":"14b",
+            "c":"14c"
         },{
-            "a":"a",
-            "b":"b",
-            "c":"c"
+            "a":"15a",
+            "b":"15b",
+            "c":"15c"
         },{
             "a":"a",
             "b":"b",
@@ -52,8 +52,16 @@ var ad_src = [ // gs - game_id - selected_radio
         [ //left
             {
                 "a":"assets/ads/simulate-ad-change/2-1-a-l.png",
-                "b":"b",
-                "c":"c"
+                "b":"21b",
+                "c":"21c"
+            },{
+                "a":"22a",
+                "b":"22b",
+                "c":"22c"
+            },{
+                "a":"23al",
+                "b":"23bl",
+                "c":"23cl"
             },{
                 "a":"a",
                 "b":"b",
@@ -78,16 +86,8 @@ var ad_src = [ // gs - game_id - selected_radio
                 "a":"a",
                 "b":"b",
                 "c":"c"
-            },{
-                "a":"a",
-                "b":"b",
-                "c":"c"
-            },{
-                "a":"a",
-                "b":"b",
-                "c":"c"
-            },
-        , //right
+            }
+        ],[ //right
             {
                 "a":"assets/ads/simulate-ad-change/2-1-a-r.png",
                 "b":"b",
@@ -97,9 +97,9 @@ var ad_src = [ // gs - game_id - selected_radio
                 "b":"b",
                 "c":"c"
             },{
-                "a":"a",
-                "b":"b",
-                "c":"c"
+                "a":"23ar",
+                "b":"23br",
+                "c":"23cr"
             },{
                 "a":"a",
                 "b":"b",
@@ -210,76 +210,63 @@ var ad_src = [ // gs - game_id - selected_radio
 ]
 
 function changeAd(game_session) {
-    // alert("change ad")
-    // game_session = localStorage.getItem("game_session") //執行function前已經取出了，因此將值放入function的變數
-    var game_id = localStorage.getItem("game_id")
-    var selected_radio = localStorage.getItem("selected_radio")
+    var ad = []
 
-    //以下內容暫時不需要修改
-    switch(parseInt(game_session)) {
-        case 1:
-            // alert("case 1")
-            if (localStorage.getItem("Q1_choice") == null) {
-                // ad_bottom.attr("src",file_location+"1-"+game_id+"-"+selected_radio+fileType)
+    //從ad.php取得要換的廣告為何
+    $.ajax({
+        url: 'php/ad.php',
+        success: function(data) {
+            // alert(data)
+            console.log("ad pattern:"+data)
+            ad = data
+            console.log(typeof(ad))
 
-                ad_bottom.attr("src",ad_src[0][game_id-1][selected_radio])
-                localStorage.setItem("Q1_gameID",game_id)
-                localStorage.setItem("Q1_radio",selected_radio)
-                // localStorage.setItem("Q1_choice","["+game_id-1+"]."+selected_radio)
+            switch(parseInt(game_session)) {
+                case 1:
+                    // alert("case 1")
+                    var db_ad_bottom = ad.split("-")
+                    var db_ad_bottom_gameID = parseInt(db_ad_bottom[0])
+                    var db_ad_bottom_radio = db_ad_bottom[1]
+                    console.log("db_ad_bottom_gameID"+db_ad_bottom_gameID)
+                    console.log("db_ad_bottom_radio"+db_ad_bottom_radio)
+        
+                    ad_bottom.attr("src",ad_src[0][db_ad_bottom_gameID-1][db_ad_bottom_radio])
+                    break
+                case 2:
+                    // alert("case 2")
+                    var db_ad_bottom = ad.split(",")[0].split("-")
+                    var db_ad_bottom_gameID = parseInt(db_ad_bottom[0])
+                    var db_ad_bottom_radio = db_ad_bottom[1]
+                    console.log("db_ad_bottom_gameID"+db_ad_bottom_gameID)
+                    console.log("db_ad_bottom_radio"+db_ad_bottom_radio)
+        
+                    ad_bottom.attr("src",ad_src[0][db_ad_bottom_gameID-1][db_ad_bottom_radio])
+        
+                    var db_ad_side = ad.split(",")[1].split("-")
+                    var db_ad_side_gameID = parseInt(db_ad_side[0])
+                    var db_ad_side_radio = db_ad_side[1]
+                    console.log("db_ad_side_gameID"+db_ad_side_gameID)
+                    console.log("db_ad_side_radio"+db_ad_side_radio)
+        
+                    ad_left.attr("src",ad_src[1][0][db_ad_side_gameID-1][db_ad_side_radio])
+                    ad_right.attr("src",ad_src[1][1][db_ad_side_gameID-1][db_ad_side_radio])
+        
+                    break
+                case 3: case 4: case 5: case 6:
+                    // alert("case 3up")
+                    var db_ad_radio = ad
+        
+                    ad_left.attr("src",ad_src[game_session-1][db_ad_radio].left)
+                    ad_right.attr("src",ad_src[game_session-1][db_ad_radio].right)
+                    ad_bottom.attr("src",ad_src[game_session-1][db_ad_radio].bottom)
+                    break
+                default:
+                    ad_left.attr("src","assets/ads/simulate-ad-change/ad-left.png")
+                    ad_right.attr("src","assets/ads/simulate-ad-change/ad-right.png")
+                    ad_bottom.attr("src","assets/ads/simulate-ad-change/ad-bottom.png")
             }
-            else {
-                // var Q1_choice = localStorage.getItem("Q1_choice")
-                // ad_bottom.attr("src",file_location+"1-"+Q1_choice+fileType)
-
-                var Q1_gameID = localStorage.getItem("Q1_gameID")
-                var Q1_radio = localStorage.getItem("Q1_radio")
-                ad_bottom.attr("src",ad_src[0][Q1_gameID-1][Q1_radio])
-            }
-            break
-        case 2:
-            // alert("case 2")
-            //bottom換成case 1 的
-            // var Q1_choice = localStorage.getItem("Q1_choice")
-            // ad_bottom.attr("src",file_location+"1-"+Q1_choice+fileType)
-
-            var Q1_gameID = localStorage.getItem("Q1_gameID")
-            var Q1_radio = localStorage.getItem("Q1_radio")
-            ad_bottom.attr("src",ad_src[0][Q1_gameID-1][Q1_radio])
-
-            //判斷是第一次換還是第二次
-            if (localStorage.getItem("Q2") == null) {
-                // ad_left.attr("src",file_location+"2-"+game_id+"-"+selected_radio+"-l"+fileType)
-                // ad_right.attr("src",file_location+"2-"+game_id+"-"+selected_radio+"-r"+fileType)
-
-                ad_left.attr("src",ad_src[1][game_id-1][0][selected_radio]) //ad_src[gs][gID][0=left].a;
-                ad_right.attr("src",ad_src[1][game_id-1][1][selected_radio]) //bug
-                localStorage.setItem("Q2",1)
-                localStorage.setItem("Q2_game_id",game_id)
-            }
-            else {
-                var Q2_game_id = parseInt(localStorage.getItem("Q2_game_id"))
-                ad_left.attr("src",ad_src[1][Q2_game_id-1][0][selected_radio])
-                ad_right.attr("src",ad_src[1][Q2_game_id-1][1][selected_radio])
-
-                // ad_left.attr("src",file_location+"2-"+Q2_game_id+"-"+selected_radio+"-l"+fileType)
-                // ad_right.attr("src",file_location+"2-"+Q2_game_id+"-"+selected_radio+"-r"+fileType)
-            }
-            break
-        case 3: case 4: case 5: case 6:
-            // alert("case 3up")
-            // ad_left.attr("src",file_location+game_session+"-"+selected_radio+"-l"+fileType)
-            // ad_right.attr("src",file_location+game_session+"-"+selected_radio+"-r"+fileType)
-            // ad_bottom.attr("src",file_location+game_session+"-"+selected_radio+fileType)
-
-            ad_left.attr("src",ad_src[game_session-1][selected_radio].left)
-            ad_right.attr("src",ad_src[game_session-1][selected_radio].right)
-            ad_bottom.attr("src",ad_src[game_session-1][selected_radio].bottom)
-            break
-        default:
-            ad_left.attr("src","assets/ads/simulate-ad-change/ad-left.png")
-            ad_right.attr("src","assets/ads/simulate-ad-change/ad-right.png")
-            ad_bottom.attr("src","assets/ads/simulate-ad-change/ad-bottom.png")
-    }
+        }
+    })
 }
 
 var ad_change = localStorage.getItem("ad_change")

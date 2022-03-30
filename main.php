@@ -29,9 +29,9 @@
         </div>
 
         <div class="header">
-            <a href="main.php"><img src="assets/img-logo.png" class="img-logo cursor-pointer"></a>
+            <img src="assets/img-logo.png" class="img-logo cursor-pointer">
 
-            <div class="profile-blur"></div>
+            <!-- <div class="profile-blur"></div> -->
             <div class="profile">
                 <img class="img-cat" src="assets/meow/cat.png">
                 <div class="user-stats">

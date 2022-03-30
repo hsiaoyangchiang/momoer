@@ -377,6 +377,7 @@ $("button.end").click(function() {
     $("#short").text(cocktail[resultType]["short"])
     $("#description").text(cocktail[resultType]["description"])
     $("img.cocktail").attr("src",cocktail[resultType]["imgURL"])
+    parent.loadTestAd(1)
 })
 
 $("button.leave").click(function() {
@@ -387,10 +388,10 @@ $("button.leave").click(function() {
         gamePlayed1: gamePlayed1,
     },
     function(data, status){
-        alert("Data: " + data + "\nStatus: " + status); //回傳回來的資料
+        // alert("Data: " + data + "\nStatus: " + status); //回傳回來的資料
     })
         .done(function(data) {
-            alert("done :)")
+            // alert("done :)")
         })
         .fail(function(xhr, status, error) {
             alert(xhr.responseText)
