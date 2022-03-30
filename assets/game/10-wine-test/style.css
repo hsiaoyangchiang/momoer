@@ -1,5 +1,6 @@
 * {
     box-sizing: border-box;
+    cursor: default;
 }
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap');
 @font-face {
@@ -100,31 +101,25 @@ div.sign {
 div.table-position {
     position: relative;
     left: 0;
-    bottom: 50px;
+    top: 260px;
 }
 div.table {
     width: 100%;
     border-top: 1px solid #73B42E;
     border-bottom: 1px solid #73B42E;
 }
-div.result-div {
-    display: flex;
-    width: 100%;
-    height: 300px;
-    flex-direction: row;
-    padding: 0 44px;
-    align-items: top;
-}
 div.result-text {
-    width: 484px;
+    position: absolute;
+    right: 30px;
+    top: 140px;
+    width: 520px;
 }
 div.img-container {
-    position: relative;
+    position: absolute;
+    left: 30px;
+    bottom: 60px;
     width: 280px;
     height: 302px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
 }
 
 .center-align {
@@ -185,7 +180,9 @@ h3 {
     color: #F26A11;
 }
 
-
+button {
+    padding: 0;
+}
 button:hover {
     cursor: pointer;
 }
@@ -224,13 +221,14 @@ button.circle {
     width: 60px;
     height: 60px;
     border-radius: 50%;
-    padding-top: 5px;
+    padding-top: 4px;
     background-color: #000;
 
     font-family: 'Noto Sans', sans-serif;
     font-weight: 400;
     font-size: 16px;
     line-height: 16px;
+    text-align: center;
 }
 button.circle.cyan {
     border: 1px solid #00AA9B;
@@ -248,6 +246,10 @@ button.circle.orange:hover{
     background-color: #271204;
     color: #FC8D44;
 }
+button.end {
+    font-size: 12.5px;
+    line-height: 12.5px;
+}
 button.deactivate {
     opacity: 0.4;
 }
@@ -257,6 +259,7 @@ img.light {
     margin-top: 22px;
 }
 img.cocktail {
-    max-width: 90%;
-    margin-right: 60px;
+    position: absolute;
+    bottom: 0;
+    max-width: 100%;
 }

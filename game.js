@@ -66,37 +66,36 @@ const modal_question = $(".modal-question")
 const question_radio = $(".question-radio")
 const question_saq = $(".question-saq")
 const question = $("label#question")
-const option_1 = $("label#option-1")
-const option_2 = $("label#option-2")
-const option_3 = $("label#option-3")
+const option_1 = $("div#option-a")
+const option_2 = $("div#option-b")
+const option_3 = $("div#option-c")
+const option_4 = $("div#option-d")
 
 // 問題編號: game_session - game_id
 var arr_question = [ //問題集放這裡
-    [["q1-1","option 1","option 2","option 3"],
-    ["q1-2","option 1","option 2","option 3"],
-    ["q1-3","option 1","option 2","option 3"],
-    ["q1-4","option 1","option 2","option 3"],
-    ["q1-5","option 1","option 2","option 3"],
-    ["q1-6","option 1","option 2","option 3"],
-    ["q1-7","option 1","option 2","option 3"],
-    ["q1-8","option 1","option 2","option 3"],
-    ["q1-9","option 1","option 2","option 3"]],
-    [["q2-1","option 1","option 2","option 3"],
-    ["q2-2","option 1","option 2","option 3"],
-    ["q2-3","option 1","option 2","option 3"],
-    ["q2-4","option 1","option 2","option 3"],
-    ["q2-5","option 1","option 2","option 3"],
-    ["q2-6","option 1","option 2","option 3"],
-    ["q2-7","option 1","option 2","option 3"],
-    ["q2-8","option 1","option 2","option 3"],
-    ["q2-9","option 1","option 2","option 3"]],
-    ["q3","option 1","option 2","option 3"],
-    ["q4","option 1","option 2","option 3"],
-    ["q5","option 1","option 2","option 3"],
-    ["q6","option 1","option 2","option 3"],
-    ["q7","option 1","option 2","option 3"],
-    ["q8","option 1","option 2","option 3"],
-    ["q9","option 1","option 2","option 3"],
+    [['這是一款需要靈機應變的遊戲，請問你的反應速度跟下列哪種動物一樣？','螳螂','貓頭鷹','藍鯨','樹懶'],
+    ['貓咪問題','AAAAA','BBBBB','CCCCC','DDDDD'],
+    ['這個遊戲會考驗你的好眼力，請問你是為什麼近視的？','認真讀書當學霸','追太多劇','躲在被子裡看漫畫','都是 DNA 的錯'],
+    ['這個太空遊戲考驗你的方向掌控技巧。請問你最想成為哪方面的控制高手：','情緒控制','聲音控制','時間管控','食慾控制'],
+    ['台北市的巷弄跟迷宮一樣，請問你在台北市被 google map 的導航騙過幾次？','從來沒被騙過','偶爾一兩次','有時候會被騙','總是被騙QQ'],
+    ['如果你有一個小精靈，你覺得他會：','帶來財運','守護愛情','保佑健康','搗蛋作怪'],
+    ['這是一款建築高塔的遊戲，請問你最喜歡什麼塔？','巴黎鐵塔','古夫金字塔','比薩斜塔','神魔之塔'],
+    ['如果你在家後院挖到寶藏，你希望它是？','價值千萬的木乃伊','可以回到過去的玉鐲子','可以瞬間移動的裹腳布','可以聽到別人心中想法的耳耙子'],
+    ['假如你下輩子會是一隻鳥，你希望老天爺把你變成：','公雞','天鵝','孔雀','烏鴉']],
+    [['你知道貓咪都喜歡追逐發光的點點，請問你是貓派還是狗派？','貓貓','狗狗','披著狗皮的貓','披著貓皮的狗'],
+    ['貓咪問題2','AAAAA','BBBBB','CCCCC','DDDDD'],
+    ['請問你對什麼東西的顏色最沒有偏好？','毛巾','雨傘','餐具','政黨'],
+    ['這個遊戲的太空船只能用左右鍵控制方向，請問你是左撇子還是右撇子？','左撇子','右撇子','XXXXXX','YYYYYY'],
+    ['你覺得哪種不平衡感讓你最難忍受','組員簡報畫面圖文比不平衡','新耳機左右聲道音量不平衡','結束酒精路跑走路不平衡','心理不平衡'],
+    ['小精靈誕生至今已經 42 歲了！請問你覺得在你 42 歲時...','跟伴侶養了一隻變色龍','在南極探險滿 5 年','成為小孩國小的家長會長','地球已經毀滅了'],
+    ['這是個小朋友也能上手的遊戲，你小時候最喜歡看什麼卡通啊？','神奇寶貝','飛天小女警','家庭教師','烏龍派出所'],
+    ['玩 Digger 需要動點腦力。請問你覺得下面哪件事最費腦力？','想下學期課要選什麼','想畢業要做什麼','想男女朋友在氣什麼','想午餐要吃什麼'],
+    ['最喜歡的鴨子料理','薑母鴨','烤鴨','鴨賞','東山鴨頭']],
+    ['你每個月拿多少的零用錢？','5000 以下','5000 - 10000','10000 - 20000','20000 以上'],
+    ['你交往過幾個對象？','0 個','1-2 個','3-5 個','6 個以上'],
+    ['你認為最快樂的時光是在什麼時期？','國中','高中','大學','未來，我目前都不快樂'],
+    ['你覺得你最有自信的是身上的哪個部位？','額頭','鼻子','眼睛','手'],
+    ['什麼是你想要做，但一直沒有時間/機會做的事情？']
 ];
 
 function showQuestion(game_session) {
@@ -116,18 +115,34 @@ function showQuestion(game_session) {
             option_1.text(arr_question[game_session-1][game_id-1][1]) //game_id 從1開始，所以要-1
             option_2.text(arr_question[game_session-1][game_id-1][2])
             option_3.text(arr_question[game_session-1][game_id-1][3])
+            option_4.text(arr_question[game_session-1][game_id-1][4])
         }
         else {
             question.text(arr_question[game_session-1][0])
             option_1.text(arr_question[game_session-1][1])
             option_2.text(arr_question[game_session-1][2])
             option_3.text(arr_question[game_session-1][3])
+            option_4.text(arr_question[game_session-1][4])
         }
     }
 }
 
 
 // Submit Answer
+var selected_value = 0
+var ableSubmitForm = 0
+
+$("div.rect").click(function() {
+    if (selected_value != 0) {
+        $("div.question-radio").find(`[id="option-${selected_value}"]`).removeClass("active")
+    }
+    selected_value = $(this).attr("id").split("-").pop()
+    console.log("Selected: "+selected_value)
+
+    $(this).addClass("active")
+    $("input#send_my_data").removeClass("deactivate")
+})
+
 $( "form" ).on( "submit", function(e) {
     // alert("form here")
     $.ajax({
@@ -138,15 +153,15 @@ $( "form" ).on( "submit", function(e) {
             }
             else {
                 // Save answer into local storage
-                var selected_radio = $("input[name=option]:checked", '#form-question').val()
+                // var selected_radio = $("input[name=option:checked", '#form-question').val()
                 // alert("Selected Radio: "+selected_radio)
                 localStorage.setItem("game_id", game_id)
-                localStorage.setItem("selected_radio", selected_radio)
+                localStorage.setItem("selected_radio", selected_value)
                 // Submit answer + update game_session
                 $.post("submit.php", 
                 {
-                    selected_radio: selected_radio,
-                    gameID: game_id,
+                    selected_radio: selected_value,
+                    gameID: game_id
                 }, 
                 function(data, status) {
                     alert("DATA:" + data + "\nStatus:" + status)
@@ -233,13 +248,13 @@ function levelUp(level){
 }
 
 function replay(){
-    console.log("replay")
+    // console.log("replay")
     modal_endgame.hide()
     hideOverlay()
     // localStorage.setItem("ad_change",1)
     setAdChange()
     window.location.reload()
-    console.log("page reloaded")
+    // console.log("page reloaded")
     $.ajax({
         url: 'php/setQ.php',
         success: function(data) {
@@ -249,7 +264,7 @@ function replay(){
 }
 
 function backtoMain(){
-    console.log("back to main")
+    // console.log("back to main")
     modal_endgame.hide()
     hideOverlay()
     // localStorage.setItem("ad_change",0)
@@ -267,6 +282,24 @@ $("img.img-logo-small").click(function() {
     // localStorage.setItem("ad_change",0)
     setAdChange()
 })
+
+// Show ad of personality-test
+var test_ad_src = $("#test-ad-src")
+var ad_test = $(".ad-test")
+function loadTestAd(id) {
+    if(id == 1) {
+        test_ad_src.attr("src","assets/ads/simulate-ad-change/t1.png")
+    }
+    else {
+        test_ad_src.attr("src","assets/ads/simulate-ad-change/t2.png")
+    }
+    setTimeout(function() {
+        ad_test.animate({bottom:'0px'},1000)
+    },2000)
+    setTimeout(function() {
+        ad_test.animate({bottom:'-264px'},1000)
+    },12000)
+}
 
 // Show overlay and lock y-scroll when modal appears
 const overlay = $("#overlay")
@@ -320,15 +353,14 @@ var meow = [
 
 function changebg(level) {
     // alert("change bg")
-    console.log("change image!!")
     switch(level) { //level = amount = gs-1
         case 1:
-            console.log("咖啡杯玩家")
+            // console.log("咖啡杯玩家")
             img_logo.attr("src",meow[1].logo)
             body.css("background-image","url("+meow[1].bg+")")
             break
         case 2:
-            console.log("旋轉木馬玩家")
+            // console.log("旋轉木馬玩家")
             img_logo.attr("src",meow[2].logo)
             body.css("background-image","url("+meow[2].bg+")")
             break
@@ -337,7 +369,7 @@ function changebg(level) {
             body.css("background-image","url("+meow[2].bg+")")
             break
         case 4:
-            console.log("海盜船玩家")
+            // console.log("海盜船玩家")
             img_logo.attr("src",meow[3].logo)
             body.css("background-image","url("+meow[3].bg+")")
             break
@@ -346,7 +378,7 @@ function changebg(level) {
             body.css("background-image","url("+meow[3].bg+")")
             break
         case 6:
-            console.log("自由落體玩家")
+            // console.log("自由落體玩家")
             img_logo.attr("src",meow[4].logo)
             body.css("background-image","url("+meow[4].bg+")")
             break

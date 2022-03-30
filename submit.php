@@ -49,7 +49,7 @@ if(isset($_POST['gameID']) && $afterAmount<3){
     $row = $stmt->fetch(PDO::FETCH_ASSOC);
     $_SESSION['askQuestion'] = 0;
     unset($stmt);
-}
+} else {
 // if($afterAmount>=3){
     $sql = "UPDATE Game SET Q{$afterAmount} = '{$ans}', amount = '{$afterAmount}' WHERE username = '{$username}' ";
     $stmt = $dbh->prepare($sql);
@@ -57,6 +57,7 @@ if(isset($_POST['gameID']) && $afterAmount<3){
     $row = $stmt->fetch(PDO::FETCH_ASSOC);
     $_SESSION['askQuestion'] = 0;
     unset($stmt);
+}
 // }
 
 echo $afterAmount;

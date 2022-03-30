@@ -132,11 +132,13 @@ var game = $(".game")
 var game_title = game.find(">:last-child")
 
 $(document).on("mouseenter", ".game", function() {
-    $(this).find(">:last-child").css("display","block");
+    $(this).find(">:last-child").css("display","block")
+    $(this).css("opacity","1")
  });
 
 game.mouseleave(() => {
     game_title.hide()
+    game.css("opacity","0.72")
 })
 
 // Lock y-scroll when modal appears
