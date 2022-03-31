@@ -166,6 +166,7 @@ for(let i=0; i<12; i++) {
             console.log("first time to play game")
             overlay.show()
             modal_signup.show()
+            $("input[name='first_game_id']").val(game_id)
         }
         else {
             location.href="game.php?game_id="+game_id
@@ -178,13 +179,13 @@ var agree_toc = 0
 $(".img-checkbox, span.checkmark").click(function() {
     if (agree_toc == 0) {
         console.log("agree toc")
-        $(".img-checkbox").attr("src","assets/icon/img-checkbox-checked.png").fadeIn(2000)
+        $(".img-checkbox").attr("src","assets/icon/img-checkbox-checked.png")
         $("input.checkbox-signup").attr("checked")
         agree_toc = 1
     }
     else {
         console.log("disagree toc")
-        $(".img-checkbox").attr("src","assets/icon/img-checkbox-unchecked.png").fadeIn(2000)
+        $(".img-checkbox").attr("src","assets/icon/img-checkbox-unchecked.png")
         $("input.checkbox-signup").removeAttr("checked")
         agree_toc = 0
     }
