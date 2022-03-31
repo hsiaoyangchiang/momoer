@@ -3,6 +3,7 @@ session_start();
 include("../pdoInc.php");
 $board = array();
 
+$return_arr = array();
 $sql = "SELECT * from Game ORDER BY score DESC LIMIT 3";
 $sth = $dbh->query($sql);
 while($row = $sth->fetch(PDO::FETCH_ASSOC)){
@@ -10,5 +11,6 @@ while($row = $sth->fetch(PDO::FETCH_ASSOC)){
     array_push($board, $arr);
 };
 echo json_encode($board);
+unset($sth);
 
 ?>
