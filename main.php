@@ -18,8 +18,8 @@
         <div class="leaderboard noselect cursor-default">
             <marquee>
                 <span class="leaderboard-cyan">歡迎來到東方哈哈樂園 &#10024; &nbsp;&nbsp;</span>
-                <span class="leaderboard-margenta">&#128081; 王小明 600 &#9733; 王宏宏 450 &#9733; 楊明王 400 &#9733; 阿翔 350 &#9733; 小羊 200 &nbsp;&nbsp;</span>
-                <span class="leaderboard-green">全台數位內容首府 來電詢問2939-3091</span>
+                <span class="leaderboard-margenta">&#128081; 排行榜: <span id="rankings">王小明 600 &#9733; 王宏宏 450 &#9733; 楊明王 400 &#9733; 阿翔 350 &#9733; 小羊 200</span></span>
+                <span class="leaderboard-green">&nbsp;&nbsp;全台數位內容首府 來電詢問2939-3091 #6227<span id="end">4</span></span>
             </marquee>
             <div>
                 <button method="post" action="ending.php">
@@ -49,7 +49,7 @@
                 <h1>註 冊</h1>
                 <div class="flex-horizontal">
                     <label class="label-signup" for="username">帳號</label>
-                    <input class="input-signup" type="text" id="username" name="username" placeholder="用英文和數字歐" ></input>
+                    <input class="input-signup" type="text" id="username" name="username" placeholder="用英文和數字歐"></input>
                 </div>
                 <br>
                 <div class="flex-horizontal">
@@ -62,6 +62,7 @@
                     <img class="img-checkbox" src="assets/icon/img-checkbox-unchecked.png">
                     <span class="checkmark">我同意</span><span class="toc-link">使用條款</span>
                 </label>
+                <input type="text" name="first_game_id" style="display: none;"></input>
                 <br>
                 <button class="btn-large" type="submit" id="btn-signup">進入遊戲</button>
             </form>

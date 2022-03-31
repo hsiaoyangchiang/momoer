@@ -2,6 +2,9 @@
 require_once"pdoInc.php";
 // error_reporting(E_ALL & ~E_NOTICE);
 
+if(isset($_POST['first_game_id'])){
+    $first_game_id = $_POST['first_game_id'];
+}
 
 if(isset($_POST['username'])){
     $username = $_POST['username'];
@@ -85,7 +88,8 @@ if ($stmt->execute()) {
     $_SESSION['username'] = $checkUsername;
     $_SESSION['askQuestion'] = 0;
     sleep(3);
-    echo '<meta http-equiv=REFRESH CONTENT=0;url=main.php>';
+    // echo '<meta http-equiv=REFRESH CONTENT=0;url=main.php>';
+    echo '<meta http-equiv=REFRESH CONTENT=0;url=game.php?game_id='.$first_game_id.'>';
 } else {
   echo "<script> {window.alert('Opps, 現在有問題請稍等');location.href='main.php'} </script>";
 }

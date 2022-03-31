@@ -284,3 +284,32 @@ if (ad_change >= game_session) { //換新的
 else { //換舊的
     changeAd(game_session-1) 
 }
+
+// Leaderboard
+const leaderboard_end = $("marquee #end")
+const leaderboard = $("marquee #rankings")
+
+updateLeaderboard()
+setInterval(function(){
+    if(leaderboard_end.position().left <= $("marquee").offset().left) {
+        // console.log("update leaderboard")
+        updateLeaderboard()
+    }
+},100)
+
+function updateLeaderboard() {
+    var rankings = ""
+    $.ajax({
+        url:"php/board.php",
+        success: function(data) {
+            let parsed_data = JSON.parse(data)
+            var len = parsed_data.length
+            for (let i = 0; i < len ; i++) {
+                var user_score = parsed_data[i].username + "\u00A0" + parsed_data[i].score + " ★" + "\t" //&#9733;
+                rankings += user_score
+            }
+            // console.log(rankings)
+            leaderboard.text(rankings)
+        }
+    })
+}
