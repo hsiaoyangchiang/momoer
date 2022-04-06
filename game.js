@@ -149,7 +149,18 @@ $( "form" ).on( "submit", function(e) {
         url: 'php/resetQ.php',
         success: function(data) {
             if(game_session == 7) {
-                //提交的不是select radio而是文字
+                $.post("submit.php",
+                {
+                    short_answer: value,
+                },
+                function(data, status){
+                    alert("DATA:" + data + "\nStatus:" + status)
+                })
+                .done(function(data) {
+                })
+                .fail(function(xhr, status, error) {
+                    alert(xhr.responseTest)
+                })
             }
             else {
                 // Save answer into local storage
