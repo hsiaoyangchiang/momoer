@@ -25,10 +25,14 @@ if(!isset($beforeAmount)){
 
 // echo $ans;
 //把post來的答案放入$ans
+// 最後一題問答題另外存
 if(isset($_POST['selected_radio'])){
     $ans = $_POST['selected_radio'];
     // echo $ans; 
+}else if(isset($_POST['short_answer'])){
+    $finalAns = htmlspecialchars($POST['short_answer']);
 }
+
 
 
 if(isset($ans)){
@@ -49,8 +53,15 @@ if(isset($_POST['gameID']) && $afterAmount<3){
     $row = $stmt->fetch(PDO::FETCH_ASSOC);
     $_SESSION['askQuestion'] = 0;
     unset($stmt);
-} else {
-// if($afterAmount>=3){
+} else if($afterAmount == 7){
+    $sql = "UPDATE Game SET Q{$afterAmount} = '{$short_answer}', amount = '{$afterAmount}' WHERE username = '{$username}' ";
+    $stmt = $dbh->prepare($sql);
+    $stmt->execute(array());
+    $row = $stmt->fetch(PDO::FETCH_ASSOC);
+    $_SESSION['askQuestion'] = 0;
+    unset($stmt);
+}
+ else {
     $sql = "UPDATE Game SET Q{$afterAmount} = '{$ans}', amount = '{$afterAmount}' WHERE username = '{$username}' ";
     $stmt = $dbh->prepare($sql);
     $stmt->execute(array());
@@ -58,7 +69,6 @@ if(isset($_POST['gameID']) && $afterAmount<3){
     $_SESSION['askQuestion'] = 0;
     unset($stmt);
 }
-// }
 
 echo $afterAmount;
 ?>
