@@ -1,44 +1,41 @@
-var obj = new Object();
-var i = 0;
-var speed = 50;
-var data;
-var dataLength;
-
-
-function ajax1(){
-    return $.ajax({
-        url:"php/data.php",
-        success: function(data) {
-            len = JSON.parse(data).length
-            for(let i = 0; i<len; i++){
-                obj.username = JSON.parse(data)[i].username;
-                obj.amount  = JSON.parse(data)[i].amount;
-                var jsonString= JSON.stringify(obj);
-                // callback(jsonString);
-            }
-            callback(data);
-        }
+// End of all games -- show hacked
+function load_cam() {
+    Webcam.set({
+        width: 160,
+        height: 90,
+        image_format: 'jpeg',
+        jpeg_quality: 90
     })
-}
-function callback(response) {
-    data = response;
-    // console.log(typeof(data));
-    dataLength = data.length;
-    // console.log(data);
+    Webcam.attach( '#my_camera' )
 }
 
-Promise.all([ajax1()]).then(() => {
-    callback(response);
-}).catch(() => {
+
+function hack() {
+    //Capture face and show
+    Webcam.snap( function(data_uri) {
+        // display results in page
+        $("img#hack-face").attr("src",data_uri)
+        // $("div.hack-face").innerHTML = '<img class="hack-face" src="'+data_uri+'"/>'
+        console.log("take snapshot")
+        // console.log(data_uri)
+    } )
+    
+    //Countdown and redirect to logout page
+    let hack_time = 10
+    setInterval(() => {
+        $("span#hack-countdown").text(hack_time)
+        hack_time -= 1
+    }, 1000);
+    
+    setTimeout(function() {
+        // alert("times up")
+    },10000)
+}
+
+Webcam.set({
+    width: 160,
+    height: 90,
+    image_format: 'jpeg',
+    jpeg_quality: 90
 })
-
-typeWriter();
-
-
-function typeWriter() {
-    if (i < dataLength) {
-      document.getElementById("demo").innerHTML += data.charAt(i);
-      i++;
-      setTimeout(typeWriter, speed);
-    }
-}
+Webcam.attach('#my_camera')

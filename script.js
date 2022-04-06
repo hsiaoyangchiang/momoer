@@ -6,25 +6,44 @@ var game_id = 0
 var choice_id = ""
 
 // Fetch Backend data
+// function getSession() {
+//     $.get("php/session.php", function(data, status){
+//         // alert(JSON.stringify(data) + "\nStatus: " + status)
+//         loggedin = data.loggedin
+//         var username = data.username
+//         var askQuestion = data.askQuestion
+//         if(loggedin == 1) {
+//             $("div.profile").show()
+//             $("p#profile-username").text(username)
+//         }
+//         console.log("loggedin: "+loggedin)
+//         console.log("username: "+username)
+//         console.log("askQuestion: "+askQuestion)
+//     }, "json")
+// }
 function getSession() {
-    $.get("php/session.php", function(data, status){
-        // alert(JSON.stringify(data) + "\nStatus: " + status)
-        loggedin = data.loggedin
-        var username = data.username
-        var askQuestion = data.askQuestion
-        if(loggedin == 1) {
-            $("div.profile").show()
-            $("p#profile-username").text(username)
-        }       
-        console.log("loggedin: "+loggedin)
-        console.log("username: "+username)
-        console.log("askQuestion: "+askQuestion)
-    }, "json")
+    return $.get("php/session.php","json")
 }
 
 // Run basics
 window.onload = function() {
     getSession()
+    $.when(getSession()).done(function(data) {
+        if (!$.isEmptyObject(data)){
+            loggedin = JSON.parse(data).loggedin
+            var username = JSON.parse(data).username
+            var askQuestion = JSON.parse(data).askQuestion
+        }
+        if(loggedin == 1) {
+            $("div.profile").show()
+            $("p#profile-username").text(username)
+        } else {
+            loggedin = 0
+        }
+        console.log("loggedin: "+loggedin)
+        console.log("username: "+username)
+        console.log("askQuestion: "+askQuestion)
+    })
     getStats()
 }
 
