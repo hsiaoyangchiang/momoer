@@ -1,44 +1,33 @@
-var obj = new Object();
-var i = 0;
-var speed = 50;
-var data;
-var dataLength;
-
-
-function ajax1(){
-    return $.ajax({
-        url:"php/data.php",
-        success: function(data) {
-            len = JSON.parse(data).length
-            for(let i = 0; i<len; i++){
-                obj.username = JSON.parse(data)[i].username;
-                obj.amount  = JSON.parse(data)[i].amount;
-                var jsonString= JSON.stringify(obj);
-                // callback(jsonString);
-            }
-            callback(data);
-        }
-    })
-}
-function callback(response) {
-    data = response;
-    // console.log(typeof(data));
-    dataLength = data.length;
-    // console.log(data);
-}
-
-Promise.all([ajax1()]).then(() => {
-    callback(response);
-}).catch(() => {
+Webcam.set({
+    width: 160,
+    height: 90,
+    image_format: 'jpeg',
+    jpeg_quality: 90
 })
+Webcam.attach( '#my-camera' )
 
-typeWriter();
+function hack() {
+    $("img#hack-face").show()
 
-
-function typeWriter() {
-    if (i < dataLength) {
-      document.getElementById("demo").innerHTML += data.charAt(i);
-      i++;
-      setTimeout(typeWriter, speed);
-    }
+    //Capture face and show
+    Webcam.snap( function(data_uri) {
+        // display results in page
+        $("img#hack-face").attr("src",data_uri)
+        // $("div.hack-face").innerHTML = '<img class="hack-face" src="'+data_uri+'"/>'
+        console.log("take snapshot")
+        // console.log(data_uri)
+    } )
+    
+    //Countdown and redirect to logout page
+    let hack_time = 9
+    setInterval(() => {
+        $("span#hack-countdown").text(hack_time)
+        hack_time -= 1
+    }, 1000);
+    
+    setTimeout(function() {
+        console.log("times up")
+        localStorage.clear();
+        window.location = "main.php"
+    },10000)
 }

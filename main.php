@@ -1,13 +1,13 @@
-<!-- <?php
+<?php
     session_start();
     $game_id = "";
     include("pdoInc.php");
-?> -->
+?>
 
 <!DOCTYPE html>
 <html>
     <head>
-        <title>摸摸耳</title>
+        <title>東方哈哈樂園</title>
         <link rel="icon" href="" sizes="16x16">
         <link rel="stylesheet" href="style.css">
         <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0" charset="UTF-8">
@@ -33,7 +33,7 @@
 
             <!-- <div class="profile-blur"></div> -->
             <div class="profile">
-                <img class="img-cat" src="assets/meow/cat.png">
+                <img class="img-cat" src="assets/meow/cat-1.png">
                 <div class="user-stats">
                     <p id="profile-username" class="green">Username</p>
                     <p class="green">EXP.<span class="exp-num">0</span> (<span class="player-title">摩天輪玩家</span>)</p>

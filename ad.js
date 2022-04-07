@@ -11,7 +11,7 @@ var c = "a"
 var ad_src = [ // {gs - game_id - selected_radio}
     [ // gs=1
         {
-            "a":"assets/ads/simulate-ad-change/1-1-a.png",
+            "a":"11a",
             "b":"11b",
             "c":"11c"
         },{
@@ -19,7 +19,7 @@ var ad_src = [ // {gs - game_id - selected_radio}
             "b":"12b",
             "c":"12c"
         },{
-            "a":"13a",
+            "a":"assets/ads/simulate-ad-change/1-1-a.png",
             "b":"13b",
             "c":"13c"
         },{
@@ -51,7 +51,7 @@ var ad_src = [ // {gs - game_id - selected_radio}
     [ // gs=2
         [ //left
             {
-                "a":"assets/ads/simulate-ad-change/2-1-a-l.png",
+                "a":"21a",
                 "b":"21b",
                 "c":"21c"
             },{
@@ -59,7 +59,7 @@ var ad_src = [ // {gs - game_id - selected_radio}
                 "b":"22b",
                 "c":"22c"
             },{
-                "a":"23al",
+                "a":"assets/ads/simulate-ad-change/2-1-a-l.png",
                 "b":"23bl",
                 "c":"23cl"
             },{
@@ -89,7 +89,7 @@ var ad_src = [ // {gs - game_id - selected_radio}
             }
         ],[ //right
             {
-                "a":"assets/ads/simulate-ad-change/2-1-a-r.png",
+                "a":"a",
                 "b":"b",
                 "c":"c"
             },{
@@ -97,7 +97,7 @@ var ad_src = [ // {gs - game_id - selected_radio}
                 "b":"b",
                 "c":"c"
             },{
-                "a":"23ar",
+                "a":"assets/ads/simulate-ad-change/2-1-a-r.png",
                 "b":"23br",
                 "c":"23cr"
             },{
@@ -176,9 +176,9 @@ var ad_src = [ // {gs - game_id - selected_radio}
             },
     },{ // gs=6
         "a": {
-            "left":"changeme",
-            "right":"changeme",
-            "bottom":"changeme"
+            "left":"6l",
+            "right":"6r",
+            "bottom":"6b"
             },
         "b": {
             "left":"changeme",
@@ -219,7 +219,7 @@ function changeAd(game_session) {
             // alert(data)
             console.log("ad pattern:"+data)
             ad = data
-            console.log(typeof(ad))
+            // console.log(typeof(ad))
 
             switch(parseInt(game_session)) {
                 case 1:
@@ -227,8 +227,8 @@ function changeAd(game_session) {
                     var db_ad_bottom = ad.split("-")
                     var db_ad_bottom_gameID = parseInt(db_ad_bottom[0])
                     var db_ad_bottom_radio = db_ad_bottom[1]
-                    console.log("db_ad_bottom_gameID"+db_ad_bottom_gameID)
-                    console.log("db_ad_bottom_radio"+db_ad_bottom_radio)
+                    // console.log("db_ad_bottom_gameID"+db_ad_bottom_gameID)
+                    // console.log("db_ad_bottom_radio"+db_ad_bottom_radio)
         
                     ad_bottom.attr("src",ad_src[0][db_ad_bottom_gameID-1][db_ad_bottom_radio])
                     break
@@ -237,16 +237,16 @@ function changeAd(game_session) {
                     var db_ad_bottom = ad.split(",")[0].split("-")
                     var db_ad_bottom_gameID = parseInt(db_ad_bottom[0])
                     var db_ad_bottom_radio = db_ad_bottom[1]
-                    console.log("db_ad_bottom_gameID"+db_ad_bottom_gameID)
-                    console.log("db_ad_bottom_radio"+db_ad_bottom_radio)
+                    // console.log("db_ad_bottom_gameID"+db_ad_bottom_gameID)
+                    // console.log("db_ad_bottom_radio"+db_ad_bottom_radio)
         
                     ad_bottom.attr("src",ad_src[0][db_ad_bottom_gameID-1][db_ad_bottom_radio])
         
                     var db_ad_side = ad.split(",")[1].split("-")
                     var db_ad_side_gameID = parseInt(db_ad_side[0])
                     var db_ad_side_radio = db_ad_side[1]
-                    console.log("db_ad_side_gameID"+db_ad_side_gameID)
-                    console.log("db_ad_side_radio"+db_ad_side_radio)
+                    // console.log("db_ad_side_gameID"+db_ad_side_gameID)
+                    // console.log("db_ad_side_radio"+db_ad_side_radio)
         
                     ad_left.attr("src",ad_src[1][0][db_ad_side_gameID-1][db_ad_side_radio])
                     ad_right.attr("src",ad_src[1][1][db_ad_side_gameID-1][db_ad_side_radio])
