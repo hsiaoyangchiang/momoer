@@ -2,6 +2,8 @@ var iframe = $("iframe")
 // var game_session = parseInt($("#game-session").text())
 var game_id = parseInt(window.location.search.split("=")[1])
 var game_sim_id = game_id
+var askQ = 0
+
 
 // Source of Game
 var arr_game_src = [ //小遊戲連結
@@ -27,34 +29,36 @@ var game_session = 1
 
 // Start
 window.onload = function() {
-    // alert("change")
-    // variable askQuestion is declared at game.php
-    console.log("askQuestion: "+askQuestion)
-    // alert("askQuestion: "+askQuestion)
+    // get session value of askQuestion from askQ.php
+    $.ajax({
+        url: 'php/askQ.php',
+        success: function(data) {
+            console.log("askQuestion: "+data)
+            var askQuestion = parseInt(data)
+            if(askQuestion != 0 & game_id<=9) {
+                askQ = askQuestion
+                // Get game session
+                $.get("amount.php", function(data, status){
+                    // alert(data + "\nStatus: " + status)
+                    game_session = parseInt(data)+1
+                    // alert("gs from php: "+game_session)
+                    console.log("game_session: "+game_session)
+                    localStorage.setItem("game_session", game_session) //這邊會設置game session
+        
+                    changebg(game_session-1)
+                    showQuestion(game_session)
+                }, "text")
+            }
+            else {
+                changebg(parseInt(localStorage.getItem("game_session"))-1)
+                //Auto scroll to game
+                // $('html,body').animate({
+                //     scrollTop: $("iframe").offset().top
+                // },1500);
+            }
+        }
+    })
 
-    // Determine show Question or not
-    if(askQuestion != 0 & game_id<=9) {
-        // Get game session
-        $.get("amount.php", function(data, status){
-            // alert(data + "\nStatus: " + status)
-            game_session = parseInt(data)+1
-            // alert("gs from php: "+game_session)
-            console.log("game_session: "+game_session)
-            localStorage.setItem("game_session", game_session) //這邊會設置game session
-
-            changebg(game_session-1)
-            showQuestion(game_session)
-        }, "text")
-    }
-    else {
-        modal_question.hide()
-        hideOverlay()
-        changebg(parseInt(localStorage.getItem("game_session"))-1)
-        //Auto scroll to game
-        // $('html,body').animate({
-        //     scrollTop: $("iframe").offset().top
-        // },1500);
-    }
     // Load Game
     let game_src = arr_game_src[game_id-1]
     $("iframe").attr("src", game_src)
@@ -130,7 +134,7 @@ function showQuestion(game_session) {
 
 // Submit Answer
 var selected_value = 0
-var ableSubmitForm = 0
+var short_answer = ""
 
 $("div.rect").click(function() {
     if (selected_value != 0) {
@@ -140,53 +144,55 @@ $("div.rect").click(function() {
     console.log("Selected: "+selected_value)
 
     $(this).addClass("active")
-    $("input#send_my_data").removeClass("deactivate")
+    // $("input#send_my_data").removeClass("deactivate")
+    $("button#send_my_data").removeClass("deactivate")
 })
 
-$( "form" ).on( "submit", function(e) {
-    // alert("form here")
-    $.ajax({
-        url: 'php/resetQ.php',
-        success: function(data) {
-            if(game_session == 7) {
-                $.post("submit.php",
-                {
-                    short_answer: value,
-                },
-                function(data, status){
-                    alert("DATA:" + data + "\nStatus:" + status)
-                })
+$("input[name=Q7]").click(function() {
+    $("button#send_my_data").removeClass("deactivate")
+})
+
+$("button#send_my_data").click(function() {
+    if (!$(this).hasClass("deactivate")) {
+        // alert("active button")
+        modal_question.hide()
+        hideOverlay()
+        if(game_session == 7) {
+            short_answer = $("input[name=Q7]").val()
+            // alert(short_answer)
+            $.post("submit.php", 
+            {
+                short_answer: short_answer
+            }, 
+            function(data, status) {})
                 .done(function(data) {
+                    alert("done")
+                    window.location="destroy.php"
                 })
                 .fail(function(xhr, status, error) {
+                    alert("fail")
+                    console.log(xhr.responseTest)
                     alert(xhr.responseTest)
                 })
-            }
-            else {
-                // Save answer into local storage
-                // var selected_radio = $("input[name=option:checked", '#form-question').val()
-                // alert("Selected Radio: "+selected_radio)
-                localStorage.setItem("game_id", game_id)
-                localStorage.setItem("selected_radio", selected_value)
-                // Submit answer + update game_session
-                $.post("submit.php", 
-                {
-                    selected_radio: selected_value,
-                    gameID: game_id
-                }, 
-                function(data, status) {
-                    alert("DATA:" + data + "\nStatus:" + status)
-                })
-                    .done(function(data) {
-                    })
-                    .fail(function(xhr, status, error) {
-                        alert(xhr.responseTest)
-                    })
-            }
         }
-    })
+    }
 })
 
+function submit() {
+    // alert("something is being submitted")
+    // Submit answer + update game_session
+    $.post("submit.php", 
+    {
+        selected_radio: selected_value,
+        gameID: game_id
+    }, 
+    function(data, status) {})
+    .done(function(data) {
+    })
+    .fail(function(xhr, status, error) {
+        alert(xhr.responseTest)
+    })
+}
 
 // Count ad_change
 // 換廣告：調整local storage ad_change變數的地方
@@ -262,16 +268,11 @@ function replay(){
     // console.log("replay")
     modal_endgame.hide()
     hideOverlay()
-    // localStorage.setItem("ad_change",1)
+    if (askQ != 0) {
+        submit()
+    }
     setAdChange()
     window.location.reload()
-    // console.log("page reloaded")
-    $.ajax({
-        url: 'php/setQ.php',
-        success: function(data) {
-            $('.result').html(data);
-        }
-    });
 }
 
 function backtoMain(){
@@ -279,20 +280,12 @@ function backtoMain(){
     modal_endgame.hide()
     hideOverlay()
     // localStorage.setItem("ad_change",0)
+    if (askQ != 0) {
+        submit()
+    }
     setAdChange()
     window.location = "main.php"
-    $.ajax({
-        url: 'php/setQ.php',
-        success: function(data) {
-            $('.result').html(data);
-        }
-    });
 }
-
-$("img.img-logo-small").click(function() {
-    // localStorage.setItem("ad_change",0)
-    setAdChange()
-})
 
 // Show ad of personality-test
 var test_ad_src = $("#test-ad-src")
@@ -332,33 +325,27 @@ var body = $("body")
 var meow = [
     {//gs=0, 摩天輪玩家
         bg:"assets/bg/1.jpg",
-        logo:"assets/logo/1.png",
-        cat:""
+        logo:"assets/logo/1.png"
     },
     {//gs=1, 咖啡杯玩家
         bg:"assets/bg/2.jpg",
-        logo:"assets/logo/2.png",
-        cat:""
+        logo:"assets/logo/2.png"
     },
     {//gs=2,3, 旋轉木馬玩家
         bg:"assets/bg/3.jpg",
-        logo:"assets/logo/3.png",
-        cat:""
+        logo:"assets/logo/3.png"
     },
     {//gs=4,5, 海盜船玩家
         bg:"assets/bg/4.jpg",
-        logo:"assets/logo/4.png",
-        cat:""
+        logo:"assets/logo/4.png"
     },
     {//gs=6, 自由落體玩家
         bg:"assets/bg/5.jpg",
-        logo:"assets/logo/5.png",
-        cat:""
+        logo:"assets/logo/5.png"
     },
     {//gs=7, 進入結局
         bg:"",
-        logo:"",
-        cat:""
+        logo:""
     }
 ]
 
@@ -399,43 +386,3 @@ function changebg(level) {
             break
     }
 }
-
-
-// Backend Panel Simulator
-function displayGame(i) {
-    let game_src = arr_game_src[i]
-    $("iframe").attr("src", game_src)
-}
-
-var backend_panel_display = 0
-const backend_panel = $("#backend-panel")
-document.addEventListener('keydown', logKey);
-
-function logKey(e) { //按b時開啟/關閉後端模擬控制面板
-    if (e.code == "KeyB") {
-        console.log("b is pressed")
-        if (backend_panel_display == 0) {
-            backend_panel.show()
-            backend_panel_display = 1
-        }
-        else {
-            backend_panel.hide()
-            backend_panel_display = 0
-        }
-    }
-}
-
-const sim_btn_run = $("#sim-run")
-
-sim_btn_run.click(function() { //run後端模擬
-    console.log("run backend simulation")
-    game_session = $("#game-session").val()
-    game_sim_id = $("#game-id").val()
-
-    $("#current-game-session").html(game_session)
-    console.log("game session: "+game_session)
-    console.log("game sim id: "+game_sim_id)
-    displayGame(game_sim_id-1)
-    showQuestion()
-})
-

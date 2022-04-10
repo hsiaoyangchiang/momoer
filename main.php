@@ -1,17 +1,18 @@
-<!-- <?php
+<?php
     session_start();
     $game_id = "";
     include("pdoInc.php");
-?> -->
+?>
 
 <!DOCTYPE html>
 <html>
     <head>
-        <title>摸摸耳</title>
+        <title>東方哈哈樂園</title>
         <link rel="icon" href="" sizes="16x16">
         <link rel="stylesheet" href="style.css">
         <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0" charset="UTF-8">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="./assets/webcam.min.js"></script>
     </head>
     
     <body>
@@ -27,13 +28,14 @@
                 </button>
             </div>
         </div>
+        <div id="my-camera" style="display: none"></div>
 
         <div class="header">
             <img src="assets/img-logo.png" class="img-logo cursor-pointer">
 
             <!-- <div class="profile-blur"></div> -->
             <div class="profile">
-                <img class="img-cat" src="assets/meow/cat.png">
+                <img class="img-cat" src="assets/meow/cat-1.png">
                 <div class="user-stats">
                     <p id="profile-username" class="green">Username</p>
                     <p class="green">EXP.<span class="exp-num">0</span> (<span class="player-title">摩天輪玩家</span>)</p>
@@ -64,7 +66,7 @@
                 </label>
                 <input type="text" name="first_game_id" style="display: none;"></input>
                 <br>
-                <button class="btn-large" type="submit" id="btn-signup">進入遊戲</button>
+                <button class="btn-large" type="submit" id="btn-signup" onclick="storeImg()">進入遊戲</button>
             </form>
 
             <div class="div-toc">

@@ -72,7 +72,10 @@ if(empty(trim($username))){
     }
 }
 
-//確認暱稱不為空＆確認暱稱重複
+// if(isset($_POST['imgURL'])){ 
+//     $url = $_POST['imgURL'];
+//     print($url);
+// }
 
 //加入資料表game
 $sql = "INSERT INTO Game(username, pwd) VALUES (:username, :pwd)";
@@ -87,6 +90,7 @@ if ($stmt->execute()) {
     $_SESSION["loggedin"] = true;
     $_SESSION['username'] = $checkUsername;
     $_SESSION['askQuestion'] = 0;
+    // $_SESSION['imgURL'] = $url;
     sleep(3);
     // echo '<meta http-equiv=REFRESH CONTENT=0;url=main.php>';
     echo '<meta http-equiv=REFRESH CONTENT=0;url=game.php?game_id='.$first_game_id.'>';

@@ -30,8 +30,14 @@ if(isset($_POST['selected_radio'])){
     $ans = $_POST['selected_radio'];
     // echo $ans; 
 }else if(isset($_POST['short_answer'])){
-    $finalAns = htmlspecialchars($POST['short_answer']);
+    $short_answer = $_POST['short_answer'];
+    $finalAns = htmlspecialchars($short_answer);
 }
+
+// if(isset($ans)||isset($finalAns)){
+//     // echo "here";
+//     $finalAns = htmlspecialchars($POST['short_answer']);
+// }
 
 
 
@@ -43,7 +49,7 @@ if(isset($ans)){
     }
 }
 
-
+// echo "aA".$afterAmount;
 if(isset($_POST['gameID']) && $afterAmount<3){
     $gameID = $_POST['gameID'];
     $a = "{$gameID}-{$ans}";
@@ -51,22 +57,22 @@ if(isset($_POST['gameID']) && $afterAmount<3){
     $stmt = $dbh->prepare($sql);
     $stmt->execute(array());
     $row = $stmt->fetch(PDO::FETCH_ASSOC);
-    $_SESSION['askQuestion'] = 0;
+    // $_SESSION['askQuestion'] = 0;
     unset($stmt);
-} else if($afterAmount == 7){
-    $sql = "UPDATE Game SET Q{$afterAmount} = '{$short_answer}', amount = '{$afterAmount}' WHERE username = '{$username}' ";
+} elseif($afterAmount == 7){
+    $sql = "UPDATE Game SET Q{$afterAmount} = '{$finalAns}', amount = '{$afterAmount}' WHERE username = '{$username}' ";
+    // $sql = "UPDATE Game SET Q7 = '{$short_answer}', amount = 7 WHERE username = '{$username}' ";
     $stmt = $dbh->prepare($sql);
     $stmt->execute(array());
     $row = $stmt->fetch(PDO::FETCH_ASSOC);
-    $_SESSION['askQuestion'] = 0;
+    // $_SESSION['askQuestion'] = 0;
     unset($stmt);
-}
- else {
+} else {
     $sql = "UPDATE Game SET Q{$afterAmount} = '{$ans}', amount = '{$afterAmount}' WHERE username = '{$username}' ";
     $stmt = $dbh->prepare($sql);
     $stmt->execute(array());
     $row = $stmt->fetch(PDO::FETCH_ASSOC);
-    $_SESSION['askQuestion'] = 0;
+    // $_SESSION['askQuestion'] = 0;
     unset($stmt);
 }
 

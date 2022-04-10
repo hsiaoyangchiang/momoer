@@ -1,44 +1,22 @@
-var obj = new Object();
-var i = 0;
-var speed = 50;
-var data;
-var dataLength;
+var url = localStorage.getItem('imgURL')
+console.log(url)
 
+function hack() {
+    $("img#hack-face").show()
 
-function ajax1(){
-    return $.ajax({
-        url:"php/data.php",
-        success: function(data) {
-            len = JSON.parse(data).length
-            for(let i = 0; i<len; i++){
-                obj.username = JSON.parse(data)[i].username;
-                obj.amount  = JSON.parse(data)[i].amount;
-                var jsonString= JSON.stringify(obj);
-                // callback(jsonString);
-            }
-            callback(data);
-        }
-    })
-}
-function callback(response) {
-    data = response;
-    // console.log(typeof(data));
-    dataLength = data.length;
-    // console.log(data);
+    $("img#hack-face").attr("src",url)
+
+    //Countdown and redirect to logout page
+    let hack_time = 9
+    setInterval(() => {
+        $("span#hack-countdown").text(hack_time)
+        hack_time -= 1
+    }, 1000);
+    
+    setTimeout(function() {
+        console.log("times up")
+        localStorage.clear();
+        window.location = "main.php"
+    },10000)
 }
 
-Promise.all([ajax1()]).then(() => {
-    callback(response);
-}).catch(() => {
-})
-
-typeWriter();
-
-
-function typeWriter() {
-    if (i < dataLength) {
-      document.getElementById("demo").innerHTML += data.charAt(i);
-      i++;
-      setTimeout(typeWriter, speed);
-    }
-}

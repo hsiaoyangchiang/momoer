@@ -2,16 +2,7 @@
 session_start();
 require_once"pdoInc.php";
 // error_reporting(E_ALL & ~E_NOTICE);
-
-if($_SESSION['askQuestion'] == 0) {
-    // echo "<script>alert('ask Question = 0')</script>";
-    echo "<script>var askQuestion = 0</script>";
-    $_SESSION['askQuestion'] = 1;
-}else {
-    // echo "要顯示問題";
-    echo "<script>var askQuestion = 1</script>";
-}
-
+echo "<script>console.log('game.php ask question: ".$_SESSION['askQuestion']."')</script>";
 
 ?>
 <!DOCTYPE html>
@@ -38,44 +29,9 @@ if($_SESSION['askQuestion'] == 0) {
             <img src="assets/img-logo.png" class="img-logo-small cursor-default">
         </div>
 
-        <!-- <div id="backend-panel"> 模擬後端操作面板
-            <h4 style="margin-bottom: 4px;">後端模擬面板</h4>
-            <label for="game-session">Game Session:</label>
-            <label><span id="current-game-session"></span></label>
-            <select id="game-session" name="game-session">
-                <option value="0">0</option>
-                <option value="1" selected>1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-            </select>
-            <br>
-            <label for="game-id">Game ID:</label>
-            <select id="game-id" name="game-id">
-                <option value="1">1號遊戲</option>
-                <option value="2">2號遊戲</option>
-                <option value="3">3號遊戲</option>
-                <option value="4">4號遊戲</option>
-                <option value="5">5號遊戲</option>
-                <option value="6">6號遊戲</option>
-                <option value="7">7號遊戲</option>
-                <option value="8">8號遊戲</option>
-                <option value="9">9號遊戲</option>
-                <option value="10">心理測驗1</option>
-                <option value="11">心理測驗2</option>
-                <option value="12">flash不支援</option>
-            </select>
-            <br>
-            <button id="sim-run" style="margin-top: 8px;">Run</button>
-            <h5 style="font-weight: 400;">Press b to call/hide this panel<h5>
-        </div> -->
-
         <div class="modal-question">
             <h3>&#9734;回答選項進入遊戲&#9734;</h3>
-            <form method="post" id="form-question">
+            <!-- <form method="post" id="form-question"> -->
                 <label id="question">冬天最適合吃鍋~ 你最喜歡的火鍋湯底是?</label>
                 <br>
                 <div class="question-radio">
@@ -97,12 +53,11 @@ if($_SESSION['askQuestion'] == 0) {
                     <div id="option-d" class="rect">養生老火鍋</div>
                 </div>
                 <div class="question-saq">
-                    <input type="text" name="7" value="">
+                    <input type="text" name="Q7" value="">
                 </div>
-                <!-- <button class="btn-medium" type="submit" id="end_my_data">開始遊戲</button> -->
-                <input type="submit" id="send_my_data" class="btn-medium deactivate" value="開始遊戲">
-                <!-- <button type="button" id="sim-change">Simulate Ad Change</button> 模擬submit，換廣告的效果 -->
-            </form>
+                <button class="btn-medium deactivate"  type="submit" id="send_my_data">開始遊戲</button>
+                <!-- <input type="submit" id="send_my_data" class="btn-medium deactivate" value="開始遊戲"> -->
+            <!-- </form> -->
         </div>
 
         <div class="modal-endgame">

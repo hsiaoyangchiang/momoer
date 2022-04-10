@@ -16,6 +16,11 @@ body {
     /*font-family: ;
     font-weight: ;*/
 }
+body.hack_page {
+    font-family: monospace;
+    font-size: 20px;
+    line-height: 23px;
+}
 
 .flex-horizontal {
     display: flex;
@@ -158,7 +163,7 @@ pre.textarea-toc {
     left: 0;
     right: 0;
     margin: 5% auto; /* Will not center vertically and won't work in IE6/7. */
-    padding: 24px 32px 8px;
+    padding: 24px 32px 12px;
     background-color: white;
     border: 12px solid #F6CD63;
     border-radius: 16px;
@@ -326,6 +331,32 @@ div.exp {
     border-radius: 10px 0px 0px 10px;
     background-color: #88E998;
 }
+/* hack page */
+div#hacked-bg {
+    position: fixed;
+    background-color: #000;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+}
+div#my-camera {
+    display: none;
+}
+img#hack-face {
+    display: none;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    width: 100%;
+}
+div#hack-info {
+    position: absolute;
+    left: 0;
+    top: 200px;
+    width: 100%;
+    z-index: 10;
+}
 
 
 /* assets */
@@ -468,6 +499,27 @@ input.btn-medium {
 input.btn-medium:hover{
     color:#05246A !important;
 }
+button.btn-medium#send_my_data {
+    background: #F6CD63;
+    border-radius: 8px;
+    padding: 4px 28px;
+    border: 0 !important;
+
+    font-family: 'DotGothic16';
+    font-style: normal;
+    font-weight: normal;
+    font-size: 32px;
+    line-height: 48px;
+    /* identical to box height */
+
+    text-align: center;
+    letter-spacing: 0.16em;
+
+    color: #FFFFFF;
+}
+button.btn-medium#send_my_data:hover{
+    color:#05246A !important;
+}
 
 
 /* text */
@@ -607,8 +659,11 @@ div.rect.active {
     color: #FFF;
 }
 
-input.deactivate {
+button.deactivate {
     opacity: 40%;
+}
+button.deactivate:hover {
+    color: #931313;
 }
 
 .game-title {

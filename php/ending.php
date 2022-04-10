@@ -18,6 +18,9 @@ $sth = $dbh->query($sql);
 while($row = $sth->fetch(PDO::FETCH_ASSOC)){
     $arrival = $row['arrival'];
     $departure = $row['departure'];
+
+    $time_diff = strtotime($departure) - strtotime($arrival);
+    echo $time_diff;
 };
 unset($sth);
 
@@ -28,5 +31,4 @@ $stmt= $dbh->prepare($sql);
     // echo "時間差";
     }
 unset($stmt);
-
 ?>
