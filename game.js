@@ -4,6 +4,7 @@ var game_id = parseInt(window.location.search.split("=")[1])
 var game_sim_id = game_id
 var askQ = 0
 
+
 // Source of Game
 var arr_game_src = [ //小遊戲連結
     "assets/game/1-Coil-master/index.html",

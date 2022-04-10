@@ -35,7 +35,7 @@ unset($stmt);
 <!DOCTYPE html>
 <html>
 <head>
-    <title>æ±æ¹ååæ¨å</title>
+    <title>東方哈哈學院</title>
     <link rel="icon" href="" sizes="16x16">
     <link rel="stylesheet" href="style.css">
     <meta charset="UTF-8">

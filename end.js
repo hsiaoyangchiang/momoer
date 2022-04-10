@@ -1,23 +1,11 @@
-Webcam.set({
-    width: 160,
-    height: 90,
-    image_format: 'jpeg',
-    jpeg_quality: 90
-})
-Webcam.attach( '#my-camera' )
+var url = localStorage.getItem('imgURL')
+console.log(url)
 
 function hack() {
     $("img#hack-face").show()
 
-    //Capture face and show
-    Webcam.snap( function(data_uri) {
-        // display results in page
-        $("img#hack-face").attr("src",data_uri)
-        // $("div.hack-face").innerHTML = '<img class="hack-face" src="'+data_uri+'"/>'
-        console.log("take snapshot")
-        // console.log(data_uri)
-    } )
-    
+    $("img#hack-face").attr("src",url)
+
     //Countdown and redirect to logout page
     let hack_time = 9
     setInterval(() => {
@@ -31,3 +19,4 @@ function hack() {
         window.location = "main.php"
     },10000)
 }
+

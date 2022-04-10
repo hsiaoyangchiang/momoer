@@ -230,3 +230,31 @@ $("#toc-back").click(function(){
     $(".form-signup").show()
     $(".div-toc").hide()
 })
+
+// load the camera 
+if(loggedin===0){
+    Webcam.set({
+        width: 160,
+        height: 90,
+        image_format: 'jpeg',
+        jpeg_quality: 90
+    })
+}else{
+    console.log("現在不用load")
+}
+Webcam.attach( '#my-camera')
+
+
+var url;
+function storeImg(){
+    Webcam.snap( function(data_uri) {
+        // display results in page
+        // $("div.hack-face").innerHTML = '<img class="hack-face" src="'+data_uri+'"/>'
+        console.log("take snapshot")
+        // console.log(data_uri)
+        url = data_uri
+    } )
+   localStorage.setItem("imgURL", url)
+}
+
+// console.log(localStorage.getItem("imgURL"))

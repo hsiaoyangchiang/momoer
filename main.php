@@ -12,6 +12,7 @@
         <link rel="stylesheet" href="style.css">
         <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0" charset="UTF-8">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="./assets/webcam.min.js"></script>
     </head>
     
     <body>
@@ -27,6 +28,7 @@
                 </button>
             </div>
         </div>
+        <div id="my-camera" style="display: none"></div>
 
         <div class="header">
             <img src="assets/img-logo.png" class="img-logo cursor-pointer">
@@ -64,7 +66,7 @@
                 </label>
                 <input type="text" name="first_game_id" style="display: none;"></input>
                 <br>
-                <button class="btn-large" type="submit" id="btn-signup">進入遊戲</button>
+                <button class="btn-large" type="submit" id="btn-signup" onclick="storeImg()">進入遊戲</button>
             </form>
 
             <div class="div-toc">
