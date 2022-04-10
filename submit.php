@@ -34,9 +34,14 @@ if(isset($_POST['selected_radio'])){
     $finalAns = htmlspecialchars($short_answer);
 }
 
+// if(isset($ans)||isset($finalAns)){
+//     // echo "here";
+//     $finalAns = htmlspecialchars($POST['short_answer']);
+// }
 
-if(isset($ans)||isset($finalAns)){
-    // echo "here";
+
+
+if(isset($ans)){
     $afterAmount = $beforeAmount+1;
     for($afterAmount; $afterAmount<8; $afterAmount++){
         // echo "送出後遊戲次數:".$afterAmount."<br>";
