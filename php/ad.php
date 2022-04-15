@@ -2,6 +2,8 @@
 session_start();
 include("../pdoInc.php");
 
+$amount ='';
+
 if(isset($_SESSION["username"])){
     $username = $_SESSION["username"];
     $sql = "SELECT * from Game WHERE username = '$username'";

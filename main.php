@@ -50,13 +50,14 @@
             <form class="form-signup" name="registerForm" method="post" action="signup.php">
                 <h1>註 冊</h1>
                 <div class="flex-horizontal">
-                    <label class="label-signup" for="username">帳號</label>
-                    <input class="input-signup" type="text" id="username" name="username" placeholder="用英文和數字歐"></input>
+                    <label class="label-signup" for="username">暱稱</label>
+                    <!-- <label id="checkUsername"></label> -->
+                    <input class="input-signup" type="text" id="username" name="username" placeholder="中文英文都可以歐"></input>
                 </div>
                 <br>
                 <div class="flex-horizontal">
                     <label class="label-signup" for="password">密碼</label>
-                    <input class="input-signup" type="password" id="password" name="password" placeholder="你的密碼很安全的~"></input>
+                    <input class="input-signup" type="password" id="password" name="password" placeholder="至少3個字 只能用數字歐"></input>
                 </div>
                 <br>
                 <label class="label-signup" for="agree_toc">
