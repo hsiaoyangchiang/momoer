@@ -20,9 +20,6 @@ if(isset($_POST['agree_toc'])){
 //有勾：on
 //沒勾：underdefined
 
-
-// echo $username, $pwd, $confirm_pwd, $nickname;
-
 if($checkbox != 'on'){
     echo "<script> {window.alert('請同意使用條款');location.href='main.php'} </script>";
     exit;
@@ -33,24 +30,17 @@ if (empty(trim($pwd))){
     exit;
 } 
 //密碼長度
-if(strlen($pwd)<3){
-    echo "<script> {window.alert('密碼太短');location.href='main.php'} </script>";
+$pattern = "/[0-9]{3,}/";
+if(preg_match($pattern, $pwd)==false){
+    echo "<script> {window.alert('密碼不符規定');location.href='main.php'} </script>";
     exit;
 }
-//確認密碼與密碼相同
-// if (empty(trim($confirm_pwd))) {
-//     echo "<script> {window.alert('請確認密碼');location.href='main.php'} </script>";
-//     // exit;
-// } else if ($confirm_pwd != $pwd) {
-//     echo "<script> {window.alert('請確認密碼');location.href='main.php'} </script>";
-// }else{
-//     $checkPassword = $pwd;
-//     // echo $checkPassword;
-// }
+
 //確認帳號不為空＆確認帳號是否重複
 if(empty(trim($username))){
     echo "<script> {window.alert('帳號或暱稱不得留空');} </script>";
 }else{
+    $username = htmlspecialchars($username);
     $sql = "SELECT id FROM Game WHERE username = :username";
     if ($stmt = $dbh->prepare($sql)) {
         $stmt->bindParam(":username", $username, PDO::PARAM_STR);
@@ -72,10 +62,7 @@ if(empty(trim($username))){
     }
 }
 
-// if(isset($_POST['imgURL'])){ 
-//     $url = $_POST['imgURL'];
-//     print($url);
-// }
+
 
 //加入資料表game
 $sql = "INSERT INTO Game(username, pwd) VALUES (:username, :pwd)";
@@ -90,9 +77,7 @@ if ($stmt->execute()) {
     $_SESSION["loggedin"] = true;
     $_SESSION['username'] = $checkUsername;
     $_SESSION['askQuestion'] = 0;
-    // $_SESSION['imgURL'] = $url;
     sleep(3);
-    // echo '<meta http-equiv=REFRESH CONTENT=0;url=main.php>';
     echo '<meta http-equiv=REFRESH CONTENT=0;url=game.php?game_id='.$first_game_id.'>';
 } else {
   echo "<script> {window.alert('Opps, 現在有問題請稍等');location.href='main.php'} </script>";
