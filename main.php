@@ -23,9 +23,7 @@
                 <span class="leaderboard-green">&nbsp;&nbsp;全台數位內容首府 來電詢問2939-3091 #6227<span id="end">4</span></span>
             </marquee>
             <div>
-                <button method="post" action="ending.php">
-                    logout
-                </button>
+                <button class="logout">登出</button>
             </div>
         </div>
         <div id="my-camera" style="display: none"></div>

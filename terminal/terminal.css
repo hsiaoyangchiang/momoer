@@ -1,0 +1,207 @@
+* {
+    box-sizing: border-box;
+}
+body {
+    margin: 0;
+    background-color: black;
+}
+h1 {
+    font-family: monospace;
+    font-weight: 600;
+    font-size: 34px;
+    line-height: 100%;
+    text-align: center;
+    letter-spacing: 0.3em;
+    margin-top: 12px;
+    margin-bottom: 0;
+    
+    color: #6CFF60;;
+    text-shadow: 0px 0px 6px rgba(108, 255, 96, 0.7);
+}
+p {
+    font-family: monospace;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 22px;
+    color: #6CFF60;
+    text-shadow: 0px 0px 10px #6CFF60;
+    /* word-wrap: break-word; */
+}
+p#data {
+    display: flex;
+    position: relative;
+    /* border: 1px solid wheat; */
+    margin-bottom: 0;
+}
+span.cursor {
+    color: #6CFF60;
+}
+p#data::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    height: 1px;
+    width: 16px;
+    color: #6CFF60;
+    padding: 1px;
+    left: 100%;
+    animation: blink 700ms infinite ease;
+}
+@keyframes blink {
+    0% {
+      opacity: 0;
+      background-color: #6CFF60;
+    }
+    50% {
+      opacity: 1;
+        background-color: #6CFF60;
+    }
+    100% {
+      opacity: 0;
+        background-color: #6CFF60;
+    }
+  }
+
+div#container {
+    display: grid;
+    padding: 10px;
+    height: calc(100vh - 30px);
+    width: calc(100vw - 20px);
+    grid-template-columns: 42% 26% 32%;
+    grid-template-rows: 20% 10% 40% 30%;
+    row-gap: 10px;
+    column-gap: 10px;
+}
+section#section-a {
+    grid-row: 1 / 5;
+    grid-column: 1 / 2;
+
+    position: relative;
+    padding: 10px;
+}
+section#section-b {
+    grid-row: 1 / 2;
+    grid-column: 2 / 3;
+
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+section#section-c {
+    grid-row: 2 / 4;
+    grid-column: 2 / 3;
+}
+section#section-d {
+    grid-row: 4 / 5;
+    grid-column: 2 / 3;
+}
+section#section-e {
+    grid-row: 1 / 3;
+    grid-column: 3 / 4;
+}
+section#section-f {
+    grid-row: 3 / 5;
+    grid-column: 3 / 4;
+}
+
+
+.hack-window {
+    position: relative;
+    border: 0.8px solid #6CFF60;
+    border-radius: 2px;
+}
+span.hack-window-top {
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: end;
+    padding: 0 4px;
+    width: 100%;
+    height: 16px;
+    border-bottom: 0.8px solid #6CFF60;
+}
+
+img.icon-small {
+    position: relative;
+    width: 10px;
+    height: 10px;
+}
+
+div.radar-box {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+}
+.radar {
+    background: -webkit-radial-gradient(center, rgba(108, 255, 96, 0.3) 0%, rgba(108, 255, 96, 0) 75%), -webkit-repeating-radial-gradient(rgba(108, 255, 96, 0) 5.8%, rgba(108, 255, 96, 0) 18%, rgba(108, 255, 96, 1) 18.6%, rgba(108, 255, 96, 0) 18.9%), -webkit-linear-gradient(90deg, rgba(108, 255, 96, 0) 49.5%, rgba(108, 255, 96, 1) 50%, rgba(108, 255, 96, 1) 50%, rgba(108, 255, 96, 0) 50.2%), -webkit-linear-gradient(0deg, rgba(108, 255, 96, 0) 49.5%, rgba(108, 255, 96, 1) 50%, rgba(108, 255, 96, 1) 50%, rgba(108, 255, 96, 0) 50.2%);
+    background: radial-gradient(center, rgba(108, 255, 96, 0.3) 0%, rgba(108, 255, 96, 0) 75%), repeating-radial-gradient(rgba(108, 255, 96, 0) 5.8%, rgba(108, 255, 96, 0) 18%, rgba(108, 255, 96, 1) 18.6%, rgba(108, 255, 96, 0) 18.9%), linear-gradient(90deg, rgba(108, 255, 96, 0) 49.5%, rgba(108, 255, 96, 1) 50%, rgba(108, 255, 96, 1) 50%, rgba(108, 255, 96, 0) 50.2%), linear-gradient(0deg, rgba(108, 255, 96, 0) 49.5%, rgba(108, 255, 96, 1) 50%, rgba(108, 255, 96, 1) 50%, rgba(108, 255, 96, 0) 50.2%);
+    width: 260px;
+    height: 260px;
+    max-height: 75vh;
+    max-width: 75vh;
+    position: relative;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    border: 1.6px solid #6CFF60;
+    overflow: hidden;
+}
+.radar:before {
+    content: ' ';
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    animation: blips 5s infinite;
+    animation-timing-function: linear;
+    animation-delay: 1.4s;
+}
+.radar:after {
+    content: ' ';
+    display: block;
+    background-image: linear-gradient(44deg, rgba(0, 255, 51, 0) 50%, rgba(0, 255, 51, 1) 100%);
+    width: 50%;
+    height: 50%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    animation: radar-beam 5s infinite;
+    animation-timing-function: linear;
+    transform-origin: bottom right;
+    border-radius: 100% 0 0 0;
+}
+@keyframes radar-beam {
+    0% {
+        transform: rotate(0deg);
+   }
+    100% {
+        transform: rotate(360deg);
+   }
+}
+@keyframes blips {
+    14% {
+        background: radial-gradient(2vmin circle at 75% 70%, rgba(255, 255, 255, 1) 10%, rgba(108, 255, 96, 1) 30%, rgba(255, 255, 255, 0) 100%);
+   }
+    14.0002% {
+        background: radial-gradient(2vmin circle at 75% 70%, rgba(255, 255, 255, 1) 10%, rgba(108, 255, 96, 1) 30%, rgba(255, 255, 255, 0) 100%), radial-gradient(2vmin circle at 63% 72%, rgba(255, 255, 255, 1) 10%, rgba(108, 255, 96, 1) 30%, rgba(255, 255, 255, 0) 100%);
+   }
+    25% {
+        background: radial-gradient(2vmin circle at 75% 70%, rgba(255, 255, 255, 1) 10%, rgba(108, 255, 96, 1) 30%, rgba(255, 255, 255, 0) 100%), radial-gradient(2vmin circle at 63% 72%, rgba(255, 255, 255, 1) 10%, rgba(108, 255, 96, 1) 30%, rgba(255, 255, 255, 0) 100%), radial-gradient(2vmin circle at 56% 86%, rgba(255, 255, 255, 1) 10%, rgba(108, 255, 96, 1) 30%, rgba(255, 255, 255, 0) 100%);
+   }
+    26% {
+        background: radial-gradient(2vmin circle at 75% 70%, rgba(255, 255, 255, 1) 10%, rgba(108, 255, 96, 1) 30%, rgba(255, 255, 255, 0) 100%), radial-gradient(2vmin circle at 63% 72%, rgba(255, 255, 255, 1) 10%, rgba(108, 255, 96, 1) 30%, rgba(255, 255, 255, 0) 100%), radial-gradient(2vmin circle at 56% 86%, rgba(255, 255, 255, 1) 10%, rgba(108, 255, 96, 1) 30%, rgba(255, 255, 255, 0) 100%);
+        opacity: 1;
+   }
+    100% {
+        background: radial-gradient(2vmin circle at 75% 70%, rgba(255, 255, 255, 1) 10%, rgba(108, 255, 96, 1) 30%, rgba(255, 255, 255, 0) 100%), radial-gradient(2vmin circle at 63% 72%, rgba(255, 255, 255, 1) 10%, rgba(108, 255, 96, 1) 30%, rgba(255, 255, 255, 0) 100%), radial-gradient(2vmin circle at 56% 86%, rgba(255, 255, 255, 1) 10%, rgba(108, 255, 96, 1) 30%, rgba(255, 255, 255, 0) 100%);
+        opacity: 0;
+   }
+}
+

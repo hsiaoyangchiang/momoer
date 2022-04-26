@@ -26,6 +26,11 @@ function getSession() {
 }
 
 // Run basics
+const btn_logout = $("button.logout")
+btn_logout.click(function(){
+    window.location = "end/end.php"
+})
+
 window.onload = function() {
     getSession()
     $.when(getSession()).done(function(data) {
@@ -38,6 +43,7 @@ window.onload = function() {
             $("div.profile").show()
             $("p#profile-username").text(username)
             Webcam.reset('#my-camera')
+            btn_logout.show()
         } else {
             loggedin = 0
             Webcam.set({

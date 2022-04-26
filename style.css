@@ -477,6 +477,27 @@ button.btn-small {
 
     color: #FFFFFF;
 }
+button.logout {
+    display: none;
+    position: absolute;
+    top: 12px;
+    right: 20px;
+    background: none !important;
+    outline: none;
+
+    font-family: 'DotGothic16';
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 100%;
+    text-align: center;
+    letter-spacing: 0.2em;
+
+    color: #FFFFFF;
+}
+button.logout:hover {
+    color: #ff5050 !important;
+}
 
 input.btn-medium {
     background: #F6CD63;
