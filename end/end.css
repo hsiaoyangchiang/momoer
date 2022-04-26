@@ -1,0 +1,116 @@
+* {
+    box-sizing: border-box;
+}
+@font-face {
+    font-family: 'DotGothic16';
+    src: url(../assets/DotGothic16-Regular.ttf);
+}
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: white;
+    font-family: 'DotGothic16';
+}
+#canvas {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 12;
+    /* border: 4px solid red; */
+}
+.hide {
+    display: none;
+}
+div#div-end {
+    position: relative;
+    left: 0;
+    top: 0;
+    z-index: 14;
+}
+div.vertical-align {
+    display: flex;
+    flex-direction: column;
+}
+div#div-end h1 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding: 0;
+    font-size: 170px;
+    font-weight: 400;
+    line-height: 100%;
+    color: #000;
+
+    -webkit-transform:scale(0.85,1); /* Safari and Chrome */
+    -moz-transform:scale(0.85,1); /* Firefox */
+    -ms-transform:scale(0.85,1); /* IE 9 */
+    -o-transform:scale(0.85,1); /* Opera */
+    transform:scale(0.85,1); /* W3C */
+}
+div.vertical-text-1 {
+    position: absolute;
+    left: -10px;
+    top: 0;
+}
+div.vertical-text-2 {
+    position: absolute;
+    left: 166px;
+    top: 146px;
+}
+div.stretch-text {
+    font-size: 70px;
+    font-weight: 400;
+    line-height: 100%;
+    text-transform: uppercase;
+    color: #000;
+
+    -webkit-transform:scale(1.94,1); /* Safari and Chrome */
+    -moz-transform:scale(1.94,1); /* Firefox */
+    -ms-transform:scale(1.94,1); /* IE 9 */
+    -o-transform:scale(1.94,1); /* Opera */
+    transform:scale(1.94,1); /* W3C */
+}
+div.stretch-text-1 {
+    position: absolute;
+    right: 420px;
+    top: 26px;
+}
+div.stretch-text-2 {
+    position: absolute;
+    right: 100px;
+    top: 116px;
+}
+div.stretch-text-3 {
+    position: absolute;
+    right: 133px;
+    top: 196px;
+}
+div.user-data {
+    position: absolute;
+    right: 0;
+    top: 50vh;
+    font-size: 44px;
+    line-height: 120%;
+    text-align: right;
+    letter-spacing: 0.04em;
+    color: #000;
+}
+div.countdown-text {
+    position: absolute;
+    right: 10px;
+    top: calc(100vh - 60px);
+    font-size: 36px;
+    line-height: 120%;
+    text-align: right;
+    letter-spacing: 0.04em;
+    color: #FFF;
+}
+img#hack-face {
+    display: none;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: auto;
+    z-index: 10;
+}

@@ -10,8 +10,10 @@
         <title>東方哈哈樂園</title>
         <link rel="icon" href="" sizes="16x16">
         <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
         <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0" charset="UTF-8">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
         <script src="./assets/webcam.min.js"></script>
     </head>
     
@@ -23,9 +25,7 @@
                 <span class="leaderboard-green">&nbsp;&nbsp;全台數位內容首府 來電詢問2939-3091 #6227<span id="end">4</span></span>
             </marquee>
             <div>
-                <button method="post" action="ending.php">
-                    logout
-                </button>
+                <button class="logout">登出</button>
             </div>
         </div>
         <div id="my-camera" style="display: none"></div>
@@ -378,8 +378,8 @@
                     <div id="game-title" class="game-title noselect cursor-pointer">精靈の算命小屋</div>
                 </div>
                 <div id="game-12" class="game cursor-pointer">
-                    <img class="img-game-thumbnail" src="assets/game thumbnail/nan.png">
-                    <div id="game-title" class="game-title noselect cursor-pointer">好玩小遊戲</div>
+                    <img class="img-game-thumbnail" src="assets/game thumbnail/flash.png">
+                    <div id="game-title" class="game-title noselect cursor-pointer">波波歷險記</div>
                 </div>
             </div>
             <div class="ad-vertical cursor-pointer">
