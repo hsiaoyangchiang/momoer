@@ -211,6 +211,7 @@ function passData(response) {
 	typeWriter()
 }
 
+
 Promise.all([getData()]).then(() => {
 	// passData()
 }).catch(() => {
