@@ -166,11 +166,11 @@ $("button#send_my_data").click(function() {
             }, 
             function(data, status) {})
                 .done(function(data) {
-                    alert("done")
-                    window.location="destroy.php"
+                    // alert("done")
+                    window.location="end/end.php"
                 })
                 .fail(function(xhr, status, error) {
-                    alert("fail")
+                    alert("系統暫時性問題，請洽詢工作人員")
                     console.log(xhr.responseTest)
                     alert(xhr.responseTest)
                 })
@@ -386,3 +386,9 @@ function changebg(level) {
             break
     }
 }
+
+//Logout
+const btn_logout = $(".logout")
+btn_logout.click(function(){
+    window.location = "end/end.php"
+})

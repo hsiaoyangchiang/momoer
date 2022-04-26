@@ -23,6 +23,9 @@ echo "<script>console.log('game.php ask question: ".$_SESSION['askQuestion']."')
                 <span class="leaderboard-margenta">&#128081; 排行榜: <span id="rankings">王小明 600 &#9733; 王宏宏 450 &#9733; 楊明王 400 &#9733; 阿翔 350 &#9733; 小羊 200</span></span>
                 <span class="leaderboard-green">&nbsp;&nbsp;全台數位內容首府 來電詢問2939-3091 #6227<span id="end">4</span></span>
             </marquee>
+            <div>
+                <button class="logout" style="display: block;">登出</button>
+            </div>
         </div>
 
         <div class="header-game">
