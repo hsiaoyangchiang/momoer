@@ -247,3 +247,7 @@ function storeImg(){
     } )
    localStorage.setItem("imgURL", url)
 }
+
+$(document).ready(function(){ 
+    console.log("haha"+$("input[name='username']").val())
+ });
