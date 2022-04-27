@@ -26,6 +26,11 @@ function getSession() {
 }
 
 // Run basics
+const btn_logout = $("button.logout")
+btn_logout.click(function(){
+    window.location = "end/end.php"
+})
+
 window.onload = function() {
     getSession()
     $.when(getSession()).done(function(data) {
@@ -38,6 +43,7 @@ window.onload = function() {
             $("div.profile").show()
             $("p#profile-username").text(username)
             Webcam.reset('#my-camera')
+            btn_logout.show()
         } else {
             loggedin = 0
             Webcam.set({
@@ -52,8 +58,11 @@ window.onload = function() {
         console.log("username: "+username)
         console.log("askQuestion: "+askQuestion)
     })
-    getStats()
+    // getStats()
 }
+document.addEventListener('DOMContentLoaded', () => {
+    getStats()
+})
 
 // User Stats
 var img_logo = $("img.img-logo")
@@ -177,19 +186,20 @@ game.mouseleave(() => {
 })
 
 // Lock y-scroll when modal appears
-function lockScroll() {
-    // alert("lock scroll")
-    console.log("lock scroll")
-    $("body").attr("overflow-y", "hidden")
+const overlay = $("#overlay")
+function showOverlay() {
+    overlay.fadeIn(function(){
+        $("body").css("height", "100vh")
+        $("body").css("overflow-y", "hidden")
+    })
 }
 
 function unlockScroll() {
-    $("body").attr("overflow-y", "visible")
+    $("body").css("overflow-y", "visible")
 }
 
 // Switch to specific game page
 const modal_signup = $(".modal-signup")
-const overlay = $("#overlay")
 
 for(let i=0; i<12; i++) {
     let game_clicked = document.getElementsByClassName("game")[i]
@@ -199,8 +209,10 @@ for(let i=0; i<12; i++) {
         if (loggedin == 0) {
             // Signup
             console.log("first time to play game")
-            overlay.show()
-            modal_signup.show()
+            showOverlay()
+            overlay.promise().done(function() {
+                modal_signup.show({effect:"fold", duration:600})
+            })
             $("input[name='first_game_id']").val(game_id)
         }
         else {

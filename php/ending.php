@@ -20,7 +20,7 @@ while($row = $sth->fetch(PDO::FETCH_ASSOC)){
     $departure = $row['departure'];
 
     $time_diff = strtotime($departure) - strtotime($arrival);
-    echo $time_diff;
+    // echo $time_diff;
 };
 unset($sth);
 

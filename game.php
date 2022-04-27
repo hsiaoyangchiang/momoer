@@ -11,8 +11,10 @@ echo "<script>console.log('game.php ask question: ".$_SESSION['askQuestion']."')
         <title>小遊戲區</title>
         <link rel="icon" href="" sizes="16x16">
         <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
         <meta charset="UTF-8">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
         <!-- <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0"> -->
     </head>
 
@@ -23,6 +25,9 @@ echo "<script>console.log('game.php ask question: ".$_SESSION['askQuestion']."')
                 <span class="leaderboard-margenta">&#128081; 排行榜: <span id="rankings">王小明 600 &#9733; 王宏宏 450 &#9733; 楊明王 400 &#9733; 阿翔 350 &#9733; 小羊 200</span></span>
                 <span class="leaderboard-green">&nbsp;&nbsp;全台數位內容首府 來電詢問2939-3091 #6227<span id="end">4</span></span>
             </marquee>
+            <div>
+                <button class="logout" style="display: block;">登出</button>
+            </div>
         </div>
 
         <div class="header-game">

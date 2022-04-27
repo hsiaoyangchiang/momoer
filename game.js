@@ -44,13 +44,15 @@ window.onload = function() {
                     // alert("gs from php: "+game_session)
                     console.log("game_session: "+game_session)
                     localStorage.setItem("game_session", game_session) //這邊會設置game session
-        
-                    changebg(game_session-1)
+                    
+                    // changebg(game_session-1)
+                    passAjax(game_session-1,changebg)
                     showQuestion(game_session)
                 }, "text")
             }
             else {
-                changebg(parseInt(localStorage.getItem("game_session"))-1)
+                // changebg(parseInt(localStorage.getItem("game_session"))-1)
+                passAjax(parseInt(localStorage.getItem("game_session"))-1,changebg)
                 //Auto scroll to game
                 // $('html,body').animate({
                 //     scrollTop: $("iframe").offset().top
@@ -62,6 +64,17 @@ window.onload = function() {
     // Load Game
     let game_src = arr_game_src[game_id-1]
     $("iframe").attr("src", game_src)
+    if(game_id == 12) {
+        setTimeout(() => {
+            alert("Flash不支援")
+            window.location = "main.php"
+        }, 2000);
+    }
+}
+
+function passAjax(data, callback){
+    console.log("change bg",data)
+    callback(data)
 }
 
 
@@ -103,8 +116,11 @@ var arr_question = [ //問題集放這裡
 ];
 
 function showQuestion(game_session) {
-    modal_question.show()
     showOverlay()
+    overlay.promise().done(function() {
+        modal_question.show("fold",1000)
+    })
+    
     if (game_session == 7) {
         question_radio.hide()
         question_saq.show()
@@ -155,8 +171,16 @@ $("input[name=Q7]").click(function() {
 $("button#send_my_data").click(function() {
     if (!$(this).hasClass("deactivate")) {
         // alert("active button")
-        modal_question.hide()
-        hideOverlay()
+        modal_question.hide({
+            effect:"blind",
+            direction:"down",
+            duration:1000,
+            complete: function () {
+                $(this).parent().promise().done(function () {
+                    hideOverlay()
+                })
+            }
+        })
         if(game_session == 7) {
             short_answer = $("input[name=Q7]").val()
             // alert(short_answer)
@@ -166,11 +190,11 @@ $("button#send_my_data").click(function() {
             }, 
             function(data, status) {})
                 .done(function(data) {
-                    alert("done")
-                    window.location="destroy.php"
+                    // alert("done")
+                    window.location="end/end.php"
                 })
                 .fail(function(xhr, status, error) {
-                    alert("fail")
+                    alert("系統暫時性問題，請洽詢工作人員")
                     console.log(xhr.responseTest)
                     alert(xhr.responseTest)
                 })
@@ -220,7 +244,11 @@ var player_level = $("#player-level")
 
 function callParent(){
     // console.log("game has ended")
-    modal_endgame.show()
+    showOverlay()
+    overlay.promise().done(function() {
+        modal_endgame.show({effect:"fold", duration:600})
+    })
+
     if (localStorage.getItem("game_session") == null) {
         levelUp(0)
         // console.log("undefined gs")
@@ -228,7 +256,6 @@ function callParent(){
     else {
         levelUp(parseInt(localStorage.getItem("game_session")))
     }
-    showOverlay()
 }
 
 function levelUp(level){
@@ -266,7 +293,7 @@ function levelUp(level){
 
 function replay(){
     // console.log("replay")
-    modal_endgame.hide()
+    modal_endgame.hide({ effect:"blind",direction:"down", duration:1000})
     hideOverlay()
     if (askQ != 0) {
         submit()
@@ -277,7 +304,7 @@ function replay(){
 
 function backtoMain(){
     // console.log("back to main")
-    modal_endgame.hide()
+    modal_endgame.hide({ effect:"blind",direction:"down", duration:1000})
     hideOverlay()
     // localStorage.setItem("ad_change",0)
     if (askQ != 0) {
@@ -309,13 +336,17 @@ function loadTestAd(id) {
 const overlay = $("#overlay")
 
 function showOverlay() {
-    overlay.show()
-    $("body").attr("overflow-y", "hidden")
+    overlay.fadeIn(function(){
+        $("body").css("height", "100vh")
+        $("body").css("overflow-y", "hidden")
+    })
 }
 
 function hideOverlay() {
-    overlay.hide()
-    $("body").attr("overflow-y", "visible")
+    overlay.fadeOut(function(){
+        $("body").css("height", "auto")
+        $("body").css("overflow-y", "visible")
+    })
 }
 
 
@@ -386,3 +417,9 @@ function changebg(level) {
             break
     }
 }
+
+//Logout
+const btn_logout = $(".logout")
+btn_logout.click(function(){
+    window.location = "end/end.php"
+})
