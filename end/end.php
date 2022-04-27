@@ -1,6 +1,6 @@
 <?php
 session_start();
-include("pdoInc.php");
+include("../pdoInc.php");
 include("../php/ending.php");
 
 //加入離開時間

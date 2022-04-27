@@ -1,6 +1,6 @@
 window.onload = function() {
 	// typeWriter()
-	reloadData()
+	// reloadData()
 }
 
 //SECTION - A | TypeWriter
@@ -11,6 +11,26 @@ var dataLength
 
 const terminal_data = document.getElementById("data")
 const terminal_ad_pref = document.getElementById("ad-pref")
+const documentHeight = $(document).height()
+var overflow = 0
+
+window.setInterval(function() {
+	var offset_p = terminal_data.offsetTop + terminal_data.offsetHeight
+	// if (overflow == 0) {
+	// 	if(offset_p > (documentHeight - 38)) {
+	// 		overflow = 1
+	// 	}
+	// } else {
+	// 	$("p#data").animate({"top": `-=1px`},100)
+	// }
+	if(offset_p > (documentHeight - 38)) {
+		scrollUp()
+	}
+}, 10)
+  
+function scrollUp(){
+	$('p#data').animate({top:"-=1px"}, 30, scrollUp)
+}
 
 function getData(){
     return $.ajax({
@@ -211,7 +231,6 @@ function passData(response) {
 	typeWriter()
 }
 
-
 Promise.all([getData()]).then(() => {
 	// passData()
 }).catch(() => {
@@ -298,7 +317,7 @@ function changeAd(string) {
 const div_showAd = $("div.show-ad")
 function showAd(ad_name) {
 	var paragraph = document.createElement("p");
-	paragraph.textContent = `changeAdTo("${ad_name}");`
+	paragraph.textContent = `changeAd("${ad_name}");`
 	div_showAd.append(paragraph)
 	
 	// setTimeout(function(){
@@ -313,7 +332,7 @@ const fadeOutP = setInterval(function(){
 		.promise().done(function() {
 			$("div.show-ad p:first").remove()
 	})
-},speed*15)
+},speed*20)
 
 
 
