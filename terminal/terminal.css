@@ -5,9 +5,11 @@ body {
     margin: 0;
     background-color: black;
 }
+
 p {
     font-family: monospace;
     font-weight: 400;
+
     font-size: 18px;
     line-height: 22px;
     color: #6CFF60;
