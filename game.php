@@ -11,8 +11,10 @@ echo "<script>console.log('game.php ask question: ".$_SESSION['askQuestion']."')
         <title>小遊戲區</title>
         <link rel="icon" href="" sizes="16x16">
         <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
         <meta charset="UTF-8">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
         <!-- <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0"> -->
     </head>
 

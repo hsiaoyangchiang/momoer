@@ -211,12 +211,11 @@ function passData(response) {
 	typeWriter()
 }
 
-function reloadData() {
-	Promise.all([getData()]).then(() => {
-		// passData()
-	}).catch(() => {
-	})
-}
+
+Promise.all([getData()]).then(() => {
+	// passData()
+}).catch(() => {
+})
 
 var record = 0
 var word = []
