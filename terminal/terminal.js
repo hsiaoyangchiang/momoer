@@ -16,13 +16,6 @@ var overflow = 0
 
 window.setInterval(function() {
 	var offset_p = terminal_data.offsetTop + terminal_data.offsetHeight
-	// if (overflow == 0) {
-	// 	if(offset_p > (documentHeight - 38)) {
-	// 		overflow = 1
-	// 	}
-	// } else {
-	// 	$("p#data").animate({"top": `-=1px`},100)
-	// }
 	if(offset_p > (documentHeight - 38)) {
 		scrollUp()
 	}
@@ -433,3 +426,17 @@ function update(){
 
 initAllGlitch();
 update();
+
+// SECTION - B | EARNINGS
+var dollar_unit = ['','K','M','B','T']
+var money = 10
+var unit_times = 1
+
+window.setInterval(function() {
+	money += 10
+	if (money>=Math.pow(1000,unit_times)) {
+		unit_times += 1
+	}
+	$("span#unit").text(dollar_unit[unit_times-1])
+	$("span#num").text(money/Math.pow(1000,unit_times-1))
+}, 100)

@@ -5,11 +5,9 @@ body {
     margin: 0;
     background-color: black;
 }
-
 p {
     font-family: monospace;
     font-weight: 400;
-
     font-size: 18px;
     line-height: 22px;
     color: #6CFF60;
@@ -75,7 +73,7 @@ section#section-b {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    background-color: #000;
+    /* background-color: #000; */
 }
 section#section-b p {
     margin: 0;
@@ -90,8 +88,7 @@ section#section-c {
     flex-direction: row;
     justify-content: baseline;
     align-items: center;
-
-    background: rgba(90, 146, 83, 0.12);
+    background: rgba(11, 18, 10, 0.6);
     border: 2px solid #5A9253;
 }
 section#section-d {
