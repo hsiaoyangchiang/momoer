@@ -56,7 +56,7 @@ WHERE username='$username'";
 $stmt= $dbh->prepare($sql);
 $stmt->bindParam(":score", $score);
 if($stmt->execute()){
-    echo $score;
+    // echo $score;
 }else{
     // echo"nooooo";
 }
