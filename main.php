@@ -52,7 +52,6 @@
     $sql = "UPDATE Game SET score = '$score'
     WHERE username='$username'";
     $stmt= $dbh->prepare($sql);
-    $stmt->bindParam(":score", $score);
     if($stmt->execute()){
         // echo $score;
     }else{
