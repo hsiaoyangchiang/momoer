@@ -282,7 +282,7 @@ if (ad_change >= game_session) { //換新的
     changeAd(game_session)
 }
 else { //換舊的
-    changeAd(game_session-1) 
+    changeAd(game_session-1)
 }
 
 // Leaderboard
