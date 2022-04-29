@@ -41,7 +41,7 @@ if(isset($_POST['selected_radio'])){
 
 
 
-if(isset($ans)){
+if(isset($ans)||isset($short_answer)){
     $afterAmount = $beforeAmount+1;
     for($afterAmount; $afterAmount<8; $afterAmount++){
         // echo "送出後遊戲次數:".$afterAmount."<br>";

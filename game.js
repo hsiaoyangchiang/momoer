@@ -44,13 +44,15 @@ window.onload = function() {
                     // alert("gs from php: "+game_session)
                     console.log("game_session: "+game_session)
                     localStorage.setItem("game_session", game_session) //這邊會設置game session
-        
-                    changebg(game_session-1)
+                    
+                    // changebg(game_session-1)
+                    passAjax(game_session-1,changebg)
                     showQuestion(game_session)
                 }, "text")
             }
             else {
-                changebg(parseInt(localStorage.getItem("game_session"))-1)
+                // changebg(parseInt(localStorage.getItem("game_session"))-1)
+                passAjax(parseInt(localStorage.getItem("game_session"))-1,changebg)
                 //Auto scroll to game
                 // $('html,body').animate({
                 //     scrollTop: $("iframe").offset().top
@@ -62,6 +64,17 @@ window.onload = function() {
     // Load Game
     let game_src = arr_game_src[game_id-1]
     $("iframe").attr("src", game_src)
+    if(game_id == 12) {
+        setTimeout(() => {
+            alert("Flash不支援")
+            window.location = "main.php"
+        }, 2000);
+    }
+}
+
+function passAjax(data, callback){
+    console.log("change bg",data)
+    callback(data)
 }
 
 
@@ -78,7 +91,7 @@ const option_4 = $("div#option-d")
 // 問題編號: game_session - game_id
 var arr_question = [ //問題集放這裡
     [['這是一款需要靈機應變的遊戲，請問你的反應速度跟下列哪種動物一樣？','螳螂','貓頭鷹','藍鯨','樹懶'],
-    ['貓咪問題','AAAAA','BBBBB','CCCCC','DDDDD'],
+    ['撲克牌遊戲可以進行分類區分，你會最會擅長的為哪一類？','反應類','記憶類','益智類','運氣類'],
     ['這個遊戲會考驗你的好眼力，請問你是為什麼近視的？','認真讀書當學霸','追太多劇','躲在被子裡看漫畫','都是 DNA 的錯'],
     ['這個太空遊戲考驗你的方向掌控技巧。請問你最想成為哪方面的控制高手：','情緒控制','聲音控制','時間管控','食慾控制'],
     ['台北市的巷弄跟迷宮一樣，請問你在台北市被 google map 的導航騙過幾次？','從來沒被騙過','偶爾一兩次','有時候會被騙','總是被騙QQ'],
@@ -87,9 +100,9 @@ var arr_question = [ //問題集放這裡
     ['如果你在家後院挖到寶藏，你希望它是？','價值千萬的木乃伊','可以回到過去的玉鐲子','可以瞬間移動的裹腳布','可以聽到別人心中想法的耳耙子'],
     ['假如你下輩子會是一隻鳥，你希望老天爺把你變成：','公雞','天鵝','孔雀','烏鴉']],
     [['你知道貓咪都喜歡追逐發光的點點，請問你是貓派還是狗派？','貓貓','狗狗','披著狗皮的貓','披著貓皮的狗'],
-    ['貓咪問題2','AAAAA','BBBBB','CCCCC','DDDDD'],
+    ['翻牌遊戲以政大附近的貓貓做為題材設計，請問你最希望政大附近再開一間什麼店？','火鍋吃到飽','臭豆腐店','酒吧','服飾店'],
     ['請問你對什麼東西的顏色最沒有偏好？','毛巾','雨傘','餐具','政黨'],
-    ['這個遊戲的太空船只能用左右鍵控制方向，請問你是左撇子還是右撇子？','左撇子','右撇子','XXXXXX','YYYYYY'],
+    ['當你在宇宙中，你最不希望遇到甚麼東西？','蟲洞','幽浮','外星人','隕石'],
     ['你覺得哪種不平衡感讓你最難忍受','組員簡報畫面圖文比不平衡','新耳機左右聲道音量不平衡','結束酒精路跑走路不平衡','心理不平衡'],
     ['小精靈誕生至今已經 42 歲了！請問你覺得在你 42 歲時...','跟伴侶養了一隻變色龍','在南極探險滿 5 年','成為小孩國小的家長會長','地球已經毀滅了'],
     ['這是個小朋友也能上手的遊戲，你小時候最喜歡看什麼卡通啊？','神奇寶貝','飛天小女警','家庭教師','烏龍派出所'],
@@ -103,8 +116,11 @@ var arr_question = [ //問題集放這裡
 ];
 
 function showQuestion(game_session) {
-    modal_question.show()
     showOverlay()
+    overlay.promise().done(function() {
+        modal_question.show("fold",1000)
+    })
+    
     if (game_session == 7) {
         question_radio.hide()
         question_saq.show()
@@ -155,8 +171,16 @@ $("input[name=Q7]").click(function() {
 $("button#send_my_data").click(function() {
     if (!$(this).hasClass("deactivate")) {
         // alert("active button")
-        modal_question.hide()
-        hideOverlay()
+        modal_question.hide({
+            effect:"blind",
+            direction:"down",
+            duration:1000,
+            complete: function () {
+                $(this).parent().promise().done(function () {
+                    hideOverlay()
+                })
+            }
+        })
         if(game_session == 7) {
             short_answer = $("input[name=Q7]").val()
             // alert(short_answer)
@@ -166,11 +190,11 @@ $("button#send_my_data").click(function() {
             }, 
             function(data, status) {})
                 .done(function(data) {
-                    alert("done")
-                    window.location="destroy.php"
+                    // alert("done")
+                    window.location="end/end.php"
                 })
                 .fail(function(xhr, status, error) {
-                    alert("fail")
+                    alert("系統暫時性問題，請洽詢工作人員")
                     console.log(xhr.responseTest)
                     alert(xhr.responseTest)
                 })
@@ -220,7 +244,11 @@ var player_level = $("#player-level")
 
 function callParent(){
     // console.log("game has ended")
-    modal_endgame.show()
+    showOverlay()
+    overlay.promise().done(function() {
+        modal_endgame.show({effect:"fold", duration:600})
+    })
+
     if (localStorage.getItem("game_session") == null) {
         levelUp(0)
         // console.log("undefined gs")
@@ -228,7 +256,6 @@ function callParent(){
     else {
         levelUp(parseInt(localStorage.getItem("game_session")))
     }
-    showOverlay()
 }
 
 function levelUp(level){
@@ -266,7 +293,7 @@ function levelUp(level){
 
 function replay(){
     // console.log("replay")
-    modal_endgame.hide()
+    modal_endgame.hide({ effect:"blind",direction:"down", duration:1000})
     hideOverlay()
     if (askQ != 0) {
         submit()
@@ -277,7 +304,7 @@ function replay(){
 
 function backtoMain(){
     // console.log("back to main")
-    modal_endgame.hide()
+    modal_endgame.hide({ effect:"blind",direction:"down", duration:1000})
     hideOverlay()
     // localStorage.setItem("ad_change",0)
     if (askQ != 0) {
@@ -309,13 +336,17 @@ function loadTestAd(id) {
 const overlay = $("#overlay")
 
 function showOverlay() {
-    overlay.show()
-    $("body").attr("overflow-y", "hidden")
+    overlay.fadeIn(function(){
+        $("body").css("height", "100vh")
+        $("body").css("overflow-y", "hidden")
+    })
 }
 
 function hideOverlay() {
-    overlay.hide()
-    $("body").attr("overflow-y", "visible")
+    overlay.fadeOut(function(){
+        $("body").css("height", "auto")
+        $("body").css("overflow-y", "visible")
+    })
 }
 
 
@@ -386,3 +417,9 @@ function changebg(level) {
             break
     }
 }
+
+//Logout
+const btn_logout = $(".logout")
+btn_logout.click(function(){
+    window.location = "end/end.php"
+})

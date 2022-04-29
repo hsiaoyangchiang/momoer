@@ -2,6 +2,67 @@
     session_start();
     $game_id = "";
     include("pdoInc.php");
+    
+    if(isset($_SESSION["username"])){
+        $username = $_SESSION["username"];
+        $sql = "SELECT * from Game WHERE username = '$username'";
+        $sth = $dbh->query($sql);
+        while($row = $sth->fetch(PDO::FETCH_ASSOC)){
+        $amount = $row['amount'];
+        $test1 = $row['test1'];
+        $test2 = $row['test2'];
+    
+    switch($amount){
+        case 0: 
+            $score = 0;
+            break;
+        case 1:
+            $score = rand(3, 5);
+            break;
+        case 2:
+            $score = rand(5, 10);
+            break;
+        case 3:
+            $score = rand(15, 25);
+            break;
+        case 4:
+            $score =rand(30, 45);
+            break;
+        case 5:
+            $score = rand(50, 70);
+            break;
+        case 6:
+            $score = rand(100,150);
+            break;
+        case 7:
+            $score = rand(200, 300);
+            break;
+    }
+    
+    
+    if($test1 == true){
+        $score += 20;
+    }
+    if($test2 == true){
+        $score +=10;
+    }
+    if($test1 && $test2 == true){
+        $score += 20;
+    }
+    
+    
+    $sql = "UPDATE Game SET score = '$score'
+    WHERE username='$username'";
+    $stmt= $dbh->prepare($sql);
+    // $stmt->bindParam(":score", $score);
+    if($stmt->execute()){
+        // echo $score;
+    }else{
+        // echo"nooooo";
+    }
+    unset($stmt);
+    
+    }};
 ?>
 
 <!DOCTYPE html>
@@ -10,8 +71,10 @@
         <title>東方哈哈樂園</title>
         <link rel="icon" href="" sizes="16x16">
         <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
         <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0" charset="UTF-8">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
         <script src="./assets/webcam.min.js"></script>
     </head>
     
@@ -23,9 +86,7 @@
                 <span class="leaderboard-green">&nbsp;&nbsp;全台數位內容首府 來電詢問2939-3091 #6227<span id="end">4</span></span>
             </marquee>
             <div>
-                <button method="post" action="ending.php">
-                    logout
-                </button>
+                <button class="logout">登出</button>
             </div>
         </div>
         <div id="my-camera" style="display: none"></div>
@@ -378,8 +439,8 @@
                     <div id="game-title" class="game-title noselect cursor-pointer">精靈の算命小屋</div>
                 </div>
                 <div id="game-12" class="game cursor-pointer">
-                    <img class="img-game-thumbnail" src="assets/game thumbnail/nan.png">
-                    <div id="game-title" class="game-title noselect cursor-pointer">好玩小遊戲</div>
+                    <img class="img-game-thumbnail" src="assets/game thumbnail/flash.png">
+                    <div id="game-title" class="game-title noselect cursor-pointer">波波歷險記</div>
                 </div>
             </div>
             <div class="ad-vertical cursor-pointer">
