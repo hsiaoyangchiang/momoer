@@ -16,13 +16,13 @@ var overflow = 0
 
 window.setInterval(function() {
 	var offset_p = terminal_data.offsetTop + terminal_data.offsetHeight
-	if(offset_p > (documentHeight - 38)) {
+	if(offset_p > (documentHeight-76)) {
 		scrollUp()
 	}
-}, 10)
+}, 1)
   
 function scrollUp(){
-	$('p#data').animate({top:"-=1px"}, 30, scrollUp)
+	$('p#data').animate({top:"-=1.05px"}, 34, scrollUp)
 }
 
 function getData(){
@@ -438,5 +438,5 @@ window.setInterval(function() {
 		unit_times += 1
 	}
 	$("span#unit").text(dollar_unit[unit_times-1])
-	$("span#num").text(money/Math.pow(1000,unit_times-1))
+	$("span#num").text(money/Math.pow(1000,unit_times-1
 }, 100)

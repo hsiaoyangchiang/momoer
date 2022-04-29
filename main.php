@@ -3,7 +3,6 @@
     $game_id = "";
     include("pdoInc.php");
 
-
     if(isset($_SESSION["username"])){
         $username = $_SESSION["username"];
         $sql = "SELECT * from Game WHERE username = '$username'";
@@ -12,7 +11,6 @@
         $amount = $row['amount'];
         $test1 = $row['test1'];
         $test2 = $row['test2'];
-          
           
     switch($amount){
         case 0: 
@@ -40,6 +38,7 @@
             $score = rand(200, 300);
             break;
     }
+          
     if($test1 == true){
         $score += 20;
     }
@@ -58,11 +57,7 @@
         // echo"nooooo";
     }
     unset($stmt);
-
     }};
-
-
-
 ?>
 
 <!DOCTYPE html>
