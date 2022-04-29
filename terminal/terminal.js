@@ -185,12 +185,10 @@ function passData(response) {
 				var game_id = ""
 				if(j<=2) {
 					option = data_q.split("-").pop()
-					console.log("op",option)
 					game_id = parseInt(data_q.split("-")[0])
 					// console.log(eval(`placeholder_text[${j-1}][${game_id}].${option}`))
 					var question = eval(`placeholder_question[${j-1}][${game_id-1}]`)
-					var ans = eval(`placeholder_text[${j-1}][${game_id-1}].${option}`) //BUG
-					console.log("j",j,"game_id",game_id,"option",option)
+					var ans = eval(`placeholder_text[${j-1}][${game_id-1}].${option}`)
 					answer[j-1][0] = question
 					answer[j-1][1] = ans
 				} else {
@@ -440,5 +438,5 @@ window.setInterval(function() {
 		unit_times += 1
 	}
 	$("span#unit").text(dollar_unit[unit_times-1])
-	$("span#num").text(money/Math.pow(1000,unit_times-1))
+	$("span#num").text(money/Math.pow(1000,unit_times-1
 }, 100)

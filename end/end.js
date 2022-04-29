@@ -145,6 +145,7 @@ function clearLine() {
 
 function showFace() {
     var img_url = localStorage.getItem('imgURL')
+    localStorage.clear()
     $("img#hack-face").show()
     $("img#hack-face").attr("src",img_url)
     // $("img#hack-face").attr("src","image.jpg")
@@ -181,7 +182,7 @@ pixelBlackOut().then((resolve) => {
                     setTimeout(function() {
                         // div_end.hide()
                         console.log("times up")
-                        localStorage.clear()
+                        // localStorage.clear()
                         clearInterval(hackCountdown)
                         ctx.fillStyle = "#000"
                         ctx.fillRect(0,0,documentWidth,documentHeight)
