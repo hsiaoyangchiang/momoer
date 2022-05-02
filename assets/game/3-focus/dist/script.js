@@ -1,6 +1,3 @@
-console.clear()
-
-// Utility Functions -->
 
 // This func. gets a random float between the given range
 function randomFloatFromRange(min, max){

@@ -30,7 +30,7 @@ if (empty(trim($pwd))){
     exit;
 } 
 //密碼長度
-$pattern = "/[0-9]{3,}/";
+$pattern = "/[a-zA-Z0-9]{3,}/";
 if(preg_match($pattern, $pwd)==false){
     echo "<script> {window.alert('密碼不符規定');location.href='main.php'} </script>";
     exit;

@@ -16,40 +16,40 @@ var overflow = 0
 
 window.setInterval(function() {
 	var offset_p = terminal_data.offsetTop + terminal_data.offsetHeight
-	if(offset_p > (documentHeight-76)) {
+	if(offset_p > (documentHeight-100)) {
 		scrollUp()
 	}
 }, 1)
   
 function scrollUp(){
-	$('p#data').animate({top:"-=1.05px"}, 34, scrollUp)
+	$('p#data').animate({top:"-=1.1px"}, 34, scrollUp)
 }
 
 function getData(){
-    return $.ajax({
-        url:"../php/data.php",
-        success: function(data) {
-            len = JSON.parse(data).length
+	return $.ajax({
+		url:"../php/data.php",
+		success: function(data) {
+			len = JSON.parse(data).length
 			var arr_user = []
-            for(let i = 0; i<len; i++){
+			for(let i = 0; i<len; i++){
 				var user = new Object()
-                user.id = JSON.parse(data)[i].id
-                user.username = JSON.parse(data)[i].username
-                user.pwd  = JSON.parse(data)[i].pwd
-                user.q1  = JSON.parse(data)[i].q1
-                user.q2  = JSON.parse(data)[i].q2
-                user.q3  = JSON.parse(data)[i].q3
-                user.q4  = JSON.parse(data)[i].q4
-                user.q5  = JSON.parse(data)[i].q5
-                user.q6  = JSON.parse(data)[i].q6
-                user.q7  = JSON.parse(data)[i].q7
-                user.amount  = JSON.parse(data)[i].amount
+				user.id = JSON.parse(data)[i].id
+				user.username = JSON.parse(data)[i].username
+				user.pwd  = JSON.parse(data)[i].pwd
+				user.q1  = JSON.parse(data)[i].q1
+				user.q2  = JSON.parse(data)[i].q2
+				user.q3  = JSON.parse(data)[i].q3
+				user.q4  = JSON.parse(data)[i].q4
+				user.q5  = JSON.parse(data)[i].q5
+				user.q6  = JSON.parse(data)[i].q6
+				user.q7  = JSON.parse(data)[i].q7
+				user.amount  = JSON.parse(data)[i].amount
 
 				arr_user.push(user)
-            }
-            passData(arr_user)
-        }
-    })
+			}
+			passData(arr_user)
+		}
+	})
 }
 var placeholder_question = [
 	["ReactionSpeed","222","NearSightedReason","WantedControlPower","LostInTaipei","IfOwnElf","FavTower","WantedTreasure","NextLifeBird"],
@@ -225,7 +225,6 @@ function passData(response) {
 }
 
 Promise.all([getData()]).then(() => {
-	// passData()
 }).catch(() => {
 })
 
@@ -267,6 +266,7 @@ function typeWriter() {
 
 		if(record == 1) {
 			word.push(data.charAt(i))
+			// console.log('2')
 		}
 
 		if(data.charAt(i) == "\"") {
@@ -279,11 +279,12 @@ function typeWriter() {
 				record = 0
 			}
 		}
-
     	i++
     	setTimeout(typeWriter, speed)
-    } else {
-		getData()
+    }
+	else {
+		window.location.reload();
+		return
 	}
 }
 
@@ -438,5 +439,5 @@ window.setInterval(function() {
 		unit_times += 1
 	}
 	$("span#unit").text(dollar_unit[unit_times-1])
-	$("span#num").text(money/Math.pow(1000,unit_times-1
+	$("span#num").text(money/Math.pow(1000,unit_times-1))
 }, 100)

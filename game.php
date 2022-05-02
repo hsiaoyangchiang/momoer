@@ -85,12 +85,15 @@ echo "<script>console.log('game.php ask question: ".$_SESSION['askQuestion']."')
             <div class="game-frame">
                 <iframe src="">
                 </iframe>
+                <div id="description">
+                    <p>遊戲說明：</p> <p id="intro"></p>
+                    <p>遊戲玩法：</p> <p id="howToPlay"></p>
+                </div>
             </div>
             <div class="ad-vertical cursor-pointer">
                 <img id="ad-right" class="img-ad" src="assets/ads/simulate-ad-change/ad-right.png">
             </div>
         </div>
-
         <div class="ad-horizontal cursor-pointer">
             <img id="ad-bottom" class="img-ad" src="assets/ads/simulate-ad-change/ad-bottom.png">
         </div>

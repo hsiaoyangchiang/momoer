@@ -20,6 +20,17 @@ var arr_game_src = [ //小遊戲連結
     "assets/game/11-elf-test/index.html"
 ];
 
+const music1 =  new Audio("assets/game/1-Coil-master/game1.mp3")
+const music2 = new Audio("assets/game/2-flip-card-game-master/game2.mp3")
+const music3 = new Audio("assets/game/3-focus/game3.mp3")
+const music4 = new Audio("assets/game/4-HTML5-Asteroids-master/game4.mp3")
+const music5 = new Audio("assets/game/5-MazeGame/game5.mp3")
+const music6 = new Audio("assets/game/6-pacman-master/game6.mp3")
+const music7 = new Audio("assets/game/7-tower-blocks/game7.mp3")
+const music10 = new Audio("assets/game/10-wine-test/assets/test1.mp3")
+const music11 = new Audio("assets/game/11-elf-test/assets/test2.mp3")
+var music = eval("music"+game_id)
+
 // Game Session
 var game_session = 1
 //game_session 代表玩過遊戲的次數
@@ -33,7 +44,6 @@ window.onload = function() {
     $.ajax({
         url: 'php/askQ.php',
         success: function(data) {
-            console.log("askQuestion: "+data)
             var askQuestion = parseInt(data)
             if(askQuestion != 0 & game_id<=9) {
                 askQ = askQuestion
@@ -57,6 +67,28 @@ window.onload = function() {
                 // $('html,body').animate({
                 //     scrollTop: $("iframe").offset().top
                 // },1500);
+            }
+            var playPromise = music.play();
+            if(askQuestion == 0){
+                if (playPromise !== undefined) {
+                  playPromise.then(_ => {
+                    music.play()
+                  })
+                  .catch(error => {
+                  });
+                }
+            }else{
+                if(game_id == 10 | game_id == 11){
+                    if (playPromise !== undefined) {
+                        playPromise.then(_ => {
+                          music.play()
+                        })
+                        .catch(error => {
+                        });
+                      }
+                }else{
+                    music.pause();
+                }
             }
         }
     })
@@ -115,10 +147,33 @@ var arr_question = [ //問題集放這裡
     ['什麼是你想要做，但一直沒有時間/機會做的事情？']
 ];
 
+//遊戲說明跟玩法
+var arr_intro = [
+    ['此為反應遊戲，盡你所能勾勒消除所有的藍色點點吧，來爭取積分吧！','透過滑鼠游移來進行勾勒消除。'],
+    ['在限定機會中，透過記憶翻出相同圖案的牌來進行配對消除！', '透過滑鼠點擊來進行翻牌。'],
+    ['同色的中央消除球只能抵銷同色的外來物，若中央消除球遇上不同色的外來物，中央消除球即會被摧毀，你就會輸！透過專注在切換來獲取高分吧！','透過滑鼠點擊切換中央消除球顏色。'],
+    ['身為太空中的小飛船，在浩瀚的宇宙中充斥著你要盡可能的透過駕駛及發射飛彈不讓自己被宇宙版塊摧毀！', '透過方向鍵左右來順/逆時鐘調整前進方向，方向鍵上下來加速前進。'],
+    ['讓分散於不同角落的球相遇並最終抵達指定區域。','透過滑鼠游移方向決定傾斜角度。'],
+    ['作為小精靈最怕的就是遇上幽靈，每一關的你總共擁有4條命，在限定的的時間內盡可能的得高分吧！', '空白鍵 Space 暫停或繼續遊戲，上下左右控制小精靈移動方向。'],
+    ['疊高塔的秘訣在於層層密合相疊，看你最高能疊幾層。', '透過滑鼠點擊來往上加蓋。'],
+    ['吃掉所有黃金小心落石並走到終點。', '使用方向鍵來進行角色移動。'],
+    ['經典的射擊遊戲，盡可能去射擊從田裡飛出的鳥類，去獲取高分吧！', '透過滑鼠點擊來射擊鳥類。']
+]
+var intro = $("#intro");
+var howToPlay = $("#howToPlay");
+
+console.log(intro)
+console.log(howToPlay)
+intro.text(arr_intro[game_id-1][0])
+howToPlay.text(arr_intro[game_id-1][1])
+
+
+
 function showQuestion(game_session) {
     showOverlay()
     overlay.promise().done(function() {
         modal_question.show("fold",1000)
+        //music pause
     })
     
     if (game_session == 7) {
@@ -129,7 +184,6 @@ function showQuestion(game_session) {
     else {
         question_radio.show()
         question_saq.hide()
-
         if(game_session <=2) {
             question.text(arr_question[game_session-1][game_id-1][0]) //game_session=1時跳出問題，所以要-1
             option_1.text(arr_question[game_session-1][game_id-1][1]) //game_id 從1開始，所以要-1
@@ -146,7 +200,6 @@ function showQuestion(game_session) {
         }
     }
 }
-
 
 // Submit Answer
 var selected_value = 0
@@ -178,6 +231,7 @@ $("button#send_my_data").click(function() {
             complete: function () {
                 $(this).parent().promise().done(function () {
                     hideOverlay()
+                    music.play()
                 })
             }
         })
@@ -247,6 +301,7 @@ function callParent(){
     showOverlay()
     overlay.promise().done(function() {
         modal_endgame.show({effect:"fold", duration:600})
+        music.pause()
     })
 
     if (localStorage.getItem("game_session") == null) {
@@ -293,6 +348,7 @@ function levelUp(level){
 
 function replay(){
     // console.log("replay")
+    music.play();
     modal_endgame.hide({ effect:"blind",direction:"down", duration:1000})
     hideOverlay()
     if (askQ != 0) {
