@@ -20,15 +20,15 @@ var arr_game_src = [ //小遊戲連結
     "assets/game/11-elf-test/index.html"
 ];
 
-const music1 =  new Audio("assets/game/1-Coil-master/game1.mp3")
-const music2 = new Audio("assets/game/2-flip-card-game-master/game2.mp3")
-const music3 = new Audio("assets/game/3-focus/game3.mp3")
-const music4 = new Audio("assets/game/4-HTML5-Asteroids-master/game4.mp3")
-const music5 = new Audio("assets/game/5-MazeGame/game5.mp3")
-const music6 = new Audio("assets/game/6-pacman-master/game6.mp3")
-const music7 = new Audio("assets/game/7-tower-blocks/game7.mp3")
-const music10 = new Audio("assets/game/10-wine-test/assets/test1.mp3")
-const music11 = new Audio("assets/game/11-elf-test/assets/test2.mp3")
+const music1 =  new Audio("assets/audio/game1.mp3")
+const music2 = new Audio("assets/audio/game2.mp3")
+const music3 = new Audio("assets/audio/game3.mp3")
+const music4 = new Audio("assets/audio/game4.mp3")
+const music5 = new Audio("assets/audio/game5.mp3")
+const music6 = new Audio("assets/audio/game6.mp3")
+const music7 = new Audio("assets/audio/game7.mp3")
+const music10 = new Audio("assets/audio/test1.mp3")
+const music11 = new Audio("assets/audio/test2.mp3")
 var music = eval("music"+game_id)
 
 // Game Session
