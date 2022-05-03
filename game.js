@@ -29,7 +29,6 @@ const music6 = new Audio("assets/audio/game6.mp3")
 const music7 = new Audio("assets/audio/game7.mp3")
 const music10 = new Audio("assets/audio/test1.mp3")
 const music11 = new Audio("assets/audio/test2.mp3")
-var music = eval("music"+game_id)
 
 // Game Session
 var game_session = 1
@@ -71,6 +70,8 @@ window.onload = function() {
             var playPromise = music.play();
             if(askQuestion == 0){
                 if (playPromise !== undefined) {
+                    var music = eval("music"+game_id)
+                    showIntro()
                   playPromise.then(_ => {
                     music.play()
                   })
@@ -80,6 +81,7 @@ window.onload = function() {
             }else{
                 if(game_id == 10 | game_id == 11){
                     if (playPromise !== undefined) {
+                        var music = eval("music"+game_id)
                         playPromise.then(_ => {
                           music.play()
                         })
@@ -88,6 +90,8 @@ window.onload = function() {
                       }
                 }else{
                     music.pause();
+                    var music = eval("music"+game_id)
+                    showIntro()
                 }
             }
         }
@@ -162,10 +166,13 @@ var arr_intro = [
 var intro = $("#intro");
 var howToPlay = $("#howToPlay");
 
-console.log(intro)
-console.log(howToPlay)
-intro.text(arr_intro[game_id-1][0])
-howToPlay.text(arr_intro[game_id-1][1])
+function showIntro(){
+    console.log(intro)
+    console.log(howToPlay)
+    intro.text("遊戲說明："+arr_intro[game_id-1][0])
+    howToPlay.text("遊戲玩法："+arr_intro[game_id-1][1])
+}
+
 
 
 

@@ -113,7 +113,7 @@
                 <br>
                 <div class="flex-horizontal">
                     <label class="label-signup" for="password">密碼</label>
-                    <input class="input-signup" type="password" id="password" name="password" placeholder="至少3個字 只能用數字歐"></input>
+                    <input class="input-signup" type="password" id="password" name="password" placeholder="至少3個字元 英數都可歐"></input>
                 </div>
                 <br>
                 <label class="label-signup" for="agree_toc">

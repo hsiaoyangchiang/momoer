@@ -86,8 +86,8 @@ echo "<script>console.log('game.php ask question: ".$_SESSION['askQuestion']."')
                 <iframe src="">
                 </iframe>
                 <div id="description">
-                    <p>遊戲說明：</p> <p id="intro"></p>
-                    <p>遊戲玩法：</p> <p id="howToPlay"></p>
+                    <p id="intro"></p>
+                    <p id="howToPlay"></p>
                 </div>
             </div>
             <div class="ad-vertical cursor-pointer">
