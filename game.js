@@ -58,6 +58,8 @@ window.onload = function() {
                     passAjax(game_session-1,changebg)
                     showQuestion(game_session)
                 }, "text")
+                showIntro()
+                playMusic(askQuestion)
             }
             else {
                 // changebg(parseInt(localStorage.getItem("game_session"))-1)
@@ -66,33 +68,6 @@ window.onload = function() {
                 // $('html,body').animate({
                 //     scrollTop: $("iframe").offset().top
                 // },1500);
-            }
-            var playPromise = music.play();
-            if(askQuestion == 0){
-                if (playPromise !== undefined) {
-                    var music = eval("music"+game_id)
-                    showIntro()
-                  playPromise.then(_ => {
-                    music.play()
-                  })
-                  .catch(error => {
-                  });
-                }
-            }else{
-                if(game_id == 10 | game_id == 11){
-                    if (playPromise !== undefined) {
-                        var music = eval("music"+game_id)
-                        playPromise.then(_ => {
-                          music.play()
-                        })
-                        .catch(error => {
-                        });
-                      }
-                }else{
-                    music.pause();
-                    var music = eval("music"+game_id)
-                    showIntro()
-                }
             }
         }
     })
@@ -177,7 +152,24 @@ function showIntro(){
     howToPlay.text("遊戲玩法："+arr_intro[game_id-1][1])
 }
 
-
+function playMusic(askQuestion){
+    console.log(askQuestion)
+    music = eval("music"+game_id)
+    console.log(music)
+    var promise = music.play();
+    if (promise !== undefined) {
+    promise.then(_ => {
+        if(askQuestion==1){
+            console.log('先不要播')
+            music.pause()
+        }
+    }).catch(error => {
+        console.log(error)
+        // Autoplay was prevented.
+        // Show a "Play" button so that user can start playback.
+    });
+    }
+}
 
 
 function showQuestion(game_session) {
@@ -242,6 +234,8 @@ $("button#send_my_data").click(function() {
             complete: function () {
                 $(this).parent().promise().done(function () {
                     hideOverlay()
+                    console.log("開始播")
+                    music = eval("music"+game_id)
                     music.play()
                 })
             }
@@ -310,9 +304,10 @@ var player_level = $("#player-level")
 function callParent(){
     // console.log("game has ended")
     showOverlay()
+    music = eval("music"+game_id)
+    music.pause()
     overlay.promise().done(function() {
         modal_endgame.show({effect:"fold", duration:600})
-        music.pause()
     })
 
     if (localStorage.getItem("game_session") == null) {
@@ -359,7 +354,6 @@ function levelUp(level){
 
 function replay(){
     // console.log("replay")
-    music.play();
     modal_endgame.hide({ effect:"blind",direction:"down", duration:1000})
     hideOverlay()
     if (askQ != 0) {
