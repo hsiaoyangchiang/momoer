@@ -11,119 +11,146 @@ var c = "a"
 var ad_src = [ // {gs - game_id - selected_radio}
     [ // gs=1
         {
-            "a":"11a",
-            "b":"11b",
-            "c":"11c"
+            "a":"https://media.giphy.com/media/KhAWTLQgSQD8BXw1Dp/giphy.gif",
+            "b":"https://media.giphy.com/media/D05iVTqs2qb2otgvol/giphy.gif",
+            "c":"https://media.giphy.com/media/gcvtjNgvq19Z0UIfK0/giphy.gif",
+            d:"https://media.giphy.com/media/5P5gfiiwS3j1u5yYOQ/giphy.gif"
         },{
             "a":"12a",
             "b":"12b",
-            "c":"12c"
+            "c":"12c",
+            d:"12d"
         },{
-            "a":"assets/ads/simulate-ad-change/1-1-a.png",
-            "b":"13b",
-            "c":"13c"
+            "a":"https://media.giphy.com/media/WOFTdYwhsOvnmIeKXT/giphy.gif",
+            "b":"https://media.giphy.com/media/7s1jN5iTg8NbUe1oNy/giphy.gif",
+            "c":"https://media.giphy.com/media/TDztk48cjcCwNc2shp/giphy.gif",
+            d:"https://media.giphy.com/media/rFuVdKoELZqmIISu8y/giphy.gif"
         },{
-            "a":"14a",
-            "b":"14b",
-            "c":"14c"
+            "a":"https://media.giphy.com/media/ZGiW18jWdsFFYQq1zS/giphy.gif",
+            "b":"https://media.giphy.com/media/tjxiusbBJCehWmUssp/giphy.gif",
+            "c":"https://media.giphy.com/media/3oLQHG8GB3XFplyjSj/giphy.gif",
+            d:"https://media.giphy.com/media/t0dArF99d0s2h8fiXy/giphy.gif"
         },{
             "a":"15a",
             "b":"15b",
-            "c":"15c"
+            "c":"15c",
+            d:"15d"
         },{
-            "a":"a",
-            "b":"b",
-            "c":"c"
+            "a":"https://media.giphy.com/media/yUMTSU98fPe4Jal46s/giphy.gif",
+            "b":"https://media.giphy.com/media/yUMTSU98fPe4Jal46s/giphy.gif",
+            "c":"https://media.giphy.com/media/yUMTSU98fPe4Jal46s/giphy.gif",
+            d:"https://media.giphy.com/media/liSEyYfR281hFtDGK7/giphy.gif"
         },{
-            "a":"a",
-            "b":"b",
-            "c":"c"
+            "a":"17a",
+            "b":"17b",
+            "c":"17c",
+            d:"17d"
         },{
-            "a":"a",
-            "b":"b",
-            "c":"c"
+            "a":"18a",
+            "b":"18b",
+            "c":"18c",
+            d:"18d"
         },{
-            "a":"a",
-            "b":"b",
-            "c":"c"
+            "a":"https://media.giphy.com/media/i4Jk1n4xpLSP8mbQSZ/giphy.gif",
+            "b":"https://media.giphy.com/media/qqQm2wg06J34WNvCRd/giphy.gif",
+            "c":"https://media.giphy.com/media/B5ZOnrJmtkqpiWcnL4/giphy.gif",
+            d:"https://media.giphy.com/media/nsi5O6O2iqpRFZ3KZv/giphy.gif"
         }
     ],
     [ // gs=2
         [ //left
             {
-                "a":"21a",
-                "b":"21b",
-                "c":"21c"
+                "a":"https://media.giphy.com/media/anq55IAPhqhRZgrMME/giphy.gif",
+                "b":"https://media.giphy.com/media/QQvnlEAVSLOG5AvlYL/giphy.gif",
+                "c":"https://media.giphy.com/media/anq55IAPhqhRZgrMME/giphy.gif",
+                d:"https://media.giphy.com/media/QQvnlEAVSLOG5AvlYL/giphy.gif"
             },{
-                "a":"22a",
-                "b":"22b",
-                "c":"22c"
+                "a":"https://media.giphy.com/media/a0Gc9Ku2nwKDZQ0NI2/giphy.gif",
+                "b":"https://media.giphy.com/media/sPLeFqEteL30bfdYcA/giphy.gif",
+                "c":"https://media.giphy.com/media/EOEhifUjjozQsRrTYr/giphy.gif",
+                d:"https://media.giphy.com/media/14DTLRI3GimnEoCSlu/giphy.gif"
             },{
                 "a":"assets/ads/simulate-ad-change/2-1-a-l.png",
                 "b":"23bl",
-                "c":"23cl"
+                "c":"23cl",
+                d:""
             },{
                 "a":"a",
                 "b":"b",
-                "c":"c"
+                "c":"c",
+                d:""
+            },{
+                "a":"https://media.giphy.com/media/dC5Jp5C8dEDd9tCwO6/giphy.gif",
+                "b":"https://media.giphy.com/media/RfQExilOXtxQizNjE8/giphy.gif",
+                "c":"https://media.giphy.com/media/EOEhifUjjozQsRrTYr/giphy.gif",
+                d:"https://media.giphy.com/media/aBd3tLlXirHQjBVC8D/giphy.gif"
             },{
                 "a":"a",
                 "b":"b",
-                "c":"c"
+                "c":"c",
+                d:""
+            },{
+                "a":"https://media.giphy.com/media/R7hQVr34OFtric2Xnu/giphy.gif",
+                "b":"https://media.giphy.com/media/R7hQVr34OFtric2Xnu/giphy.gif",
+                "c":"https://media.giphy.com/media/R7hQVr34OFtric2Xnu/giphy.gif",
+                d:"https://media.giphy.com/media/R7hQVr34OFtric2Xnu/giphy.gif"
+            },{
+                "a":"https://media.giphy.com/media/3v0bh1YK0tj5Pkx4bf/giphy.gif",
+                "b":"https://media.giphy.com/media/N0UFs7tHD4RHuJiVsR/giphy.gif",
+                "c":"https://media.giphy.com/media/Yx5U3Mo8XDIs9sqoLY/giphy.gif",
+                d:"https://media.giphy.com/media/b2dvRIndSgZI79D28u/giphy.gif"
             },{
                 "a":"a",
                 "b":"b",
-                "c":"c"
-            },{
-                "a":"a",
-                "b":"b",
-                "c":"c"
-            },{
-                "a":"a",
-                "b":"b",
-                "c":"c"
-            },{
-                "a":"a",
-                "b":"b",
-                "c":"c"
+                "c":"c",
+                d:""
             }
         ],[ //right
             {
-                "a":"a",
-                "b":"b",
-                "c":"c"
+                "a":"https://media.giphy.com/media/Kh2zttX7Oz5VXebKWn/giphy.gif",
+                "b":"https://media.giphy.com/media/BCoLuTaIqo25Cmi6AI/giphy.gif",
+                "c":"https://media.giphy.com/media/Kh2zttX7Oz5VXebKWn/giphy.gif",
+                d:"https://media.giphy.com/media/BCoLuTaIqo25Cmi6AI/giphy.gif"
             },{
-                "a":"a",
-                "b":"b",
-                "c":"c"
+                "a":"https://media.giphy.com/media/bs7O9ipQtwqm6M5bgb/giphy.gif",
+                "b":"https://media.giphy.com/media/GticnGkqCNuvA8Yb9z/giphy.gif",
+                "c":"https://media.giphy.com/media/nak3cMKhtJYNPtxTH1/giphy.gif",
+                d:"https://media.giphy.com/media/78jhkpT5KuZ8xQlSSM/giphy.gif"
             },{
                 "a":"assets/ads/simulate-ad-change/2-1-a-r.png",
                 "b":"23br",
-                "c":"23cr"
+                "c":"23cr",
+                d:""
             },{
                 "a":"a",
                 "b":"b",
-                "c":"c"
+                "c":"c",
+                d:""
+            },{
+                "a":"https://media.giphy.com/media/GbU4DlMpjBiUqnXV9q/giphy.gif",
+                "b":"https://media.giphy.com/media/2DKWltAlXhQd4QW72T/giphy.gif",
+                "c":"https://media.giphy.com/media/nak3cMKhtJYNPtxTH1/giphy.gif",
+                d:"https://media.giphy.com/media/ak9fbR5b9EJziT0upi/giphy.gif"
             },{
                 "a":"a",
                 "b":"b",
-                "c":"c"
+                "c":"c",
+                d:""
+            },{
+                "a":"https://media.giphy.com/media/bvttqbDUpxngTm5kRy/giphy.gif",
+                "b":"https://media.giphy.com/media/bvttqbDUpxngTm5kRy/giphy.gif",
+                "c":"https://media.giphy.com/media/bvttqbDUpxngTm5kRy/giphy.gif",
+                d:"https://media.giphy.com/media/bvttqbDUpxngTm5kRy/giphy.gif"
+            },{
+                "a":"https://media.giphy.com/media/4b4ahINyCcs0U1pIVP/giphy.gif",
+                "b":"https://media.giphy.com/media/5uT7u3GUIyqxbZgh8D/giphy.gif",
+                "c":"https://media.giphy.com/media/llJcy7hoJzae7FbWN0/giphy.gif",
+                d:"https://media.giphy.com/media/tVXbJhFnBdEEkk90dv/giphy.gif"
             },{
                 "a":"a",
                 "b":"b",
-                "c":"c"
-            },{
-                "a":"a",
-                "b":"b",
-                "c":"c"
-            },{
-                "a":"a",
-                "b":"b",
-                "c":"c"
-            },{
-                "a":"a",
-                "b":"b",
-                "c":"c"
+                "c":"c",
+                d:""
             }
         ]
     ],{ // gs=3
@@ -138,6 +165,11 @@ var ad_src = [ // {gs - game_id - selected_radio}
             "bottom":"changeme"
             },
         "c": {
+            "left":"changeme",
+            "right":"changeme",
+            "bottom":"changeme"
+            },
+        "d": {
             "left":"changeme",
             "right":"changeme",
             "bottom":"changeme"
@@ -158,6 +190,11 @@ var ad_src = [ // {gs - game_id - selected_radio}
             "right":"changeme",
             "bottom":"changeme"
             },
+        "d": {
+            "left":"changeme",
+            "right":"changeme",
+            "bottom":"changeme"
+            },
     },{ // gs=5
         "a": {
             "left":"assets/ads/simulate-ad-change/5-a-l.png",
@@ -170,6 +207,11 @@ var ad_src = [ // {gs - game_id - selected_radio}
             "bottom":"changeme"
             },
         "c": {
+            "left":"changeme",
+            "right":"changeme",
+            "bottom":"changeme"
+            },
+        "d": {
             "left":"changeme",
             "right":"changeme",
             "bottom":"changeme"
@@ -190,18 +232,7 @@ var ad_src = [ // {gs - game_id - selected_radio}
             "right":"changeme",
             "bottom":"changeme"
             },
-    },{ // gs=7
-        "a": {
-            "left":"changeme",
-            "right":"changeme",
-            "bottom":"changeme"
-            },
-        "b": {
-            "left":"changeme",
-            "right":"changeme",
-            "bottom":"changeme"
-            },
-        "c": {
+        "d": {
             "left":"changeme",
             "right":"changeme",
             "bottom":"changeme"

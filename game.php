@@ -98,7 +98,7 @@ echo "<script>console.log('game.php ask question: ".$_SESSION['askQuestion']."')
             <img id="ad-bottom" class="img-ad" src="assets/ads/simulate-ad-change/ad-bottom.png">
         </div>
         <div id="overlay"></div>
-        <div class="ad-test"><img id="test-ad-src" src=""></div>
+        <div class="ad-test"><img id="test-ad-src" src="" width="300px"></div>
 
         <script src="ad.js"></script>
         <script src="game.js"></script>
