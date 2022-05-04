@@ -5,6 +5,9 @@ var game_session = 0
 var game_id = 0
 var choice_id = ""
 
+const music = new Audio("assets/audio/main.mp3")
+
+
 // Fetch Backend data
 // function getSession() {
 //     $.get("php/session.php", function(data, status){
@@ -60,6 +63,7 @@ window.onload = function() {
     })
     // getStats()
 }
+playMusic()
 document.addEventListener('DOMContentLoaded', () => {
     getStats()
 })
@@ -106,6 +110,11 @@ var meow = [
         cat:""
     }
 ]
+
+function playMusic(){
+    console.log(music)
+   music.play() 
+}
 
 function getStats() {
     $.get("amount.php", function(data, status){
