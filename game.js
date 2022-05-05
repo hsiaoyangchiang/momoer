@@ -58,10 +58,12 @@ window.onload = function() {
                     passAjax(game_session-1,changebg)
                     showQuestion(game_session)
                 }, "text")
+                console.log('hello')
                 showIntro()
                 playMusic(askQuestion)
             }
             else {
+                playMusic(askQuestion)
                 // changebg(parseInt(localStorage.getItem("game_session"))-1)
                 passAjax(parseInt(localStorage.getItem("game_session"))-1,changebg)
                 //Auto scroll to game
@@ -160,8 +162,16 @@ function playMusic(askQuestion){
     if (promise !== undefined) {
     promise.then(_ => {
         if(askQuestion==1){
-            console.log('先不要播')
-            music.pause()
+            if(game_id == 10 | game_id ==11){
+                music.play()
+                console.log('心測要播')
+            }else{
+                music.pause()
+                console.log('先不要播')
+            }
+        }else if(askQuestion==0){
+            music.play()
+            console.log('播放')
         }
     }).catch(error => {
         console.log(error)
