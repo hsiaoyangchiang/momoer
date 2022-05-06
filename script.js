@@ -47,6 +47,7 @@ window.onload = function() {
             $("p#profile-username").text(username)
             Webcam.reset('#my-camera')
             btn_logout.show()
+            playMusic()
         } else {
             loggedin = 0
             Webcam.set({
@@ -56,6 +57,7 @@ window.onload = function() {
                 jpeg_quality: 90
             })
             Webcam.attach('#my-camera')
+            playMusic()
         }
         console.log("loggedin: "+loggedin)
         console.log("username: "+username)
@@ -63,7 +65,6 @@ window.onload = function() {
     })
     // getStats()
 }
-playMusic()
 document.addEventListener('DOMContentLoaded', () => {
     getStats()
 })
@@ -112,8 +113,25 @@ var meow = [
 ]
 
 function playMusic(){
-    console.log(music)
-   music.play() 
+    //第一個玩家會沒有音樂，但玩完第一個遊戲之後就不會了
+    var promise = music.play();
+    if (promise !== undefined) {
+    promise.then(_ => {
+
+    }).catch(error => {
+        console.log(error)
+        // Autoplay was prevented.
+        // Show a "Play" button so that user can start playback.
+    });
+    music.addEventListener("ended", function(){
+        music.currentTime = 0;
+        console.log("ended"); 
+        setTimeout(function(){
+            music.play()
+            console.log("再次播放")
+        },1000)
+   });
+    }
 }
 
 function getStats() {

@@ -3,7 +3,14 @@
     margin: 0;
     box-sizing: border-box;
   }
+  @font-face {
+    font-family: Corporate-Logo-Rounded;
+    src: url(./cardImg/Corporate-Logo-Rounded.ttf);
+}
 
+h2{
+  font-family: Corporate-Logo-Rounded;
+}
   #startScreen{
     width: 100%;
     height: 100%;

@@ -27,6 +27,8 @@ const music4 = new Audio("assets/audio/game4.mp3")
 const music5 = new Audio("assets/audio/game5.mp3")
 const music6 = new Audio("assets/audio/game6.mp3")
 const music7 = new Audio("assets/audio/game7.mp3")
+const music8 = new Audio("assets/audio/test1.mp3")
+const music9 = new Audio("assets/audio/test2.mp3")
 const music10 = new Audio("assets/audio/test1.mp3")
 const music11 = new Audio("assets/audio/test2.mp3")
 
@@ -58,7 +60,6 @@ window.onload = function() {
                     passAjax(game_session-1,changebg)
                     showQuestion(game_session)
                 }, "text")
-                console.log('hello')
                 showIntro()
                 playMusic(askQuestion)
             }
@@ -155,23 +156,45 @@ function showIntro(){
 }
 
 function playMusic(askQuestion){
-    console.log(askQuestion)
     music = eval("music"+game_id)
-    console.log(music)
     var promise = music.play();
     if (promise !== undefined) {
     promise.then(_ => {
         if(askQuestion==1){
+            if(game_id ==8 | game_id ==9){
+                music.pause()
+            }
             if(game_id == 10 | game_id ==11){
                 music.play()
                 console.log('心測要播')
-            }else{
+                music.addEventListener("ended", function(){
+                    music.currentTime = 0;
+                    console.log("ended"); 
+                    setTimeout(function(){
+                        music.play()
+                        console.log("再次播放")
+                    },1000)
+               });
+            }
+            else{
                 music.pause()
                 console.log('先不要播')
             }
         }else if(askQuestion==0){
-            music.play()
-            console.log('播放')
+            if(game_id ==8 | game_id ==9){
+                music.pause()
+            }else{
+                music.play()
+                console.log('播放')
+                music.addEventListener("ended", function(){
+                    music.currentTime = 0;
+                    console.log("ended"); 
+                    setTimeout(function(){
+                        music.play()
+                        console.log("再次播放")
+                    },1000)
+               });
+            }
         }
     }).catch(error => {
         console.log(error)
@@ -186,7 +209,6 @@ function showQuestion(game_session) {
     showOverlay()
     overlay.promise().done(function() {
         modal_question.show("fold",1000)
-        //music pause
     })
     
     if (game_session == 7) {
@@ -244,9 +266,22 @@ $("button#send_my_data").click(function() {
             complete: function () {
                 $(this).parent().promise().done(function () {
                     hideOverlay()
-                    console.log("開始播")
+                    if(game_id ==8 | game_id ==9){
+                        music.pause()
+                        console.log("game8, 9不要播")
+                    }
+                    else{
                     music = eval("music"+game_id)
                     music.play()
+                    music.addEventListener("ended", function(){
+                        music.currentTime = 0;
+                        console.log("ended"); 
+                        setTimeout(function(){
+                            music.play()
+                            console.log("再次播放")
+                        },1000)
+                   });
+                    }
                 })
             }
         })
