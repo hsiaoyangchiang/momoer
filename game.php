@@ -18,7 +18,7 @@ echo "<script>console.log('game.php ask question: ".$_SESSION['askQuestion']."')
         <!-- <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0"> -->
     </head>
 
-    <body>
+    <body class="gamepage">
         <div class="leaderboard noselect cursor-default">
             <marquee>
                 <span class="leaderboard-cyan">歡迎來到東方哈哈樂園 &#10024; &nbsp;&nbsp;</span>
@@ -58,7 +58,7 @@ echo "<script>console.log('game.php ask question: ".$_SESSION['askQuestion']."')
                     <div id="option-d" class="rect">養生老火鍋</div>
                 </div>
                 <div class="question-saq">
-                    <input type="text" name="Q7" value="">
+                    <input type="text" name="Q7" value="" placeholder="請作答">
                 </div>
                 <button class="btn-medium deactivate"  type="submit" id="send_my_data">開始遊戲</button>
                 <!-- <input type="submit" id="send_my_data" class="btn-medium deactivate" value="開始遊戲"> -->
@@ -79,23 +79,38 @@ echo "<script>console.log('game.php ask question: ".$_SESSION['askQuestion']."')
 
         <div class="game-area">
             <div class="ad-vertical cursor-pointer">
-                <img id="ad-left" class="img-ad" src="assets/ads/simulate-ad-change/ad-left.png">
+                <img id="ad-left" class="img-ad" src="https://media.giphy.com/media/Sdu0SlDMhlOlqHuoqH/giphy.gif">
             </div>
             
             <div class="game-frame">
                 <iframe src="">
                 </iframe>
-                <div id="description">
-                    <p id="intro"></p>
-                    <p id="howToPlay"></p>
-                </div>
             </div>
             <div class="ad-vertical cursor-pointer">
-                <img id="ad-right" class="img-ad" src="assets/ads/simulate-ad-change/ad-right.png">
+                <img id="ad-right" class="img-ad" src="https://media.giphy.com/media/2RpeMI2nbNHEQiv9PN/giphy.gif">
             </div>
         </div>
+
+        <!-- <div id="description">
+            <h3>遊戲說明</h3>
+            <p id="intro"></p>
+            <br>
+            <h3>遊戲玩法</h3>
+            <p id="howToPlay"></p>
+        </div> -->
+
+        <div id="description">
+            <h3>&#9733;遊戲說明&#9733;</h3>
+            <p id="intro"></p>
+            <br><br>
+            <h3>&#9733;遊戲玩法&#9733;</h3>
+            <p id="howToPlay"></p>
+            <br>
+            <div class="flex-vertical"><button id="playGame" onclick="playGame()" class="btn-medium">PLAY</button></div>
+        </div>
+        
         <div class="ad-horizontal cursor-pointer">
-            <img id="ad-bottom" class="img-ad" src="assets/ads/simulate-ad-change/ad-bottom.png">
+            <img id="ad-bottom" class="img-ad" src="https://media.giphy.com/media/JQEOpb8fncJPC485bA/giphy.gif">
         </div>
         <div id="overlay"></div>
         <div class="ad-test"><img id="test-ad-src" src="" width="300px"></div>

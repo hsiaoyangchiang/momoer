@@ -60,10 +60,15 @@ window.onload = function() {
                     passAjax(game_session-1,changebg)
                     showQuestion(game_session)
                 }, "text")
-                showIntro()
+                // showIntro()
                 playMusic(askQuestion)
             }
+            else if(askQuestion == 0 & game_id<=9){
+                showOverlay()
+                showIntro()
+            }
             else {
+                description.hide()
                 playMusic(askQuestion)
                 // changebg(parseInt(localStorage.getItem("game_session"))-1)
                 passAjax(parseInt(localStorage.getItem("game_session"))-1,changebg)
@@ -118,10 +123,10 @@ var arr_question = [
     [
         ['你知道貓咪都喜歡追逐發光的點點，請問你是貓派還是狗派？','貓貓','狗狗','披著狗皮的貓','披著貓皮的狗'],
         ['翻牌遊戲以政大附近的貓貓做為題材設計，請問你最希望政大附近再開一間什麼店？','火鍋吃到飽','臭豆腐店','酒吧','服飾店'],
-        ['請問你對什麼東西的顏色最沒有偏好？','毛巾','雨傘','餐具','政黨'],
+        ['請問你對什麼東西的顏色最沒有偏好？','毛巾','雨傘','餐具','便利貼'],
         ['當你在宇宙中，你最不希望遇到甚麼東西？','蟲洞','幽浮','外星人','隕石'],
         ['你覺得哪種不平衡感讓你最難忍受','組員簡報畫面圖文比不平衡','新耳機左右聲道音量不平衡','結束酒精路跑走路不平衡','心裡不平衡'],
-        ['小精靈誕生至今已經 42 歲了！請問你覺得在你 42 歲時...','跟伴侶養了一隻變色龍','在南極探險滿 5 年','成為小孩國小的家長會長','地球已經毀滅了'],
+        ['小精靈誕生至今已經 42 歲了！請問你覺得在你 42 歲時...','跟伴侶養了一隻變色龍','在南極探險滿 5 年','財富自由頭好壯壯','地球已經毀滅了'],
         ['這是個小朋友也能上手的遊戲，你小時候最喜歡跟朋友玩什麼遊戲？','紅綠燈','躲避球','123木頭人','溜滑梯'],
         ['玩 Digger 需要動點腦力。請問你覺得下面哪件事最費腦力？','想下學期課要選什麼','想畢業要做什麼','想男女朋友在氣什麼','想午餐要吃什麼'],
         ['最喜歡的鴨子料理','薑母鴨','烤鴨','鴨賞','東山鴨頭']
@@ -129,7 +134,7 @@ var arr_question = [
     ['你每個月拿多少的零用錢？','5000 以下','5000 - 10000','10000 - 20000','20000 以上'],
     ['你交往過幾個對象？','0 個','1-2 個','3-5 個','6 個以上'],
     ['你認為最快樂的時光是在什麼時期？','國中','高中','大學','未來，我目前都不快樂'],
-    ['你覺得你最有自信的是身上的哪個部位？','額頭','鼻子','眼睛','手'],
+    ['你覺得你最不滿意的是身上的哪個部位？','額頭','鼻子','眼睛','臉型'],
     ['什麼是你想要做，但一直沒有時間/機會做的事情？']
 ]
 
@@ -145,14 +150,37 @@ var arr_intro = [
     ['吃掉所有黃金小心落石並走到終點。', '使用方向鍵來進行角色移動。'],
     ['經典的射擊遊戲，盡可能去射擊從田裡飛出的鳥類，去獲取高分吧！', '透過滑鼠點擊來射擊鳥類。']
 ]
-var intro = $("#intro");
-var howToPlay = $("#howToPlay");
+const description = $("#description")
+const intro = $("#intro");
+const howToPlay = $("#howToPlay");
 
 function showIntro(){
+    description.show("fade",1000)
     console.log(intro)
     console.log(howToPlay)
-    intro.text("遊戲說明："+arr_intro[game_id-1][0])
-    howToPlay.text("遊戲玩法："+arr_intro[game_id-1][1])
+    intro.text(arr_intro[game_id-1][0])
+    howToPlay.text(arr_intro[game_id-1][1])
+}
+
+function playGame(){
+    description.fadeOut()
+    hideOverlay()
+    if(game_id == 8 | game_id == 9){
+        music.pause()
+        console.log("game8, 9不要播")
+    }
+    else{
+        music = eval("music"+game_id)
+        music.play()
+        music.addEventListener("ended", function(){
+            music.currentTime = 0;
+            console.log("ended"); 
+            setTimeout(function(){
+                music.play()
+                console.log("再次播放")
+            },1000)
+        })
+    }
 }
 
 function playMusic(askQuestion){
@@ -161,7 +189,7 @@ function playMusic(askQuestion){
     if (promise !== undefined) {
     promise.then(_ => {
         if(askQuestion==1){
-            if(game_id ==8 | game_id ==9){
+            if(game_id == 8 | game_id == 9){
                 music.pause()
             }
             if(game_id == 10 | game_id ==11){
@@ -181,7 +209,7 @@ function playMusic(askQuestion){
                 console.log('先不要播')
             }
         }else if(askQuestion==0){
-            if(game_id ==8 | game_id ==9){
+            if(game_id == 8 | game_id == 9){
                 music.pause()
             }else{
                 music.play()
@@ -265,23 +293,24 @@ $("button#send_my_data").click(function() {
             duration:1000,
             complete: function () {
                 $(this).parent().promise().done(function () {
-                    hideOverlay()
-                    if(game_id ==8 | game_id ==9){
-                        music.pause()
-                        console.log("game8, 9不要播")
-                    }
-                    else{
-                    music = eval("music"+game_id)
-                    music.play()
-                    music.addEventListener("ended", function(){
-                        music.currentTime = 0;
-                        console.log("ended"); 
-                        setTimeout(function(){
-                            music.play()
-                            console.log("再次播放")
-                        },1000)
-                   });
-                    }
+                    // hideOverlay()
+                    showIntro()
+                    // if(game_id == 8 | game_id == 9){
+                    //     music.pause()
+                    //     console.log("game8, 9不要播")
+                    // }
+                    // else{
+                    //     music = eval("music"+game_id)
+                    //     music.play()
+                    //     music.addEventListener("ended", function(){
+                    //         music.currentTime = 0;
+                    //         console.log("ended"); 
+                    //         setTimeout(function(){
+                    //             music.play()
+                    //             console.log("再次播放")
+                    //         },1000)
+                    //     })
+                    // }
                 })
             }
         })
@@ -428,7 +457,7 @@ function loadTestAd(id) {
         test_ad_src.attr("src","https://media.giphy.com/media/bWouhHQ2KUSUX2zYHk/giphy.gif")
     }
     else {
-        test_ad_src.attr("src","https://media.giphy.com/media/PJHUu5mX3B8a71veiH/giphy.gif")
+        test_ad_src.attr("src","https://media.giphy.com/media/RSycGxs3VFzhZJAho0/giphy.gif")
     }
     setTimeout(function() {
         ad_test.animate({bottom:'0px'},1000)
