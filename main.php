@@ -387,7 +387,7 @@
 
         <div class="main-area">
             <div class="ad-vertical cursor-pointer">
-                <img id="ad-left" class="img-ad" src="assets/ads/simulate-ad-change/ad-left.png">
+                <img id="ad-left" class="img-ad" src="https://media.giphy.com/media/Sdu0SlDMhlOlqHuoqH/giphy.gif">
             </div>
             <div class="game-grid-container">
                 <div id="game-1" class="game cursor-pointer">
@@ -439,11 +439,11 @@
                 </div>
             </div>
             <div class="ad-vertical cursor-pointer">
-                <img id="ad-right" class="img-ad" src="assets/ads/simulate-ad-change/ad-right.png">
+                <img id="ad-right" class="img-ad" src="https://media.giphy.com/media/2RpeMI2nbNHEQiv9PN/giphy.gif">
             </div>
         </div>
         <div class="ad-horizontal cursor-pointer">
-            <img id="ad-bottom" class="img-ad" src="assets/ads/simulate-ad-change/ad-bottom.png">
+            <img id="ad-bottom" class="img-ad" src="https://media.giphy.com/media/JQEOpb8fncJPC485bA/giphy.gif">
         </div>
         <div id="overlay"></div>
     </body>
